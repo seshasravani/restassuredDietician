@@ -1,18 +1,19 @@
 package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 import java.util.HashMap;
 import java.util.Map;
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
-import com.CalorieHackers_Utilities.LoggerReader;
+import com.CalorieHackers_Utilities.LoggerLoad;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
 
 public class userLogin_POST_SD {
 
@@ -23,7 +24,7 @@ public class userLogin_POST_SD {
 
 	private void commonRequest(String scenarioName) {
 		currentTestData = JsonDataReader.getAllTestCase(jsondatapath, scenarioName);
-		LoggerReader.info(scenarioName);
+		LoggerLoad.info(scenarioName);
 		request = given().baseUri(ConfigReader.getKeyValues("BASE_URL"));
 
 	}
@@ -40,13 +41,13 @@ public class userLogin_POST_SD {
 	@When("User send POST HTTP request with endpoint")
 	public void user_send_post_http_request_with_endpoint() {
 
-		Map<String,Object> requestBody=new HashMap<>();
+		Map<String, Object> requestBody = new HashMap<>();
 		requestBody.put("userLoginEmail", currentTestData.getUserLoginEmail());
 		requestBody.put("password", currentTestData.getPassword());
-		
+
 		request = request.contentType(ContentType.JSON).body(currentTestData);
 		response = request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
-		LoggerReader.info("User send POST HTTP request with endpoint" + response.getStatusLine());
+		LoggerLoad.info("User send POST HTTP request with endpoint" + response.getStatusLine());
 
 	}
 
@@ -55,7 +56,7 @@ public class userLogin_POST_SD {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 				.statusLine(currentTestData.getExpectedStatusLine())
 				.contentType(currentTestData.getExpectedContentType());
-		LoggerReader.info("User receives 401 unauthorized" + response.getStatusLine());
+		LoggerLoad.info("User receives 401 unauthorized" + response.getStatusLine());
 	}
 
 	@Given("User creates Post request with invalid email format")
@@ -83,22 +84,31 @@ public class userLogin_POST_SD {
 
 	@When("User send POST HTTP request with endpoint as admin")
 	public void user_send_post_http_request_with_endpoint_as_admin() {
-		
-		Map<String,Object> requestBody=new HashMap<>();
+
+		Map<String, Object> requestBody = new HashMap<>();
 		requestBody.put("userLoginEmail", currentTestData.getUserLoginEmail());
 		requestBody.put("password", currentTestData.getPassword());
 		request = request.contentType(ContentType.JSON).body(currentTestData);
 		response = request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
-		LoggerReader.info("User send POST HTTP request with endpoint as Admin" + response.getStatusLine());
+		LoggerLoad.info("User send POST HTTP request with endpoint as Admin" + response.getStatusLine());
 	}
 
 	@Then("User receives {int} created with response body as admin")
 	public void user_receives_created_with_response_body_as_admin(Integer int1) {
 
-		response.then().statusCode(currentTestData.getExpectedStatusCode())
+		String responseBody = response.getBody().asPrettyString();
+
+		response.then().assertThat().log().all().statusCode(currentTestData.getExpectedStatusCode())
 				.statusLine(currentTestData.getExpectedStatusLine())
-				.contentType(currentTestData.getExpectedContentType());
-		LoggerReader.info("User receives 200 authorized" + response.getStatusLine());
+				.contentType(currentTestData.getExpectedContentType())
+				.body("loginUserEmail", equalTo(currentTestData.getUserLoginEmail()))
+				.body("roles",hasItem("ROLE_ADMIN"));
+		LoggerLoad.info("Response body:" + responseBody);
+
+		JsonPath js = response.jsonPath();
+		String adminToken = js.getString("token");
+		LoggerLoad.info("Admin Token:" + adminToken);
+
 	}
 
 }
