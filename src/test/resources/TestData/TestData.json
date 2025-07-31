@@ -1,0 +1,62 @@
+[
+  {
+    "testCaseId": "TC_01_userLogin",
+    "scenarioName": "Check user able to login as admin with invalid email format",
+    "scenarioType": "Negative",
+    "endpoint": "/login",
+    "method": "POST",
+    "userLoginEmail": "Team202#$#.gmail.com",
+    "password": "test",
+    "expectedStatusCode": 401,
+    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_02_userLogin",
+    "scenarioName": "Check user able to login as admin with invalid Password",
+    "scenarioType": "Negative",
+    "endpoint": "/login",
+    "method": "POST",
+    "userLoginEmail": "Team202@gmail.com",
+    "password": "test1233",
+    "expectedStatusCode": 401,
+    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_03_userLogin",
+    "scenarioName": "Check user able to login as admin with invalid email",
+    "scenarioType": "Negative",
+    "endpoint": "/login",
+    "method": "POST",
+    "userLoginEmail": "Team20212558@gmail.com",
+    "password": "test",
+    "expectedStatusCode": 401,
+    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_04_userLogin",
+    "scenarioName": "Check user able to login as admin with empty credentials",
+    "scenarioType": "Negative",
+    "endpoint": "/login",
+    "method": "POST",
+    "userLoginEmail": "",
+    "password": "",
+    "expectedStatusCode": 401,
+    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_05_userLogin",
+    "scenarioName": "Check user able to login as admin with valid data",
+    "scenarioType": "Positive",
+    "endpoint": "/login",
+    "method": "POST",
+    "userLoginEmail": "Team401@gmail.com",
+    "password": "test",
+    "expectedStatusCode": 200,
+    "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedContentType": "application/json"
+  }
+]
