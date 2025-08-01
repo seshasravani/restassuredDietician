@@ -1,5 +1,7 @@
 package com.CalorieHackers_POJO;
 
+import java.util.Map;
+
 public class TestDataPOJO {
 
 	private String scenarioName;
@@ -15,7 +17,14 @@ public class TestDataPOJO {
 	private int expectedStatusCode;
 	private String expectedStatusLine;
 	private String expectedContentType;
-
+	
+	private String reportFilePath;
+	private String expecterErrorMsg;
+	private Map<String, Object> vitals;
+	private Map<String, Object> patientinfo;
+	private int invaidpatientid;
+	
+	
 	public String getScenarioName() {
 		return scenarioName;
 	}
@@ -114,5 +123,48 @@ public class TestDataPOJO {
 	public void setExpectedContentType(String expectedContentType) {
 		this.expectedContentType = expectedContentType;
 	}
+
+	public String getReportFilePath() {
+		return reportFilePath;
+	}
+
+	public void setReportFilePath(String reportFilePath) {
+		this.reportFilePath = reportFilePath;
+	}
+
+	public String getExpecterErrorMsg() {
+		return expecterErrorMsg;
+	}
+
+	public void setExpecterErrorMsg(String expecterErrorMsg) {
+		this.expecterErrorMsg = expecterErrorMsg;
+	}
+
+
+	public Map<String, Object> getVitals() {
+		return vitals;
+	}
+
+	public void setVitals(Map<String, Object> vitals) {
+		this.vitals = vitals;
+	}
+
+	public Map<String, Object> getPatientinfo() {
+		return patientinfo;
+	}
+
+	public void setPatientinfo(Map<String, Object> patientinfo) {
+		this.patientinfo = patientinfo;
+	}
+
+	public int getInvaidpatientid() {
+		return invaidpatientid;
+	}
+
+	public void setInvaidpatientid(int invaidpatientid) {
+		this.invaidpatientid = invaidpatientid;
+	}
+
+
 
 }

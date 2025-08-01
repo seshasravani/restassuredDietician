@@ -58,5 +58,186 @@
     "expectedStatusCode": 200,
     "expectedStatusLine": "HTTP/1.1 200 OK",
     "expectedContentType": "application/json"
-  }
+  },
+  {
+      "scenarioName": "Entering valid report and valid patient ID",
+      "scenarioType": "Negative",
+      "endpoint": "/patient/newReports/",
+      "method": "PUT",
+      "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+      "expectedStatusCode": 401,
+      "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+      "expectedContentType": "application/json"
+    },
+  {
+    "scenarioName": "Entering valid data into the form-data key and value fields and valid patient ID token",
+    "scenarioType": "Negative",
+    "endpoint": "/patient/newReports/",
+    "method": "PUT",
+    "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+    "expectedStatusCode": 403,
+    "expectedStatusLine": "HTTP/1.1 403 Forbidden",
+	"expectedContentType": "application/json",
+	"expecterErrorMsg" : "Access is denied"
+	},
+	{
+   "scenarioName": "Valid data Mandatory and additional details into the form-data key and value fields and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+   "Allergy": "Egg",
+   "FoodPreference": "Vegan",
+   "CuisineCategory":"Indian",
+   "DateOfBirth": "1977-02-14"
+   },
+   "vitals" : 	   {"Weight" : 6.2,
+   "Height" : 60.5,
+   "Temperature" : 95,
+   "SP" : 100,
+   "DP" : 80
+   },
+   "expectedStatusCode": 200,
+   "expectedStatusLine": "HTTP/1.1 200 OK",	
+   "expectedContentType": "application/json"
+},
+{
+   "scenarioName": "Except valid vitals data and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+   "Allergy": "Egg",
+   "FoodPreference": "Vegan",
+   "CuisineCategory":"Indian",
+   "DateOfBirth": "1977-02-14"
+   },
+   "vitals" : 	   {"Weight" : 6.2,
+   "Height" : 60.5,
+   "Temperature" : 95,
+   "SP" : 100,
+   "DP" : 80
+   },
+   "expectedStatusCode": 200,
+   "expectedStatusLine": "HTTP/1.1 200 OK",
+	"expectedContentType": "application/json"
+	},
+{
+   "scenarioName": "Data into the form-data key and value fields except file and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+	"Allergy": "Egg",
+	"FoodPreference": "Vegan",
+	"CuisineCategory":"Indian",
+	"DateOfBirth": "1977-02-14"
+	},
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 200,
+	 "expectedStatusLine": "HTTP/1.1 200 OK",
+	"expectedContentType": "application/json"
+},	
+{
+   "scenarioName": "Invalid Additional details data into the form-data key and value fields",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+	"Allergy": "Egg",
+	"FoodPreference": "Vegan",
+	"CuisineCategory":"Indian",
+	"DateOfBirth": "1977-02-14"
+	},
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 400,
+	 "expectedStatusLine": "HTTP/1.1 400 BAD REQUEST"
+},
+{
+   "scenarioName": "Invalid Additional details data into the form-data key and value fields and invalid patient ID",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+   "invaidpatientid" : 9874563,
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 404,
+	 "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+   "scenarioName": "Entering valid data into the form-data key and value fields and valid patient ID",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "POST",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 405,
+	 "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+   "scenarioName": "Valid data and with invalid reports endpoint",
+   "scenarioType": "Negative",
+   "endpoint": "/dietician",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 404,
+	 "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+   "scenarioName": "Valid patient ID with invalid content type",
+   "scenarioType": "Negative",
+   "endpoint": "patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 415,
+	 "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type"
+}
 ]
