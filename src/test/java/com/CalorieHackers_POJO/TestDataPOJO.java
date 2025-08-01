@@ -1,6 +1,9 @@
 package com.CalorieHackers_POJO;
 
+
+import java.util.Map;
 import java.util.List;
+
 
 public class TestDataPOJO {
 
@@ -16,13 +19,19 @@ public class TestDataPOJO {
 	private int expectedStatusCode;
 	private String expectedStatusLine;
 	private String expectedContentType;
+	
+	private String reportFilePath;
+	private String expecterErrorMsg;
+	private Map<String, Object> vitals;
+	private Map<String, Object> patientinfo;
+	private int invaidpatientid;
+	
+	
 	private String adminToken;
 	private String dieticianToken;
 	private String patientToken;
 	
 	
-
-
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -120,6 +129,48 @@ public class TestDataPOJO {
 		this.expectedContentType = expectedContentType;
 	}
 
+	public String getReportFilePath() {
+		return reportFilePath;
+	}
+
+	public void setReportFilePath(String reportFilePath) {
+		this.reportFilePath = reportFilePath;
+	}
+
+	public String getExpecterErrorMsg() {
+		return expecterErrorMsg;
+	}
+
+	public void setExpecterErrorMsg(String expecterErrorMsg) {
+		this.expecterErrorMsg = expecterErrorMsg;
+	}
+
+
+	public Map<String, Object> getVitals() {
+		return vitals;
+	}
+
+	public void setVitals(Map<String, Object> vitals) {
+		this.vitals = vitals;
+	}
+
+	public Map<String, Object> getPatientinfo() {
+		return patientinfo;
+	}
+
+	public void setPatientinfo(Map<String, Object> patientinfo) {
+		this.patientinfo = patientinfo;
+	}
+
+	public int getInvaidpatientid() {
+		return invaidpatientid;
+	}
+
+	public void setInvaidpatientid(int invaidpatientid) {
+		this.invaidpatientid = invaidpatientid;
+	}
+
+
 	public String getAdminToken() {
 		return adminToken;
 	}
@@ -144,5 +195,5 @@ public class TestDataPOJO {
 		this.patientToken = patientToken;
 	}
 
-	
+
 }
