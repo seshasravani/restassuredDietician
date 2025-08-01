@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 import com.CalorieHackers_POJO.DieticianPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
+import com.CalorieHackers_Utilities.LoggerLoad;
+
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
@@ -30,6 +32,10 @@ public class DieticianGetById {
                 .header("Authorization", hardcodedToken)
                 .when()
                 .get(endpoint);
+        
+
+LoggerLoad.info("Response Body: \n" + response.prettyPrint());
+
     }
 
     @Then("Admin receives 200 ok with details of the dietician id")
