@@ -1,6 +1,9 @@
 package com.CalorieHackers_POJO;
 
+
 import java.util.Map;
+import java.util.List;
+
 
 public class TestDataPOJO {
 
@@ -11,7 +14,6 @@ public class TestDataPOJO {
 	private String method;
 	private String contentType;
 	private String userLoginEmail;
-	
 	private String password;
 	private String authType;
 	private int expectedStatusCode;
@@ -25,6 +27,12 @@ public class TestDataPOJO {
 	private int invaidpatientid;
 	
 	
+	private String adminToken;
+	private String dieticianToken;
+	private String patientToken;
+	
+	
+
 	public String getScenarioName() {
 		return scenarioName;
 	}
@@ -88,9 +96,6 @@ public class TestDataPOJO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	
-
 
 	public String getAuthType() {
 		return authType;
@@ -165,6 +170,30 @@ public class TestDataPOJO {
 		this.invaidpatientid = invaidpatientid;
 	}
 
+
+	public String getAdminToken() {
+		return adminToken;
+	}
+
+	public void setAdminToken(String adminToken) {
+		this.adminToken = adminToken;
+	}
+	
+	public String getDieticianToken() {
+		return dieticianToken;
+	}
+
+	public void setDieticianToken(String dieticianToken) {
+		this.dieticianToken = dieticianToken;
+	}
+
+	public String getPatientToken() {
+		return patientToken;
+	}
+
+	public void setPatientToken(String patientToken) {
+		this.patientToken = patientToken;
+	}
 
 
 }
