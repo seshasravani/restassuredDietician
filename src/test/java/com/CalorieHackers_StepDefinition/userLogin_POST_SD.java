@@ -4,6 +4,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.testng.Assert;
+
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
@@ -90,8 +93,10 @@ public class userLogin_POST_SD {
 	public void user_send_post_http_request_with_endpoint_as_admin() {
 
 		request = request.contentType(ContentType.JSON).body(currentTestData);
-		response = request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
+		response =  request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 		LoggerLoad.info("User send POST HTTP request with endpoint as Admin" + response.getStatusLine());
+
+		
 	}
 
 	@Then("User receives {int} created with response body as admin")
@@ -108,7 +113,8 @@ public class userLogin_POST_SD {
 
 		JsonPath js = response.jsonPath();
 		String adminToken = js.getString("token");
-		LoggerLoad.info("Admin Token:" + adminToken);
+		currentTestData.setAdminToken(adminToken);
+		
 
 
 	}
@@ -232,6 +238,7 @@ public class userLogin_POST_SD {
 
 		JsonPath js = response.jsonPath();
 		String dieticianToken = js.getString("token");
+		currentTestData.setDieticianToken(dieticianToken);
 		LoggerLoad.info("Dietician Token:" + dieticianToken);
 	}
 
@@ -263,9 +270,11 @@ public class userLogin_POST_SD {
 
 		JsonPath js = response.jsonPath();
 		String patientToken = js.getString("token");
+		currentTestData.setAdminToken(patientToken);
 		LoggerLoad.info("Patient Token:" + patientToken);
 	}
 
 
 
 }
+

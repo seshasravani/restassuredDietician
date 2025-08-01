@@ -1,5 +1,7 @@
 package com.CalorieHackers_POJO;
 
+import java.util.List;
+
 public class TestDataPOJO {
 
 	private String scenarioName;
@@ -18,8 +20,9 @@ public class TestDataPOJO {
 	private String dieticianToken;
 	private String patientToken;
 	
-
 	
+
+
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -141,4 +144,5 @@ public class TestDataPOJO {
 		this.patientToken = patientToken;
 	}
 
+	
 }
