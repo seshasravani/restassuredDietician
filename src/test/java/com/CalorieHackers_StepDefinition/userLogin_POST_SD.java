@@ -4,15 +4,10 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.testng.Assert;
-
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
-
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -23,6 +18,7 @@ public class userLogin_POST_SD {
 
 	RequestSpecification request;
 	Response response;
+	public static String adminToken;
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = "src/test/resources/TestData/TestData.json";
 
@@ -30,9 +26,7 @@ public class userLogin_POST_SD {
 		currentTestData = JsonDataReader.getAllTestCase(jsondatapath, scenarioName);
 		LoggerLoad.info(scenarioName);
 		request = given().baseUri(ConfigReader.getKeyValues("BASE_URL"));
-		Map<String, Object> requestBody = new HashMap<>();
-		requestBody.put("userLoginEmail", currentTestData.getUserLoginEmail());
-		requestBody.put("password", currentTestData.getPassword());
+		
 
 	}
 
@@ -112,7 +106,7 @@ public class userLogin_POST_SD {
 		LoggerLoad.info("Response body:" + responseBody);
 
 		JsonPath js = response.jsonPath();
-		String adminToken = js.getString("token");
+		 adminToken = js.getString("token");
 		currentTestData.setAdminToken(adminToken);
 		
 
@@ -270,7 +264,7 @@ public class userLogin_POST_SD {
 
 		JsonPath js = response.jsonPath();
 		String patientToken = js.getString("token");
-		currentTestData.setAdminToken(patientToken);
+		currentTestData.setPatientToken(patientToken);
 		LoggerLoad.info("Patient Token:" + patientToken);
 	}
 

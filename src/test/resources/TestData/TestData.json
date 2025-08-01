@@ -59,7 +59,6 @@
     "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
     "expectedContentType": "application/json"
   },
-  
   {
     "testCaseId": "TC_06_userLogin",
     "scenarioName": "Check user able to login as admin with valid credential and invalid endpoint",
@@ -168,7 +167,6 @@
     "expectedStatusLine": "HTTP/1.1 200 OK",
     "expectedContentType": "application/json"
   },
-  
   {
     "testCaseId": "TC_15_userLogin",
     "scenarioName": "Check user able to login as dietician with valid credential",
@@ -181,7 +179,6 @@
     "expectedStatusLine": "HTTP/1.1 200 OK",
     "expectedContentType": "application/json"
   },
-  
   {
     "testCaseId": "TC_16_userLogin",
     "scenarioName": "Check user able to login as patient with valid credential",
@@ -192,6 +189,26 @@
     "password": "test",
     "expectedStatusCode": 200,
     "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_01_createDietician",
+    "scenarioName": "Check admin able to create dietician with valid data and token",
+    "scenarioType": "Positive",
+    "endpoint": "/dietician",
+    "method": "POST",
+    "firstname": "Vishnu",
+    "lastname": "Raj",
+    "contactNumber": "4455221133",
+    "dateOfBirth": "1990-08-25",
+    "email": "vishnu_02raj@gmail.com",
+    "hospitalName": "Kooper Hospital",
+    "hospitalStreet": "Streetone",
+    "hospitalCity": "Baroda",
+    "hospitalPincode": "258969",
+    "education": "PhD in Nutritional Sciences",
+    "expectedStatusCode": 201,
+    "expectedStatusLine": "Created",
     "expectedContentType": "application/json"
   }
 ]
