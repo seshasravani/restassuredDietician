@@ -9,12 +9,17 @@ public class TestDataPOJO {
 	private String method;
 	private String contentType;
 	private String userLoginEmail;
-	
 	private String password;
 	private String authType;
 	private int expectedStatusCode;
 	private String expectedStatusLine;
 	private String expectedContentType;
+	private String adminToken;
+	private String dieticianToken;
+	private String patientToken;
+	
+
+	
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -80,9 +85,6 @@ public class TestDataPOJO {
 		this.password = password;
 	}
 
-	
-
-
 	public String getAuthType() {
 		return authType;
 	}
@@ -113,6 +115,30 @@ public class TestDataPOJO {
 
 	public void setExpectedContentType(String expectedContentType) {
 		this.expectedContentType = expectedContentType;
+	}
+
+	public String getAdminToken() {
+		return adminToken;
+	}
+
+	public void setAdminToken(String adminToken) {
+		this.adminToken = adminToken;
+	}
+	
+	public String getDieticianToken() {
+		return dieticianToken;
+	}
+
+	public void setDieticianToken(String dieticianToken) {
+		this.dieticianToken = dieticianToken;
+	}
+
+	public String getPatientToken() {
+		return patientToken;
+	}
+
+	public void setPatientToken(String patientToken) {
+		this.patientToken = patientToken;
 	}
 
 }
