@@ -381,11 +381,11 @@
     "scenarioType": "Positive",
     "endpoint": "/dietician",
     "method": "POST",
-    "firstname": "Vishnu",
-    "lastname": "Raj",
-    "contactNumber": "4455221133",
-    "dateOfBirth": "1990-08-25",
-    "email": "vishnu_02raj@gmail.com",
+    "FirstName": "Vishnu",
+    "LastName": "Raj",
+    "ContactNumber": "4455221133",
+    "DateOfBirth": "1990-08-25",
+    "Email": "vishnu_02raj@gmail.com",
     "hospitalName": "Kooper Hospital",
     "hospitalStreet": "Streetone",
     "hospitalCity": "Baroda",
@@ -394,7 +394,11 @@
     "expectedStatusCode": 201,
     "expectedStatusLine": "HTTP/1.1 201 Created",
     "expectedContentType": "application/json"
+
   },
+
+
+  
     {
       "testCaseId": "TC_01_createPatient_noAuth",
       "scenarioName": "Set no auth - Check dietician able to create patient with valid data",
@@ -592,6 +596,24 @@
       "expectedStatusCode": 415,
       "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type",
       "expectedContentType": "application/json"
-    }
+    },
+	
+	{
+		    "scenarioName": "Check admin able to retrieve dietician by invalid id",
+		    "endpoint": "/dietician",
+		    "invalidDieticianId": 99999999,
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+		  },
+		  
+		  {
+		  	    "scenarioName": "Check admin able to retrieve dietician by id with invalid endpoint",
+		  	    "endpoint": "/dieticians",
+				"validDieticianId": 123,
+		  	    "expectedStatusCode": 404,
+		  	    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+		  	  }
   ]
 
