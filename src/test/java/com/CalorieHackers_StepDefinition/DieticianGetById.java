@@ -2,12 +2,15 @@ package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
+import com.CalorieHackers_Utilities.JsonDataReader;
 
 import com.CalorieHackers_POJO.DieticianPOJO;
+import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
 
 import io.cucumber.java.en.*;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class DieticianGetById {
@@ -15,22 +18,26 @@ public class DieticianGetById {
     private Response response;
     private final String baseUri = ConfigReader.getKeyValues("BASE_URL");
     private static String authToken;
-
-    static {
-        LoggerLoad.info("This is a test log message");
-    }
+    private static final String jsondatapath = ConfigReader.getKeyValues("JSON_PATH");
+    private TestDataPOJO currentTestData;
+    
+    
+   
 
     // === Background step ===
     @Given("Admin has a valid auth token")
     public void admin_has_a_valid_auth_token() {
         // Hardcoded token for now
-        authToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDA3ODUwNCwiZXhwIjoxNzU0MTA3MzA0fQ.h86WWLVpfoVzyTkcpZDR4hX66XebdndLZmb6I1-etGh6ioFA-yuh6xAob0jvLvmHxKyAew1qXEC2nLXFmtfahg";
+        authToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDEwNzk1MCwiZXhwIjoxNzU0MTM2NzUwfQ.tNrmbKKfHNVarJOAOrFqeCl9f7IEWLwqJBs7zUqoBT5_UOBNFU13871s0M5-OLI8cG05nHHOsHK1dFWaBCCqaQ";
         LoggerLoad.info("Using hardcoded Auth Token: " + authToken);
     }
 
     @Given("Admin create GET request")
     public void admin_create_get_request() {
-        // No setup needed for GET
+        
+    	 LoggerLoad.info("Preparing GET request");
+    	
+    	
     }
 
     @When("Admin send GET http request with endpoint")
@@ -45,7 +52,7 @@ public class DieticianGetById {
                 .get(endpoint);
 
         LoggerLoad.info("Response Body: \n" + response.prettyPrint());
-        //LoggerLoad.info("Response Body: \n" + response.asString());
+       
 
 
     }
@@ -56,6 +63,125 @@ public class DieticianGetById {
         DieticianPOJO dietician = response.as(DieticianPOJO.class);
         LoggerLoad.info("Verified Dietician ID: " + dietician.getId());
         assertEquals(123, dietician.getId());
-       // LoggerLoad.info("Verified Dietician ID: " + dietician.getId());
+      
     }
+    
+    
+    // scenario -2
+    
+    
+    @Given("Admin creates POST request")
+    public void admin_creates_post_request() {
+    	
+    	 LoggerLoad.info("Preparing POST request");
+        
+    }
+
+    @When("Admin sends POST http request with endpoint")
+    public void admin_sends_post_http_request_with_endpoint() {
+       
+    	String dieticianId = "123";  // Hardcoded for now
+        String endpoint = ConfigReader.getKeyValues("get.dietician.by.id.endpoint") + "/" + dieticianId;
+
+        response = given()
+                .baseUri(baseUri)
+                .header("Authorization", authToken)
+                .when()
+                .post(endpoint);
+
+        LoggerLoad.info("Response Body: \n" + response.prettyPrint());
+    }
+
+    @Then("Admin receives 405 method not allowed")
+    public void admin_receives_method_not_allowed(){
+    	
+    	assertEquals(405, response.getStatusCode());
+        
+    }
+    
+
+    //invalid dietId
+    
+    @Given("Admin create GET request for invalid Id")
+    public void admin_create_get_request_for_invalid_Id() {
+        // Load test data for invalid ID scenario from JSON
+        currentTestData = JsonDataReader.getAllTestCase(jsondatapath, "Check admin able to retrieve dietician by invalid id");
+        LoggerLoad.info("Preparing GET request for invalid dietician ID: " + currentTestData.getInvalidDieticianId());
+    }
+
+
+       
+    @When("Admin send GET http request with invalidId endpoint")
+    public void admin_send_get_http_request_with_invalidId_endpoint() {
+        // Build the endpoint with invalid ID
+        String endpointWithInvalidId = currentTestData.getEndpoint() + "/" + currentTestData.getInvalidDieticianId();
+        
+        // Print final URL (including base URI if set)
+        System.out.println("Calling URL: " + RestAssured.baseURI + endpointWithInvalidId);
+        LoggerLoad.info("Calling URL: " + RestAssured.baseURI + endpointWithInvalidId);
+        
+        // Send GET request
+        response = given()
+                    .header("Authorization", authToken)
+                    .when()
+                    .get(endpointWithInvalidId);
+                    
+        // Log response
+        LoggerLoad.info("Response Body: \n" + response.prettyPrint());
+    }
+    
+    
+    @Then("Admin receives {int} not found")
+    public void admin_receives_not_found(Integer expectedStatusCode) {
+        // Compare actual response code with expectedStatusCode
+        assertEquals(expectedStatusCode.intValue(), response.getStatusCode());
+    }
+
+    @Given("Admin create GET request for invalid endpoint")
+    public void admin_create_get_request_for_invalid_endpoint() {
+    	
+    	 // Load test data for invalid endpoint from JSON
+        currentTestData = JsonDataReader.getAllTestCase(jsondatapath, "Check admin able to retrieve dietician by id with invalid endpoint");
+        //LoggerLoad.info("Preparing GET request for invalid endpoint: " + currentTestData.getInvalidDieticianId());
+        
+    }
+
+    
+    
+    
+    @When("Admin send GET http request with invalid endpoint")
+    public void admin_send_get_http_request_with_invalid_endpoint() {
+    	
+    	
+    	 // Build invalid endpoint
+        String endpointInvalid = currentTestData.getEndpoint() + "/" + currentTestData.getvalidDieticianId();
+        
+        // Print final URL (including base URI if set)
+        System.out.println("Calling URL: " + RestAssured.baseURI + endpointInvalid);
+        LoggerLoad.info("Calling URL: " + RestAssured.baseURI + endpointInvalid);
+        
+        // Send GET request
+        response = given()
+                    .header("Authorization", authToken)
+                    .when()
+                    .get(endpointInvalid);
+                    
+        // Log response
+        LoggerLoad.info("Response Body: \n" + response.prettyPrint());
+        
+    }
+
+    @Then("Admin recieves {int} not found")
+    public void admin_recieves_not_found(Integer expectedStatusCode) {
+    	
+    	// Compare actual response code with expectedStatusCode
+        assertEquals(expectedStatusCode.intValue(), response.getStatusCode());
+        
+    }
+
+
+
 }
+
+
+

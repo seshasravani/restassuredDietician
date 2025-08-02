@@ -38,6 +38,8 @@ public class TestDataPOJO {
 	private String hospitalCity;
 	private String hospitalPincode;
 	private String education;
+	private int invalidDieticianId;
+	private int validDieticianId;
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -278,6 +280,22 @@ public class TestDataPOJO {
 
 	public void setEducation(String education) {
 		this.education = education;
+	}
+
+	
+	
+	
+
+	public int getInvalidDieticianId() {
+	    return invalidDieticianId;
+	}
+	
+	public int getvalidDieticianId() {
+		return validDieticianId;
+	}
+
+	public void setInvalidDieticianId(int invalidDieticianId) {
+	    this.invalidDieticianId = invalidDieticianId;
 	}
 
 

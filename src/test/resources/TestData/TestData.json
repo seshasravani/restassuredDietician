@@ -393,5 +393,27 @@
     "expectedStatusCode": 201,
     "expectedStatusLine": "Created",
     "expectedContentType": "application/json"
-  }
-]
+	
+	},
+	
+	  {
+	    "scenarioName": "Check admin able to retrieve dietician by invalid id",
+	    "endpoint": "/dietician",
+	    "invalidDieticianId": 99999999,
+	    "expectedStatusCode": 404,
+	    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+	  },
+	  
+	  {
+	  	    "scenarioName": "Check admin able to retrieve dietician by id with invalid endpoint",
+	  	    "endpoint": "/dieticians",
+			"validDieticianId": 123,
+	  	    "expectedStatusCode": 404,
+	  	    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+	  	  }
+	]
+
+
+  
