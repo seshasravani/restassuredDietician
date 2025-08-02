@@ -77,7 +77,7 @@ public class DieticianGetById {
         
     }
 
-    @When("Admin sends POST http request with endpoint")
+    @When("Admin sends POST http request with endpoint for dietician")
     public void admin_sends_post_http_request_with_endpoint() {
        
     	String dieticianId = "123";  // Hardcoded for now
@@ -182,6 +182,3 @@ public class DieticianGetById {
 
 
 }
-
-
-

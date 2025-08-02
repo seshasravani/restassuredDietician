@@ -38,8 +38,65 @@ public class TestDataPOJO {
 	private String hospitalCity;
 	private String hospitalPincode;
 	private String education;
+
 	private int invalidDieticianId;
 	private int validDieticianId;
+
+	
+	 
+	    private String FirstName;
+	    private String LastName;
+	    private String ContactNumber;
+	    private String Email;
+	    private String Allergy;
+	    private String FoodPreference;
+	    private String CuisineCategory;
+	    private String DateOfBirth;
+	 
+
+	    // Getters and Setters
+
+	    public String getFirstName() {
+	        return FirstName;
+	    }
+
+	    public void setFirstName(String firstName) {
+	        FirstName = firstName;
+	    }
+
+	    public String getLastName() {
+	        return LastName;
+	    }
+
+	    public void setLastName(String lastName) {
+	        LastName = lastName;
+	    }
+
+	    public String getAllergy() {
+	        return Allergy;
+	    }
+
+	    public void setAllergy(String allergy) {
+	        Allergy = allergy;
+	    }
+
+	    public String getFoodPreference() {
+	        return FoodPreference;
+	    }
+
+	    public void setFoodPreference(String foodPreference) {
+	        FoodPreference = foodPreference;
+	    }
+
+	    public String getCuisineCategory() {
+	        return CuisineCategory;
+	    }
+
+	    public void setCuisineCategory(String cuisineCategory) {
+	        CuisineCategory = cuisineCategory;
+	    }
+
+	  
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -281,11 +338,7 @@ public class TestDataPOJO {
 	public void setEducation(String education) {
 		this.education = education;
 	}
-
 	
-	
-	
-
 	public int getInvalidDieticianId() {
 	    return invalidDieticianId;
 	}
@@ -297,8 +350,6 @@ public class TestDataPOJO {
 	public void setInvalidDieticianId(int invalidDieticianId) {
 	    this.invalidDieticianId = invalidDieticianId;
 	}
-
-
 
 
 }
