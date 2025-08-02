@@ -2,6 +2,8 @@ package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import com.CalorieHackers_Utilities.JsonDataReader;
 
 import com.CalorieHackers_POJO.DieticianPOJO;
@@ -28,7 +30,7 @@ public class DieticianGetById {
     @Given("Admin has a valid auth token")
     public void admin_has_a_valid_auth_token() {
         // Hardcoded token for now
-        authToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDEwNzk1MCwiZXhwIjoxNzU0MTM2NzUwfQ.tNrmbKKfHNVarJOAOrFqeCl9f7IEWLwqJBs7zUqoBT5_UOBNFU13871s0M5-OLI8cG05nHHOsHK1dFWaBCCqaQ";
+        authToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDE2NTU1NCwiZXhwIjoxNzU0MTk0MzU0fQ.SsJ7XATcHfh56yM8D0gQ40XqNhLP97rbmRMQlNBiGd3Jp-DXHK3ITFDPUNVotEI3oBTLEpt36o2ks8DaWnTxdw";
         LoggerLoad.info("Using hardcoded Auth Token: " + authToken);
     }
 
@@ -44,7 +46,7 @@ public class DieticianGetById {
     public void admin_send_get_http_request_with_endpoint() {
         String dieticianId = "123";  // Hardcoded for now
         String endpoint = ConfigReader.getKeyValues("get.dietician.by.id.endpoint") + "/" + dieticianId;
-
+      
         response = given()
                 .baseUri(baseUri)
                 .header("Authorization", authToken)
@@ -178,7 +180,34 @@ public class DieticianGetById {
         assertEquals(expectedStatusCode.intValue(), response.getStatusCode());
         
     }
+    
+    
+    @Given("No Authentication is set")
+    public void no_authentication_is_set() {
+       
+    }
+    
+    
+    @When("Admin sends GET http request without auth")
+    public void admin_sends_get_http_request_without_auth() {
+        String dieticianId = "123";  // Hardcoded
+        String endpoint = ConfigReader.getKeyValues("get.dietician.by.id.endpoint") + "/" + dieticianId;
+
+        response = given()
+                .baseUri(baseUri)
+                // No Authorization header
+                .when()
+                .get(endpoint);
+
+        LoggerLoad.info("Response Body: \n" + response.prettyPrint());
+    }
 
 
+    @Then("Admin receives {int} unauthorized")
+    public void admin_receives_unauthorized(int statusCode) {
+        assertEquals(statusCode, response.getStatusCode());
+        assertTrue(response.getStatusLine().contains("Unauthorized"));
+    }
 
-}
+    }
+
