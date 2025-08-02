@@ -34,28 +34,9 @@ public class TestDataPOJO {
 	private String HospitalCity;
 	private String HospitalPincode;
 	private String Education;
-
 	private String Allergy;
 	private String FoodPreference;
 	private String CuisineCategory;
-
-	// Getters and Setters
-
-	public String getFirstName() {
-		return Firstname;
-	}
-
-	public void setFirstName(String firstName) {
-		Firstname = firstName;
-	}
-
-	public String getLastName() {
-		return Lastname;
-	}
-
-	public void setLastName(String lastName) {
-		Lastname = lastName;
-	}
 
 	public String getAllergy() {
 		return Allergy;
@@ -75,6 +56,22 @@ public class TestDataPOJO {
 
 	public String getCuisineCategory() {
 		return CuisineCategory;
+	}
+
+	public String getFirstName() {
+		return Firstname;
+	}
+
+	public void setFirstName(String firstName) {
+		Firstname = firstName;
+	}
+
+	public String getLastName() {
+		return Lastname;
+	}
+
+	public void setLastName(String lastName) {
+		Lastname = lastName;
 	}
 
 	public void setCuisineCategory(String cuisineCategory) {
