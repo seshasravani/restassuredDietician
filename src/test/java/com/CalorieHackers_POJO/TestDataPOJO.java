@@ -1,8 +1,6 @@
 package com.CalorieHackers_POJO;
 
-
 import java.util.Map;
-
 
 public class TestDataPOJO {
 
@@ -36,6 +34,52 @@ public class TestDataPOJO {
 	private String HospitalCity;
 	private String HospitalPincode;
 	private String Education;
+
+	private String Allergy;
+	private String FoodPreference;
+	private String CuisineCategory;
+
+	// Getters and Setters
+
+	public String getFirstName() {
+		return Firstname;
+	}
+
+	public void setFirstName(String firstName) {
+		Firstname = firstName;
+	}
+
+	public String getLastName() {
+		return Lastname;
+	}
+
+	public void setLastName(String lastName) {
+		Lastname = lastName;
+	}
+
+	public String getAllergy() {
+		return Allergy;
+	}
+
+	public void setAllergy(String allergy) {
+		Allergy = allergy;
+	}
+
+	public String getFoodPreference() {
+		return FoodPreference;
+	}
+
+	public void setFoodPreference(String foodPreference) {
+		FoodPreference = foodPreference;
+	}
+
+	public String getCuisineCategory() {
+		return CuisineCategory;
+	}
+
+	public void setCuisineCategory(String cuisineCategory) {
+		CuisineCategory = cuisineCategory;
+	}
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -149,7 +193,6 @@ public class TestDataPOJO {
 		this.expecterErrorMsg = expecterErrorMsg;
 	}
 
-
 	public Map<String, Object> getVitals() {
 		return vitals;
 	}
@@ -174,7 +217,6 @@ public class TestDataPOJO {
 		this.invaidpatientid = invaidpatientid;
 	}
 
-
 	public String getAdminToken() {
 		return adminToken;
 	}
@@ -198,6 +240,7 @@ public class TestDataPOJO {
 	public void setPatientToken(String patientToken) {
 		this.patientToken = patientToken;
 	}
+
 	public String getFirstname() {
 		return Firstname;
 	}
@@ -277,8 +320,5 @@ public class TestDataPOJO {
 	public void setEducation(String education) {
 		this.Education = education;
 	}
-
-	
-
 
 }
