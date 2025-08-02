@@ -1,5 +1,4 @@
 package com.CalorieHackers_StepDefinition;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
@@ -269,6 +268,4 @@ public class userLogin_POST_SD {
 	}
 
 
-
 }
-

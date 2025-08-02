@@ -1,9 +1,6 @@
 package com.CalorieHackers_POJO;
 
-
 import java.util.Map;
-import java.util.List;
-
 
 public class TestDataPOJO {
 
@@ -19,7 +16,6 @@ public class TestDataPOJO {
 	private int expectedStatusCode;
 	private String expectedStatusLine;
 	private String expectedContentType;
-	
 	private String reportFilePath;
 	private String expecterErrorMsg;
 	private Map<String, Object> vitals;
@@ -28,45 +24,21 @@ public class TestDataPOJO {
 	private String adminToken;
 	private String dieticianToken;
 	private String patientToken;
-	private String firstname;
-	private String lastname;
-	private String contactNumber;
-	private String dateOfBirth;
-	private String email;
-	private String hospitalName;
-	private String hospitalStreet;
-	private String hospitalCity;
-	private String hospitalPincode;
-	private String education;
-	
-	 
-	    private String FirstName;
-	    private String LastName;
-	    private String ContactNumber;
-	    private String Email;
-	    private String Allergy;
-	    private String FoodPreference;
-	    private String CuisineCategory;
-	    private String DateOfBirth;
-	 
+	private String Firstname;
+	private String Lastname;
+	private String ContactNumber;
+	private String DateOfBirth;
+	private String Email;
+	private String HospitalName;
+	private String HospitalStreet;
+	private String HospitalCity;
+	private String HospitalPincode;
+	private String Education;
+	private String Allergy;
+	private String FoodPreference;
+	private String CuisineCategory;
 
-	    // Getters and Setters
 
-	    public String getFirstName() {
-	        return FirstName;
-	    }
-
-	    public void setFirstName(String firstName) {
-	        FirstName = firstName;
-	    }
-
-	    public String getLastName() {
-	        return LastName;
-	    }
-
-	    public void setLastName(String lastName) {
-	        LastName = lastName;
-	    }
 
 	    public String getAllergy() {
 	        return Allergy;
@@ -91,39 +63,6 @@ public class TestDataPOJO {
 	    public void setCuisineCategory(String cuisineCategory) {
 	        CuisineCategory = cuisineCategory;
 	    }
-
-	  
-
-	private String testCaseId;
-	private String scenarioType;
-	private String endpoint;
-	private String method;
-	private String contentType;
-	private String userLoginEmail;
-	private String password;
-	private String authType;
-	private int expectedStatusCode;
-	private String expectedStatusLine;
-	private String expectedContentType;
-	
-	private String reportFilePath;
-	private String expecterErrorMsg;
-	private Map<String, Object> vitals;
-	private Map<String, Object> patientinfo;
-	private int invaidpatientid;
-	private String adminToken;
-	private String dieticianToken;
-	private String patientToken;
-	private String firstname;
-	private String lastname;
-	private String contactNumber;
-	private String dateOfBirth;
-	private String email;
-	private String hospitalName;
-	private String hospitalStreet;
-	private String hospitalCity;
-	private String hospitalPincode;
-	private String education;
 
 
 	public String getScenarioName() {
@@ -239,7 +178,6 @@ public class TestDataPOJO {
 		this.expecterErrorMsg = expecterErrorMsg;
 	}
 
-
 	public Map<String, Object> getVitals() {
 		return vitals;
 	}
@@ -264,7 +202,6 @@ public class TestDataPOJO {
 		this.invaidpatientid = invaidpatientid;
 	}
 
-
 	public String getAdminToken() {
 		return adminToken;
 	}
@@ -288,86 +225,85 @@ public class TestDataPOJO {
 	public void setPatientToken(String patientToken) {
 		this.patientToken = patientToken;
 	}
+
 	public String getFirstname() {
-		return firstname;
+		return Firstname;
 	}
 
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.Firstname = firstname;
 	}
 
 	public String getLastname() {
-		return lastname;
+		return Lastname;
 	}
 
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.Lastname = lastname;
 	}
 
 	public String getContactNumber() {
-		return contactNumber;
+		return ContactNumber;
 	}
 
 	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
+		this.ContactNumber = contactNumber;
 	}
 
 	public String getDateOfBirth() {
-		return dateOfBirth;
+		return DateOfBirth;
 	}
 
 	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.DateOfBirth = dateOfBirth;
 	}
 
 	public String getEmail() {
-		return email;
+		return Email;
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.Email = email;
 	}
 
 	public String getHospitalName() {
-		return hospitalName;
+		return HospitalName;
 	}
 
 	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
+		this.HospitalName = hospitalName;
 	}
 
 	public String getHospitalStreet() {
-		return hospitalStreet;
+		return HospitalStreet;
 	}
 
 	public void setHospitalStreet(String hospitalStreet) {
-		this.hospitalStreet = hospitalStreet;
+		this.HospitalStreet = hospitalStreet;
 	}
 
 	public String getHospitalCity() {
-		return hospitalCity;
+		return HospitalCity;
 	}
 
 	public void setHospitalCity(String hospitalCity) {
-		this.hospitalCity = hospitalCity;
+		this.HospitalCity = hospitalCity;
 	}
 
 	public String getHospitalPincode() {
-		return hospitalPincode;
+		return HospitalPincode;
 	}
 
 	public void setHospitalPincode(String hospitalPincode) {
-		this.hospitalPincode = hospitalPincode;
+		this.HospitalPincode = hospitalPincode;
 	}
 
 	public String getEducation() {
-		return education;
+		return Education;
 	}
 
 	public void setEducation(String education) {
-		this.education = education;
+		this.Education = education;
 	}
-
-
 
 }

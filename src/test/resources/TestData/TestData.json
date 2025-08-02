@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> e0b44c3dc66245a08fead2dcebbe74f946590159
 [
   {
     "testCaseId": "TC_01_userLogin",
@@ -395,13 +392,8 @@
     "hospitalPincode": "258969",
     "education": "PhD in Nutritional Sciences",
     "expectedStatusCode": 201,
-    "expectedStatusLine": "Created",
+    "expectedStatusLine": "HTTP/1.1 201 Created",
     "expectedContentType": "application/json"
-<<<<<<< HEAD
-  }
-]
-
-=======
   },
     {
       "testCaseId": "TC_01_createPatient_noAuth",
@@ -602,4 +594,4 @@
       "expectedContentType": "application/json"
     }
   ]
->>>>>>> e0b44c3dc66245a08fead2dcebbe74f946590159
+

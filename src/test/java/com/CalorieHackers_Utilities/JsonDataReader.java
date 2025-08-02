@@ -4,9 +4,6 @@ import java.util.List;
 import java.io.File;
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.cucumber.java.Scenario;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 
 public class JsonDataReader {
