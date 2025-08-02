@@ -38,45 +38,32 @@ public class TestDataPOJO {
 	private String FoodPreference;
 	private String CuisineCategory;
 
-	public String getAllergy() {
-		return Allergy;
-	}
 
-	public void setAllergy(String allergy) {
-		Allergy = allergy;
-	}
 
-	public String getFoodPreference() {
-		return FoodPreference;
-	}
+	    public String getAllergy() {
+	        return Allergy;
+	    }
 
-	public void setFoodPreference(String foodPreference) {
-		FoodPreference = foodPreference;
-	}
+	    public void setAllergy(String allergy) {
+	        Allergy = allergy;
+	    }
 
-	public String getCuisineCategory() {
-		return CuisineCategory;
-	}
+	    public String getFoodPreference() {
+	        return FoodPreference;
+	    }
 
-	public String getFirstName() {
-		return Firstname;
-	}
+	    public void setFoodPreference(String foodPreference) {
+	        FoodPreference = foodPreference;
+	    }
 
-	public void setFirstName(String firstName) {
-		Firstname = firstName;
-	}
+	    public String getCuisineCategory() {
+	        return CuisineCategory;
+	    }
 
-	public String getLastName() {
-		return Lastname;
-	}
+	    public void setCuisineCategory(String cuisineCategory) {
+	        CuisineCategory = cuisineCategory;
+	    }
 
-	public void setLastName(String lastName) {
-		Lastname = lastName;
-	}
-
-	public void setCuisineCategory(String cuisineCategory) {
-		CuisineCategory = cuisineCategory;
-	}
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -85,6 +72,7 @@ public class TestDataPOJO {
 	public void setScenarioName(String scenarioName) {
 		this.scenarioName = scenarioName;
 	}
+
 
 	public String getTestCaseId() {
 		return testCaseId;
