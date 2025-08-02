@@ -392,7 +392,7 @@
     "hospitalPincode": "258969",
     "education": "PhD in Nutritional Sciences",
     "expectedStatusCode": 201,
-    "expectedStatusLine": "Created",
+    "expectedStatusLine": "HTTP/1.1 201 Created",
     "expectedContentType": "application/json"
 
   },
