@@ -3,6 +3,9 @@ package com.CalorieHackers_POJO;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class TestDataPOJO {
 
@@ -54,6 +57,8 @@ public class TestDataPOJO {
     @JsonProperty("FirstName")
     private String firstName;
 
+    @JsonProperty("loginPassword")
+    private String loginPassword;
     @JsonProperty("LastName")
     private String lastName;
 
@@ -74,6 +79,25 @@ public class TestDataPOJO {
 
     @JsonProperty("DateOfBirth")
     private String dateOfBirth;
+    
+    
+    
+    @JsonProperty("HospitalName")
+    private String hospitalname;
+
+    @JsonProperty("HospitalStreet")
+    private String hospitalstreet;
+
+    @JsonProperty("HospitalCity")
+    private String hospitalcity;
+
+    @JsonProperty("HospitalPincode")
+    private String dHospitalPinCode;
+
+    @JsonProperty("Education")
+    private String deducation;
+    
+
 
     private int invalidDieticianId;
     private int validDieticianId;
@@ -260,49 +284,6 @@ public class TestDataPOJO {
 //
 //	   
 
-	public String getScenarioName() {
-		return scenarioName;
-	}
-
-	public void setScenarioName(String scenarioName) {
-		this.scenarioName = scenarioName;
-	}
-
-	public String getTestCaseId() {
-		return testCaseId;
-	}
-
-	public void setTestCaseId(String testCaseId) {
-		this.testCaseId = testCaseId;
-	}
-
-	public String getScenarioType() {
-		return scenarioType;
-	}
-
-	public void setScenarioType(String scenarioType) {
-		this.scenarioType = scenarioType;
-	}
-
-	public String getEndpoint() {
-		return endpoint;
-	}
-
-	public void setEndpoint(String endpoint) {
-		this.endpoint = endpoint;
-	}
-
-	public String getMethod() {
-		return method;
-	}
-
-	public void setMethod(String method) {
-		this.method = method;
-	}
-
-	public String getContentType() {
-		return contentType;
-	}
 
     // Getters and Setters
 
@@ -369,6 +350,15 @@ public class TestDataPOJO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    
+    public String getloginPassword() {
+        return loginPassword;
+    }
+
+    public void setloginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
 
     public String getAuthType() {
@@ -566,7 +556,7 @@ public class TestDataPOJO {
         return validDieticianId;
     }
     
-    public void setvalidDieticianId(int invalidDieticianId) {
+    public void setvalidDieticianId(int validDieticianId) {
         this.validDieticianId = validDieticianId;
     }
 
@@ -613,4 +603,48 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
+    
+    
+    
+    
+    public String getDHospitalName() {
+        return hospitalname;
+    }
+
+    public void setDHospitalName(String dHospitalName) {
+        this.hospitalname = dHospitalName;
+    }
+
+    public String getDHospitalStreetName() {
+        return hospitalstreet;
+    }
+
+    public void setDHospitalStreetName(String dHospitalStreetName) {
+        this.hospitalstreet = dHospitalStreetName;
+    }
+
+    public String getDHospitalCityName() {
+        return hospitalcity;
+    }
+
+    public void setDHospitalCityName(String dHospitalcity) {
+        this.hospitalcity = dHospitalcity;
+    }
+
+    public String getDHospitalPinCode() {
+        return dHospitalPinCode;
+    }
+
+    public void setDHospitalPinCode(String dHospitalPinCode) {
+        this.dHospitalPinCode = dHospitalPinCode;
+    }
+
+    public String getDEducation() {
+        return deducation;
+    }
+
+    public void setDEducation(String dEducation) {
+        this.deducation = dEducation;
+    }
+
 }
