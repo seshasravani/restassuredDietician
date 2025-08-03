@@ -2,6 +2,9 @@ package com.CalorieHackers_POJO;
 
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class TestDataPOJO {
 
@@ -30,6 +33,8 @@ public class TestDataPOJO {
     @JsonProperty("FirstName")
     private String firstName;
 
+    @JsonProperty("loginPassword")
+    private String loginPassword;
     @JsonProperty("LastName")
     private String lastName;
 
@@ -50,6 +55,25 @@ public class TestDataPOJO {
 
     @JsonProperty("DateOfBirth")
     private String dateOfBirth;
+    
+    
+    
+    @JsonProperty("HospitalName")
+    private String hospitalname;
+
+    @JsonProperty("HospitalStreet")
+    private String hospitalstreet;
+
+    @JsonProperty("HospitalCity")
+    private String hospitalcity;
+
+    @JsonProperty("HospitalPincode")
+    private String dHospitalPinCode;
+
+    @JsonProperty("Education")
+    private String deducation;
+    
+
 
     private int invalidDieticianId;
     private int validDieticianId;
@@ -124,6 +148,15 @@ public class TestDataPOJO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    
+    public String getloginPassword() {
+        return loginPassword;
+    }
+
+    public void setloginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
 
     public String getAuthType() {
@@ -298,7 +331,7 @@ public class TestDataPOJO {
         return validDieticianId;
     }
     
-    public void setvalidDieticianId(int invalidDieticianId) {
+    public void setvalidDieticianId(int validDieticianId) {
         this.validDieticianId = validDieticianId;
     }
 
@@ -345,4 +378,48 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
+    
+    
+    
+    
+    public String getDHospitalName() {
+        return hospitalname;
+    }
+
+    public void setDHospitalName(String dHospitalName) {
+        this.hospitalname = dHospitalName;
+    }
+
+    public String getDHospitalStreetName() {
+        return hospitalstreet;
+    }
+
+    public void setDHospitalStreetName(String dHospitalStreetName) {
+        this.hospitalstreet = dHospitalStreetName;
+    }
+
+    public String getDHospitalCityName() {
+        return hospitalcity;
+    }
+
+    public void setDHospitalCityName(String dHospitalcity) {
+        this.hospitalcity = dHospitalcity;
+    }
+
+    public String getDHospitalPinCode() {
+        return dHospitalPinCode;
+    }
+
+    public void setDHospitalPinCode(String dHospitalPinCode) {
+        this.dHospitalPinCode = dHospitalPinCode;
+    }
+
+    public String getDEducation() {
+        return deducation;
+    }
+
+    public void setDEducation(String dEducation) {
+        this.deducation = dEducation;
+    }
+
 }

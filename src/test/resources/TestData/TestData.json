@@ -614,6 +614,34 @@
 		  	    "expectedStatusCode": 404,
 		  	    "expectedStatusLine": "HTTP/1.1 404 Not Found"
 
-		  	  }
+		  	  },
+			  
+			  
+			  
+			  {
+			    "scenarioName": "Check admin able to update dietician with valid data , dietician id and token",
+			    "endpoint": "/dietician",
+			    "validDieticianId": 564, 
+				
+			    "FirstName": "ulMeera",
+			    "LastName": "uRajput",
+			    "ContactNumber": "5848022338",
+			    "DateOfBirth": "1972-08-25",
+			    "Email": "umeera.rajp@gmail.com",
+			    "loginPassword": "Teach00",
+			    "HospitalName": "ApolloHospitals",
+			    "HospitalStreet": "Street21",
+			    "HospitalCity": "Hmyderabad",
+			    "HospitalPincode": "500001",
+			    "Education": "MDNutrition",
+			    "expectedStatusCode": 200,
+			    "expectedStatusLine": "HTTP/1.1 200 OK"
+			  }
+
+
+			  
+			  
+			  
+
   ]
 
