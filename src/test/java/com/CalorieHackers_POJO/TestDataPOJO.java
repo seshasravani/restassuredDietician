@@ -25,6 +25,7 @@ public class TestDataPOJO {
 	private Map<String, Object> vitals;
 	private Map<String, Object> patientinfo;
 	private int invaidpatientid;
+	private String invaidfileid;
 	
 	
 	private String adminToken;
@@ -193,6 +194,14 @@ public class TestDataPOJO {
 
 	public void setPatientToken(String patientToken) {
 		this.patientToken = patientToken;
+	}
+
+	public String getInvaidfileid() {
+		return invaidfileid;
+	}
+
+	public void setInvaidfileid(String invaidfileid) {
+		this.invaidfileid = invaidfileid;
 	}
 
 

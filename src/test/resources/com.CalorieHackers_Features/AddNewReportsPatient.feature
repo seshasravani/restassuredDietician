@@ -1,7 +1,7 @@
 @AddNewReport
 Feature: Add New Reports with/without Vitals for existing Patient
 
-
+@test
 Scenario: Check dietician with no auth is able to add new reports for existing patient with valid data
     Given Dietician with no auth creates PUT request by "Entering valid report and valid patient ID"
     When User send PUT http request to add new report
