@@ -16,6 +16,19 @@ Background: Set admin token
     
     Scenario: Check admin able to retrieve dietician by id with invalid method
      
+
+     Given Admin create POST request
+     When Admin send POST http request with endpoint
+     Then Admin send POST http request with endpoint
+    
+    
+    Scenario: Set no auth - Check admin able to retrieve dietician by ID
+    Given Set no auth
+    When Admin create GET request
+    And Admin send GET http request with endpoint
+    Then Admin receives 401 unauthorized
+ 
+
     Given Admin creates POST request
     When Admin sends POST http request with endpoint for dietician
     Then Admin receives 405 method not allowed
@@ -31,3 +44,4 @@ Scenario: Check admin able to retrieve dietician by id with invalid endpoint
 Given Admin create GET request for invalid endpoint
 When Admin send GET http request with invalid endpoint
 Then Admin recieves 404 not found
+
