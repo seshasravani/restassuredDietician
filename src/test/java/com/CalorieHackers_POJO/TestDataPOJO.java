@@ -1,98 +1,221 @@
 package com.CalorieHackers_POJO;
 
-
 import java.util.Map;
-import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TestDataPOJO {
 
-	private String scenarioName;
-	private String testCaseId;
-	private String scenarioType;
-	private String endpoint;
-	private String method;
-	private String contentType;
-	private String userLoginEmail;
-	private String password;
-	private String authType;
-	private int expectedStatusCode;
-	private String expectedStatusLine;
-	private String expectedContentType;
-	
-	private String reportFilePath;
-	private String expecterErrorMsg;
-	private Map<String, Object> vitals;
-	private Map<String, Object> patientinfo;
-	private int invaidpatientid;
-	private String adminToken;
-	private String dieticianToken;
-	private String patientToken;
-	private String firstname;
-	private String lastname;
-	private String contactNumber;
-	private String dateOfBirth;
-	private String email;
-	private String hospitalName;
-	private String hospitalStreet;
-	private String hospitalCity;
-	private String hospitalPincode;
-	private String education;
-	
-	 
-	    private String FirstName;
-	    private String LastName;
-	    private String ContactNumber;
-	    private String Email;
-	    private String Allergy;
-	    private String FoodPreference;
-	    private String CuisineCategory;
-	    private String DateOfBirth;
-	 
+    private String scenarioName;
+    private String testCaseId;
+    private String scenarioType;
+    private String endpoint;
+    private String method;
+    private String contentType;
+    private String userLoginEmail;
+    private String password;
+    private String authType;
+    private int expectedStatusCode;
+    private String expectedStatusLine;
+    private String expectedContentType;
 
-	    // Getters and Setters
+    private String reportFilePath;
+    private String expecterErrorMsg;
 
-	    public String getFirstName() {
-	        return FirstName;
-	    }
+    // Keep this as Map if you want, otherwise remove if unused
+    private java.util.Map<String, Object> vitals;
 
-	    public void setFirstName(String firstName) {
-	        FirstName = firstName;
-	    }
+    // Now typed patientinfo as PatientInfo POJO
+    private PatientInfo patientinfo;
 
-	    public String getLastName() {
-	        return LastName;
-	    }
+    private int invaidpatientid;
+    private String adminToken;
+    private String dieticianToken;
+    private String patientToken;
+    private String firstname;
+    private String lastname;
+    private String contactNumber;
+    private String dateOfBirth;
+    private String email;
+    private String hospitalName;
+    private String hospitalStreet;
+    private String hospitalCity;
+    private String hospitalPincode;
+    private String education;
 
-	    public void setLastName(String lastName) {
-	        LastName = lastName;
-	    }
+    // Getters and setters for all fields including patientinfo
 
-	    public String getAllergy() {
-	        return Allergy;
-	    }
+    public PatientInfo getPatientinfo() {
+        return patientinfo;
+    }
 
-	    public void setAllergy(String allergy) {
-	        Allergy = allergy;
-	    }
+    public void setPatientinfo(PatientInfo patientinfo) {
+        this.patientinfo = patientinfo;
+    }
 
-	    public String getFoodPreference() {
-	        return FoodPreference;
-	    }
+    // Other existing getters and setters...
 
-	    public void setFoodPreference(String foodPreference) {
-	        FoodPreference = foodPreference;
-	    }
+    // Inner static class for PatientInfo
+    public static class PatientInfo {
 
-	    public String getCuisineCategory() {
-	        return CuisineCategory;
-	    }
+        @JsonProperty("FirstName")
+        private String firstName;
 
-	    public void setCuisineCategory(String cuisineCategory) {
-	        CuisineCategory = cuisineCategory;
-	    }
+        @JsonProperty("LastName")
+        private String lastName;
 
-	  
+        @JsonProperty("ContactNumber")
+        private String contactNumber;
+
+        @JsonProperty("Email")
+        private String email;
+
+        @JsonProperty("Allergy")
+        private String allergy;
+
+        @JsonProperty("FoodPreference")
+        private String foodPreference;
+
+        @JsonProperty("CuisineCategory")
+        private String cuisineCategory;
+
+        @JsonProperty("DateOfBirth")
+        private String dateOfBirth;
+
+        // Getters and Setters
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getContactNumber() {
+            return contactNumber;
+        }
+
+        public void setContactNumber(String contactNumber) {
+            this.contactNumber = contactNumber;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getAllergy() {
+            return allergy;
+        }
+
+        public void setAllergy(String allergy) {
+            this.allergy = allergy;
+        }
+
+        public String getFoodPreference() {
+            return foodPreference;
+        }
+
+        public void setFoodPreference(String foodPreference) {
+            this.foodPreference = foodPreference;
+        }
+
+        public String getCuisineCategory() {
+            return cuisineCategory;
+        }
+
+        public void setCuisineCategory(String cuisineCategory) {
+            this.cuisineCategory = cuisineCategory;
+        }
+
+        public String getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(String dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+    }
+
+//	    // Getters and Setters
+//
+//	    public String getClientFirstName() {
+//	        return clientFirstName;
+//	    }
+//
+//	    public void setClientFirstName(String clientFirstName) {
+//	        this.clientFirstName = clientFirstName;
+//	    }
+//
+//	    public String getClientLastName() {
+//	        return clientLastName;
+//	    }
+//
+//	    public void setClientLastName(String clientLastName) {
+//	        this.clientLastName = clientLastName;
+//	    }
+//
+//	    public String getClientContactNumber() {
+//	        return clientContactNumber;
+//	    }
+//
+//	    public void setClientContactNumber(String clientContactNumber) {
+//	        this.clientContactNumber = clientContactNumber;
+//	    }
+//
+//	    public String getClientEmail() {
+//	        return clientEmail;
+//	    }
+//
+//	    public void setClientEmail(String clientEmail) {
+//	        this.clientEmail = clientEmail;
+//	    }
+//
+//	    public String getClientAllergy() {
+//	        return clientAllergy;
+//	    }
+//
+//	    public void setClientAllergy(String clientAllergy) {
+//	        this.clientAllergy = clientAllergy;
+//	    }
+//
+//	    public String getClientFoodPreference() {
+//	        return clientFoodPreference;
+//	    }
+//
+//	    public void setClientFoodPreference(String clientFoodPreference) {
+//	        this.clientFoodPreference = clientFoodPreference;
+//	    }
+//
+//	    public String getClientCuisineCategory() {
+//	        return clientCuisineCategory;
+//	    }
+//
+//	    public void setClientCuisineCategory(String clientCuisineCategory) {
+//	        this.clientCuisineCategory = clientCuisineCategory;
+//	    }
+//
+//	    public String getClientDateOfBirth() {
+//	        return clientDateOfBirth;
+//	    }
+//
+//	    public void setClientDateOfBirth(String clientDateOfBirth) {
+//	    	this.clientDateOfBirth = clientDateOfBirth;
+//	    }
+//
+//	   
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -215,13 +338,15 @@ public class TestDataPOJO {
 		this.vitals = vitals;
 	}
 
-	public Map<String, Object> getPatientinfo() {
-		return patientinfo;
-	}
+	
 
-	public void setPatientinfo(Map<String, Object> patientinfo) {
-		this.patientinfo = patientinfo;
-	}
+//	public Map<String, Object> getPatientinfo() {
+//		return patientinfo;
+//	}
+//
+//	public void setPatientinfo(Map<String, Object> patientinfo) {
+//		this.patientinfo = patientinfo;
+//	}
 
 	public int getInvaidpatientid() {
 		return invaidpatientid;
