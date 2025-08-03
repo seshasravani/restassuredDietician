@@ -1,6 +1,7 @@
 package com.CalorieHackers_POJO;
 
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TestDataPOJO {
@@ -20,12 +21,29 @@ public class TestDataPOJO {
 
     private String reportFilePath;
     private String expecterErrorMsg;
+
+
+    // Keep this as Map if you want, otherwise remove if unused
+    private java.util.Map<String, Object> vitals;
+
+    // Now typed patientinfo as PatientInfo POJO
+    private PatientInfo patientinfo;
+
+
     private Map<String, Object> vitals;
     private Map<String, Object> patientinfo;
+
     private int invaidpatientid;
     private String adminToken;
     private String dieticianToken;
     private String patientToken;
+
+    private String firstname;
+    private String lastname;
+    private String contactNumber;
+    private String dateOfBirth;
+    private String email;
+
 
     @JsonProperty("FirstName")
     private String firstName;
@@ -54,11 +72,231 @@ public class TestDataPOJO {
     private int invalidDieticianId;
     private int validDieticianId;
 
+
     private String hospitalName;
     private String hospitalStreet;
     private String hospitalCity;
     private String hospitalPincode;
     private String education;
+
+
+    // Getters and setters for all fields including patientinfo
+
+    public PatientInfo getPatientinfo() {
+        return patientinfo;
+    }
+
+    public void setPatientinfo(PatientInfo patientinfo) {
+        this.patientinfo = patientinfo;
+    }
+
+    // Other existing getters and setters...
+
+    // Inner static class for PatientInfo
+    public static class PatientInfo {
+
+        @JsonProperty("FirstName")
+        private String firstName;
+
+        @JsonProperty("LastName")
+        private String lastName;
+
+        @JsonProperty("ContactNumber")
+        private String contactNumber;
+
+        @JsonProperty("Email")
+        private String email;
+
+        @JsonProperty("Allergy")
+        private String allergy;
+
+        @JsonProperty("FoodPreference")
+        private String foodPreference;
+
+        @JsonProperty("CuisineCategory")
+        private String cuisineCategory;
+
+        @JsonProperty("DateOfBirth")
+        private String dateOfBirth;
+
+        // Getters and Setters
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getContactNumber() {
+            return contactNumber;
+        }
+
+        public void setContactNumber(String contactNumber) {
+            this.contactNumber = contactNumber;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getAllergy() {
+            return allergy;
+        }
+
+        public void setAllergy(String allergy) {
+            this.allergy = allergy;
+        }
+
+        public String getFoodPreference() {
+            return foodPreference;
+        }
+
+        public void setFoodPreference(String foodPreference) {
+            this.foodPreference = foodPreference;
+        }
+
+        public String getCuisineCategory() {
+            return cuisineCategory;
+        }
+
+        public void setCuisineCategory(String cuisineCategory) {
+            this.cuisineCategory = cuisineCategory;
+        }
+
+        public String getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(String dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+    }
+
+//	    // Getters and Setters
+//
+//	    public String getClientFirstName() {
+//	        return clientFirstName;
+//	    }
+//
+//	    public void setClientFirstName(String clientFirstName) {
+//	        this.clientFirstName = clientFirstName;
+//	    }
+//
+//	    public String getClientLastName() {
+//	        return clientLastName;
+//	    }
+//
+//	    public void setClientLastName(String clientLastName) {
+//	        this.clientLastName = clientLastName;
+//	    }
+//
+//	    public String getClientContactNumber() {
+//	        return clientContactNumber;
+//	    }
+//
+//	    public void setClientContactNumber(String clientContactNumber) {
+//	        this.clientContactNumber = clientContactNumber;
+//	    }
+//
+//	    public String getClientEmail() {
+//	        return clientEmail;
+//	    }
+//
+//	    public void setClientEmail(String clientEmail) {
+//	        this.clientEmail = clientEmail;
+//	    }
+//
+//	    public String getClientAllergy() {
+//	        return clientAllergy;
+//	    }
+//
+//	    public void setClientAllergy(String clientAllergy) {
+//	        this.clientAllergy = clientAllergy;
+//	    }
+//
+//	    public String getClientFoodPreference() {
+//	        return clientFoodPreference;
+//	    }
+//
+//	    public void setClientFoodPreference(String clientFoodPreference) {
+//	        this.clientFoodPreference = clientFoodPreference;
+//	    }
+//
+//	    public String getClientCuisineCategory() {
+//	        return clientCuisineCategory;
+//	    }
+//
+//	    public void setClientCuisineCategory(String clientCuisineCategory) {
+//	        this.clientCuisineCategory = clientCuisineCategory;
+//	    }
+//
+//	    public String getClientDateOfBirth() {
+//	        return clientDateOfBirth;
+//	    }
+//
+//	    public void setClientDateOfBirth(String clientDateOfBirth) {
+//	    	this.clientDateOfBirth = clientDateOfBirth;
+//	    }
+//
+//	   
+
+	public String getScenarioName() {
+		return scenarioName;
+	}
+
+	public void setScenarioName(String scenarioName) {
+		this.scenarioName = scenarioName;
+	}
+
+	public String getTestCaseId() {
+		return testCaseId;
+	}
+
+	public void setTestCaseId(String testCaseId) {
+		this.testCaseId = testCaseId;
+	}
+
+	public String getScenarioType() {
+		return scenarioType;
+	}
+
+	public void setScenarioType(String scenarioType) {
+		this.scenarioType = scenarioType;
+	}
+
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
 
     // Getters and Setters
 
@@ -109,6 +347,7 @@ public class TestDataPOJO {
     public void setContentType(String contentType) {
         this.contentType = contentType;
     }
+
 
     public String getUserLoginEmail() {
         return userLoginEmail;
@@ -190,6 +429,17 @@ public class TestDataPOJO {
         this.patientinfo = patientinfo;
     }
 
+
+	
+
+//	public Map<String, Object> getPatientinfo() {
+//		return patientinfo;
+//	}
+//
+//	public void setPatientinfo(Map<String, Object> patientinfo) {
+//		this.patientinfo = patientinfo;
+//	}
+
     public int getInvaidpatientid() {
         return invaidpatientid;
     }
@@ -197,6 +447,7 @@ public class TestDataPOJO {
     public void setInvaidpatientid(int invaidpatientid) {
         this.invaidpatientid = invaidpatientid;
     }
+
 
     public String getAdminToken() {
         return adminToken;
