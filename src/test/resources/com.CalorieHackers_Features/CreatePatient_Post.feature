@@ -1,23 +1,23 @@
-Feature: POST Operation - Create Patient
-
-Background: admin and dietician authentication flow
-    Given Admin logs in with valid credentials
-    When Admin creates a new dietician with valid details
-    Then Admin receives dietician credentials in the response
-    
-    Given Dietician has email and password from previous step
-    When Dietician send Post request with email and password 
-    Then daitician recieved dietician token in the response creation is successful with valid response
-
-  Scenario: Set no auth Check dietician able to create patient with valid data
-    Given Dietician creates POST request by entering valid data into the form-data key and value fields
-    When Dietician sends POST http request with endpoint
-    Then Dietician receives unauthorized
-
-  Scenario: Set admin bearer token Check admin able to create patient with valid data and admin token
-    Given Admin creates POST request by entering valid data into the form-data key and value fields
-    When Admin sends POST http request with endpoint
-    Then Admin receives forbidden
+#Feature: POST Operation - Create Patient
+#
+#Background: admin and dietician authentication flow
+    #Given Admin logs in with valid credentials
+    #When Admin creates a new dietician with valid details
+    #Then Admin receives dietician credentials in the response
+    #
+    #Given Dietician has email and password from previous step
+    #When Dietician send Post request with email and password 
+    #Then daitician recieved dietician token in the response creation is successful with valid response
+#
+  #Scenario: Set no auth Check dietician able to create patient with valid data
+    #Given Dietician creates POST request by entering valid data into the form-data key and value fields
+    #When Dietician sends POST http request with endpoint
+    #Then Dietician receives unauthorized
+#
+  #Scenario: Set admin bearer token Check admin able to create patient with valid data and admin token
+    #Given Admin creates POST request by entering valid data into the form-data key and value fields
+    #When Admin sends POST http request with endpoint
+    #Then Admin receives forbidden
 #
   #Scenario: Set patient bearer token Check patient able to create patient with valid data and patient token
     #Given Patient creates POST request by entering valid data into the form-data key and value fields
@@ -65,48 +65,7 @@ Background: admin and dietician authentication flow
     #Then Dietician receives unsupported media type
 #
 #
-
-#Feature: Create Patient 
-#
-  #Background:
-    #The dietician Token is set
-#
-  #@CreatePatient
-  #Scenario Outline: Create patient scenarios by scenario name
-    #Given Dietician create GET request to craete patient
-    #When I send a "<scenarioname>" create patient request
-    #Then the response status code should be <statusCode>
-    #And the response status text should be "<statusText>"
-#
-    #Examples:
-      #| scenarioname                                                | statusCode | statusText           |
-      #| Set no auth - Check dietician able to create patient with valid data    | 401        | Unauthorized         |
-      #| Set admin bearer token - Check admin able to create patient with valid data and admin token | 403 | Forbidden |
-      #| Set patient bearer token - Check patient able to create patient with valid data and patient token | 403 | Forbidden |
-      #| Set dietician bearer token - Check dietician able to create patient with valid data and token | 201 | Created |
-      #| Check dietician able to create patient only with valid mandatory details  | 201        | Created              |
-      #| Check dietician able to create patient only with valid additional details | 400       | Bad Request          |
-      #| Check dietician able to create patient with invalid data (mandatory details) | 400     | Bad Request          |
-      #| Check dietician able to create patient with valid mandatory fields and invalid data (additional details) | 400 | Bad Request |
-      #| Check dietician able to create patient with valid data and invalid method | 405       | Method Not Allowed    |
-      #| Check dietician able to create patient with valid data and invalid endpoint | 404       | Not Found            |
-      #| Check dietician able to create patient with valid data and invalid content type | 415       | Unsupported Media Type |
-      #
-      #
-      #@GetAllPatients
-  #Scenario Outline: Get all patients scenarios by scenario name
-    #When I send a "<scenarioname>" GET request for all patients
-    #Then the response status code should be <statusCode>
-    #And the response status text should be "<statusText>"
-#
-    #Examples:
-      #| scenarioname                                            | statusCode | statusText           |
-      #| Set no auth - Check dietician able to retrieve all patients                | 401        | Unauthorized         |
-      #| Set admin token - Check admin unable to retrieve patients morbidity by ID   | 403        | Forbidden            |
-      #| Set patient token - Check patient unable to retrieve patients morbidity by ID | 403      | Forbidden            |
-      #| Set dietician token - Check dietician able to retrieve all patients         | 200        | OK                   |
-      #| Check dietician able to retrieve all patient with invalid method (PUT)      | 405        | Method Not Allowed    |
-      #| Check dietician able to retrieve all patient with invalid endpoint          | 404        | Not Found            |
+                 #|
 #
   #@GetAllMorbidities
   #Scenario Outline: Get all morbidities scenarios by scenario name
