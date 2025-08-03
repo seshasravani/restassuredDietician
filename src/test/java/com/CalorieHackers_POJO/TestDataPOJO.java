@@ -6,18 +6,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TestDataPOJO {
 
-    private String scenarioName;
-    private String testCaseId;
-    private String scenarioType;
-    private String endpoint;
-    private String method;
-    private String contentType;
-    private String userLoginEmail;
-    private String password;
-    private String authType;
-    private int expectedStatusCode;
-    private String expectedStatusLine;
-    private String expectedContentType;
+	private String scenarioName;
+	private String testCaseId;
+	private String scenarioType;
+	private String endpoint;
+	private String method;
+	private String contentType;
+	private String userLoginEmail;
+	private String password;
+	private String authType;
+	private int expectedStatusCode;
+	private String expectedStatusLine;
+	private String expectedContentType;
+	
+	private String reportFilePath;
+	private String expecterErrorMsg;
+	private Map<String, Object> vitals;
+	private Map<String, Object> patientinfo;
+	private int invaidpatientid;
+	private String invaidfileid;
+	
+	private String adminToken;
+	private String dieticianToken;
+	private String patientToken;
 
     private String reportFilePath;
     private String expecterErrorMsg;
@@ -32,11 +43,6 @@ public class TestDataPOJO {
 
     private Map<String, Object> vitals;
     private Map<String, Object> patientinfo;
-
-    private int invaidpatientid;
-    private String adminToken;
-    private String dieticianToken;
-    private String patientToken;
 
     private String firstname;
     private String lastname;
@@ -417,9 +423,20 @@ public class TestDataPOJO {
         return vitals;
     }
 
+
+	public String getInvaidfileid() {
+		return invaidfileid;
+	}
+
+	public void setInvaidfileid(String invaidfileid) {
+		this.invaidfileid = invaidfileid;
+	}
+
+
     public void setVitals(Map<String, Object> vitals) {
         this.vitals = vitals;
     }
+
 
     public Map<String, Object> getPatientinfo() {
         return patientinfo;

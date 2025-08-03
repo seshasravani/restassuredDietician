@@ -350,7 +350,169 @@
 	 "expectedStatusCode": 415,
 	 "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type"
 },
+<<<<<<< HEAD
+{
+  "scenarioName": "GET morbidity request to retrieve patients",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/json"
+},
+{
+  "scenarioName": "no auth create GET morbidity",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "GET morbidity request with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "POST morbidity request",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "invalid patient id to retrieve patients morbidity",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "invaidpatientid" : 9874563,
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "GET morbidity request with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "GET",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Retrieve patients by file id",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/pdf"
+},
+{
+  "scenarioName": "Retrieve patients by file id with no auth",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "Retrieve patients by file id with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Retrieve patients by file id with invalid method",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "Retrieve patients by invalid file id",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "invaidfileid" : "invalidfileid",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Retrieve patients by file id with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "GET",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Delete patient by ID",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/pdf"
+},
+{
+  "scenarioName": "Delete patient by ID with no auth",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "Delete patient by ID with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Delete patient by ID with patient token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Delete patient by ID with invalid method",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "Delete patient by invalid ID",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "invaidpatientid" : 985632,
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Delete patient by ID with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "DELETE",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+  
+=======
 
+>>>>>>> main
   {
     "testCaseId": "TC_15_userLogin",
     "scenarioName": "Check user able to login as dietician with valid credential",
