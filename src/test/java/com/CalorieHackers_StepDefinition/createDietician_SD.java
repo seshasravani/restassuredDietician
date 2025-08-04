@@ -32,8 +32,8 @@ public class createDietician_SD {
 		LoggerLoad.info(scenarioName);
 		LoggerLoad.info(adminToken);
 		Map<String, Object> requestBody = new HashMap<>();
-		requestBody.put("Firstname", currentTestData.getFirstname());
-		requestBody.put("Lastname", currentTestData.getLastname());
+		requestBody.put("Firstname", currentTestData.getFirstName());
+		requestBody.put("Lastname", currentTestData.getLastName());
 		requestBody.put("ContactNumber", currentTestData.getContactNumber());
 		requestBody.put("DateOfBirth", currentTestData.getDateOfBirth());
 		requestBody.put("Email", currentTestData.getEmail());
