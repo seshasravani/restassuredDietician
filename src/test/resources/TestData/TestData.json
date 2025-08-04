@@ -196,7 +196,7 @@
    "endpoint": "/patient/newReports/",
    "method": "PUT",
    "reportFilePath": "src/test/resources/TestData/Report1.pdf",
-   "patientinfo" : 	   { "FirstName": "Melissa",
+   "patientUpdateInfo" : {"FirstName": "Melissa",
    "LastName": "HackerTest",
    "ContactNumber": "2543610258",
    "Email": "melissa@gmail.com",
@@ -205,9 +205,9 @@
    "CuisineCategory":"Indian",
    "DateOfBirth": "1977-02-14"
    },
-   "vitals" : 	   {"Weight" : 6.2,
-   "Height" : 60.5,
-   "Temperature" : 95,
+   "vitals" : 	   {"Weight" : 100,
+   "Height" : 60,
+   "Temperature" : 100,
    "SP" : 100,
    "DP" : 80
    },
@@ -245,7 +245,6 @@
    "scenarioType": "Positive",
    "endpoint": "/patient/newReports/",
    "method": "PUT",
-   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
    "patientinfo" : 	   { "FirstName": "Melissa",
    "LastName": "HackerTest",
    "ContactNumber": "2543610258",
@@ -255,9 +254,9 @@
 	"CuisineCategory":"Indian",
 	"DateOfBirth": "1977-02-14"
 	},
-	"vitals" : 	   {"Weight" : 66.2,
-	"Height" : 60.5,
-	"Temperature" : 95,
+	"vitals" : {"Weight" : 80,
+	"Height" : 80,
+	"Temperature" : 80,
 	"SP" : 77,
 	"DP" : 80
 	},
@@ -350,7 +349,7 @@
 	 "expectedStatusCode": 415,
 	 "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type"
 },
-<<<<<<< HEAD
+
 {
   "scenarioName": "GET morbidity request to retrieve patients",
   "scenarioType": "Positive",
@@ -510,9 +509,7 @@
   "expectedStatusLine": "HTTP/1.1 404 Not Found"
 },
   
-=======
 
->>>>>>> main
   {
     "testCaseId": "TC_15_userLogin",
     "scenarioName": "Check user able to login as dietician with valid credential",
@@ -1021,7 +1018,7 @@
 		    "expectedStatusCode": 404,
 		    "expectedStatusLine": "HTTP/1.1 404 Not Found",
 		    "expectedContentType": "application/json"
-		  }
+		  },
 		 
 
 	

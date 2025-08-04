@@ -22,7 +22,7 @@ public class TestDataPOJO {
 	private String reportFilePath;
 	private String expecterErrorMsg;
 	private Map<String, Object> vitals;
-	private Map<String, Object> patientinfo;
+	private Map<String, Object> patientUpdateInfo;
 	private int invaidpatientid;
 	private String invaidfileid;
 	
@@ -30,25 +30,18 @@ public class TestDataPOJO {
 	private String dieticianToken;
 	private String patientToken;
 
-    private String reportFilePath;
-    private String expecterErrorMsg;
-
-
     // Keep this as Map if you want, otherwise remove if unused
-    private java.util.Map<String, Object> vitals;
+//    private java.util.Map<String, Object> vitals;
 
     // Now typed patientinfo as PatientInfo POJO
     private PatientInfo patientinfo;
 
 
-    private Map<String, Object> vitals;
-    private Map<String, Object> patientinfo;
-
     private String firstname;
     private String lastname;
-    private String contactNumber;
-    private String dateOfBirth;
-    private String email;
+//    private String contactNumber;
+//    private String dateOfBirth;
+//    private String email;
 
 
     @JsonProperty("FirstName")
@@ -260,49 +253,49 @@ public class TestDataPOJO {
 //
 //	   
 
-	public String getScenarioName() {
-		return scenarioName;
-	}
+//	public String getScenarioName() {
+//		return scenarioName;
+//	}
+//
+//	public void setScenarioName(String scenarioName) {
+//		this.scenarioName = scenarioName;
+//	}
+//
+//	public String getTestCaseId() {
+//		return testCaseId;
+//	}
+//
+//	public void setTestCaseId(String testCaseId) {
+//		this.testCaseId = testCaseId;
+//	}
 
-	public void setScenarioName(String scenarioName) {
-		this.scenarioName = scenarioName;
-	}
+//	public String getScenarioType() {
+//		return scenarioType;
+//	}
+//
+//	public void setScenarioType(String scenarioType) {
+//		this.scenarioType = scenarioType;
+//	}
+//
+//	public String getEndpoint() {
+//		return endpoint;
+//	}
+//
+//	public void setEndpoint(String endpoint) {
+//		this.endpoint = endpoint;
+//	}
 
-	public String getTestCaseId() {
-		return testCaseId;
-	}
-
-	public void setTestCaseId(String testCaseId) {
-		this.testCaseId = testCaseId;
-	}
-
-	public String getScenarioType() {
-		return scenarioType;
-	}
-
-	public void setScenarioType(String scenarioType) {
-		this.scenarioType = scenarioType;
-	}
-
-	public String getEndpoint() {
-		return endpoint;
-	}
-
-	public void setEndpoint(String endpoint) {
-		this.endpoint = endpoint;
-	}
-
-	public String getMethod() {
-		return method;
-	}
-
-	public void setMethod(String method) {
-		this.method = method;
-	}
-
-	public String getContentType() {
-		return contentType;
-	}
+//	public String getMethod() {
+//		return method;
+//	}
+//
+//	public void setMethod(String method) {
+//		this.method = method;
+//	}
+//
+//	public String getContentType() {
+//		return contentType;
+//	}
 
     // Getters and Setters
 
@@ -438,13 +431,13 @@ public class TestDataPOJO {
     }
 
 
-    public Map<String, Object> getPatientinfo() {
-        return patientinfo;
-    }
-
-    public void setPatientinfo(Map<String, Object> patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+//    public Map<String, Object> getPatientinfo() {
+//        return patientinfo;
+//    }
+//
+//    public void setPatientinfo(Map<String, Object> patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
 
 
 	
@@ -613,4 +606,13 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}
+
 }
