@@ -171,6 +171,37 @@ public class GetAllMorbidity {
 
 	    }
 	    
+		
+	//	
+//			    private void prepareRequest(String scenarioName) {
+//			    	 System.out.println("Loading scenario: " + scenarioName);
+//			    	    currentTestData = JsonDataReader.getAllTestCase(JSON_DATA_PATH, scenarioName);
+//			    	    LoggerLoad.info("Preparing request for scenario: " + scenarioName);
+	//
+//			    	    request = given().baseUri(ConfigReader.getKeyValues("BASE_URL"));
+	//
+//			    	    String authType = currentTestData.getAuthType();
+//			    	    if (authType != null) {
+//			    	        switch(authType) {
+//			    	            case "Admin Token":
+//			    	                request.header("Authorization", "Bearer " + currentTestData.getAdminToken());
+//			    	                break;
+//			    	            case "Dietician Token":
+//			    	                request.header("Authorization", "Bearer " + currentTestData.getDieticianToken());
+//			    	                break;
+//			    	            case "Patient Token":
+//			    	                request.header("Authorization", "Bearer " + currentTestData.getPatientToken());
+//			    	                break;
+//			    	            case "No Auth":
+//			    	                // No Authorization header
+//			    	                break;
+//			    	            default:
+//			    	                throw new RuntimeException("Unsupported auth type: " + authType);
+//			    	        }
+//			    	    }
+//			    	}
+	//	
+	    
 	 // SCENARIO 1: No Auth    
 
 @Given("Dietician creates GET request to retrieve Morbidity without Authorization header")

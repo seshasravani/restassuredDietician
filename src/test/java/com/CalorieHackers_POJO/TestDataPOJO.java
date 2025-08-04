@@ -23,15 +23,15 @@ public class TestDataPOJO {
     private String expecterErrorMsg;
 
 
-    // Keep this as Map if you want, otherwise remove if unused
-    private java.util.Map<String, Object> vitals;
+//    // Keep this as Map if you want, otherwise remove if unused
+//    private java.util.Map<String, Object> vitals;
 
     // Now typed patientinfo as PatientInfo POJO
     private PatientInfo patientinfo;
 
 
     private Map<String, Object> vitals;
-    private Map<String, Object> patientinfo;
+//    private Map<String, Object> patientinfo;
 
     private int invaidpatientid;
     private String adminToken;
@@ -40,9 +40,9 @@ public class TestDataPOJO {
 
     private String firstname;
     private String lastname;
-    private String contactNumber;
-    private String dateOfBirth;
-    private String email;
+//    private String contactNumber;
+//    private String dateOfBirth;
+//    private String email;
 
 
     @JsonProperty("FirstName")
@@ -89,7 +89,15 @@ public class TestDataPOJO {
     public void setPatientinfo(PatientInfo patientinfo) {
         this.patientinfo = patientinfo;
     }
-
+    private int patientId;
+    
+    public int getPatientId() {
+        return patientId;
+    }
+    
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
     // Other existing getters and setters...
 
     // Inner static class for PatientInfo
@@ -118,6 +126,7 @@ public class TestDataPOJO {
 
         @JsonProperty("DateOfBirth")
         private String dateOfBirth;
+              
 
         // Getters and Setters
 
@@ -186,73 +195,6 @@ public class TestDataPOJO {
         }
     }
 
-//	    // Getters and Setters
-//
-//	    public String getClientFirstName() {
-//	        return clientFirstName;
-//	    }
-//
-//	    public void setClientFirstName(String clientFirstName) {
-//	        this.clientFirstName = clientFirstName;
-//	    }
-//
-//	    public String getClientLastName() {
-//	        return clientLastName;
-//	    }
-//
-//	    public void setClientLastName(String clientLastName) {
-//	        this.clientLastName = clientLastName;
-//	    }
-//
-//	    public String getClientContactNumber() {
-//	        return clientContactNumber;
-//	    }
-//
-//	    public void setClientContactNumber(String clientContactNumber) {
-//	        this.clientContactNumber = clientContactNumber;
-//	    }
-//
-//	    public String getClientEmail() {
-//	        return clientEmail;
-//	    }
-//
-//	    public void setClientEmail(String clientEmail) {
-//	        this.clientEmail = clientEmail;
-//	    }
-//
-//	    public String getClientAllergy() {
-//	        return clientAllergy;
-//	    }
-//
-//	    public void setClientAllergy(String clientAllergy) {
-//	        this.clientAllergy = clientAllergy;
-//	    }
-//
-//	    public String getClientFoodPreference() {
-//	        return clientFoodPreference;
-//	    }
-//
-//	    public void setClientFoodPreference(String clientFoodPreference) {
-//	        this.clientFoodPreference = clientFoodPreference;
-//	    }
-//
-//	    public String getClientCuisineCategory() {
-//	        return clientCuisineCategory;
-//	    }
-//
-//	    public void setClientCuisineCategory(String clientCuisineCategory) {
-//	        this.clientCuisineCategory = clientCuisineCategory;
-//	    }
-//
-//	    public String getClientDateOfBirth() {
-//	        return clientDateOfBirth;
-//	    }
-//
-//	    public void setClientDateOfBirth(String clientDateOfBirth) {
-//	    	this.clientDateOfBirth = clientDateOfBirth;
-//	    }
-//
-//	   
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -300,49 +242,49 @@ public class TestDataPOJO {
 
     // Getters and Setters
 
-    public String getScenarioName() {
-        return scenarioName;
-    }
+//    public String getScenarioName() {
+//        return scenarioName;
+//    }
+//
+//    public void setScenarioName(String scenarioName) {
+//        this.scenarioName = scenarioName;
+//    }
+//
+//    public String getTestCaseId() {
+//        return testCaseId;
+//    }
+//
+//    public void setTestCaseId(String testCaseId) {
+//        this.testCaseId = testCaseId;
+//    }
+//
+//    public String getScenarioType() {
+//        return scenarioType;
+//    }
+//
+//    public void setScenarioType(String scenarioType) {
+//        this.scenarioType = scenarioType;
+//    }
+//
+//    public String getEndpoint() {
+//        return endpoint;
+//    }
+//
+//    public void setEndpoint(String endpoint) {
+//        this.endpoint = endpoint;
+//    }
 
-    public void setScenarioName(String scenarioName) {
-        this.scenarioName = scenarioName;
-    }
-
-    public String getTestCaseId() {
-        return testCaseId;
-    }
-
-    public void setTestCaseId(String testCaseId) {
-        this.testCaseId = testCaseId;
-    }
-
-    public String getScenarioType() {
-        return scenarioType;
-    }
-
-    public void setScenarioType(String scenarioType) {
-        this.scenarioType = scenarioType;
-    }
-
-    public String getEndpoint() {
-        return endpoint;
-    }
-
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
+//    public String getMethod() {
+//        return method;
+//    }
+//
+//    public void setMethod(String method) {
+//        this.method = method;
+//    }
+//
+//    public String getContentType() {
+//        return contentType;
+//    }
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
@@ -421,13 +363,13 @@ public class TestDataPOJO {
         this.vitals = vitals;
     }
 
-    public Map<String, Object> getPatientinfo() {
-        return patientinfo;
-    }
-
-    public void setPatientinfo(Map<String, Object> patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+//    public Map<String, Object> getPatientinfo() {
+//        return patientinfo;
+//    }
+//
+//    public void setPatientinfo(Map<String, Object> patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
 
 
 	
@@ -552,10 +494,6 @@ public class TestDataPOJO {
     public void setvalidDieticianId(int invalidDieticianId) {
         this.validDieticianId = validDieticianId;
     }
-
-//    public void setValidDieticianId(int validDieticianId) {
-//        this.validDieticianId = validDieticianId;
-//    }
 
     public String getHospitalName() {
         return hospitalName;

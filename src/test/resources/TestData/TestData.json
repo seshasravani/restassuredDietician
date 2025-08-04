@@ -468,12 +468,12 @@
 	  "authType": "Dietician Token",
        "patientinfo" : 	   {"FirstName": "Charlie",
       "LastName": "Healthy",
-      "ContactNumber": "9314678901",
-      "Email": "charliey.aiet@example.com",
+      "ContactNumber": "9394678901",
+      "Email": "charliey.aoet@example.com",
       "Allergy": "NONE",
       "FoodPreference": "Vegetarian",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1989-12-11"
+      "DateOfBirth": "1999-12-11"
 	  },
       "expectedStatusCode": 201,
       "expectedStatusLine": "HTTP/1.1 201 Created",
@@ -488,12 +488,12 @@
 	  "authType": "Dietician Token",
        "patientinfo" : 	   {"FirstName": "Diana",
       "LastName": "Meds",
-      "ContactNumber": "9011345111",
-      "Email": "dianay.mandatory@example.com",
+      "ContactNumber": "9001345111",
+      "Email": "dianay.madatory@example.com",
       "Allergy": "NONE",
       "FoodPreference": "",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1995-12-10"
+      "DateOfBirth": "1997-12-10"
 	  },
       "expectedStatusCode": 201,
       "expectedStatusLine": "HTTP/1.1 201 Created",

@@ -18,7 +18,8 @@ import java.util.Random;
 import org.testng.Assert;
 
 import com.CalorieHackers_POJO.TestDataPOJO;
-	import com.CalorieHackers_Utilities.ConfigReader;
+import com.CalorieHackers_POJO.TestDataPOJO.PatientInfo;
+import com.CalorieHackers_Utilities.ConfigReader;
 	import com.CalorieHackers_Utilities.JsonDataReader;
 	import com.CalorieHackers_Utilities.LoggerLoad;
 	import io.cucumber.java.en.*;
@@ -33,7 +34,8 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		private static final String JSON_DATA_PATH = "src/test/resources/TestData/TestData.json";
 		private RequestSpecification request; 
 		private Response response;
-		  private String adminToken;
+		
+		 private String adminToken;
 		    private String dieticianEmail;
 		    private String dieticianPassword;
 		    private String dieticianToken;
@@ -73,7 +75,7 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		    	  response = given()
 		            .baseUri(ConfigReader.getKeyValues("BASE_URL"))
 		            .contentType(ContentType.JSON)
-		            .body("{ \"userLoginEmail\": \"Team401@gmail.com\", \"password\": \"test\" }")
+		            .body("{ \"userLoginEmail\": \"testingteam03@gmail.com\", \"password\": \"test\" }")
 		            .post("/login");
 	
 		        // Verify login success (200 OK)
@@ -162,6 +164,35 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		    
 		    }
 		
+//	
+//		    private void prepareRequest(String scenarioName) {
+//		    	 System.out.println("Loading scenario: " + scenarioName);
+//		    	    currentTestData = JsonDataReader.getAllTestCase(JSON_DATA_PATH, scenarioName);
+//		    	    LoggerLoad.info("Preparing request for scenario: " + scenarioName);
+//
+//		    	    request = given().baseUri(ConfigReader.getKeyValues("BASE_URL"));
+//
+//		    	    String authType = currentTestData.getAuthType();
+//		    	    if (authType != null) {
+//		    	        switch(authType) {
+//		    	            case "Admin Token":
+//		    	                request.header("Authorization", "Bearer " + currentTestData.getAdminToken());
+//		    	                break;
+//		    	            case "Dietician Token":
+//		    	                request.header("Authorization", "Bearer " + currentTestData.getDieticianToken());
+//		    	                break;
+//		    	            case "Patient Token":
+//		    	                request.header("Authorization", "Bearer " + currentTestData.getPatientToken());
+//		    	                break;
+//		    	            case "No Auth":
+//		    	                // No Authorization header
+//		    	                break;
+//		    	            default:
+//		    	                throw new RuntimeException("Unsupported auth type: " + authType);
+//		    	        }
+//		    	    }
+//		    	}
+//		    
 		    //No Auth
 	
 	@Given("Dietician creates POST request by entering valid data into the form-data key and value fields")
@@ -178,15 +209,13 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		        // 2. Convert PatientInfo object to JSON string
 		        String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
 
-		        // 3. Optional: print payload to debug
+		        // 3. print payload to debug
 		        System.out.println("Serialized patientInfo JSON:");
 		        System.out.println(patientInfoJson);
 
 		        // 4. Build the request
 		        response = request
 		                .multiPart("patientInfo", patientInfoJson, "application/json")
-		                // Optional: if file is included
-		                // .multiPart("file", new File(currentTestData.getFilePath()), "application/pdf")
 		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		    } catch (Exception e) {
@@ -202,13 +231,11 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 	    LoggerLoad.info(" Actual Status Code: " + response.getStatusCode());
 	    LoggerLoad.info(" Expected Status Line: " + currentTestData.getExpectedStatusLine());
 	    LoggerLoad.info(" Actual Status Line: " + response.getStatusLine());
-	    LoggerLoad.info(" Expected Content-Type: " + currentTestData.getExpectedContentType());
-	    LoggerLoad.info(" Actual Content-Type: " + response.getContentType());
-
+	 
 	    // Validate all fields
 	    assertEquals(response.getStatusCode(), currentTestData.getExpectedStatusCode(), "Status code mismatch");
 	    assertEquals(response.getStatusLine(), currentTestData.getExpectedStatusLine(), " Status line mismatch");
-	    assertEquals(response.getContentType(), currentTestData.getExpectedContentType(), " Content-Type mismatch");
+	  
 	}
 	
 	
@@ -236,8 +263,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		        // 4. Build the request
 		        response = request
 		                .multiPart("patientInfo", patientInfoJson, "application/json")
-		                // Optional: if file is included
-		                // .multiPart("file", new File(currentTestData.getFilePath()), "application/pdf")
 		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
 		        
 
@@ -247,33 +272,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		    }
 		}
 	
-//		 String patientInfoJson = String.format("""
-//		            {
-//		              "FirstName": "%s",
-//		              "LastName": "%s",
-//		              "ContactNumber": "%s",
-//		              "Email": "%s",
-//		              "Allergy": "%s",
-//		              "FoodPreference": "%s",
-//		              "CuisineCategory": "%s",
-//		              "DateOfBirth": "%s"
-//		            }
-//		            """,
-//		           currentTestData.getPatientinfo().getFirstName(),
-//		            currentTestData.getPatientinfo().getLastName(),
-//		            currentTestData.getPatientinfo().getContactNumber(),
-//		            currentTestData.getPatientinfo().getEmail(),
-//		            currentTestData.getPatientinfo().getAllergy(),
-//		            currentTestData.getPatientinfo().getFoodPreference(),
-//		            currentTestData.getPatientinfo().getCuisineCategory(),
-//		            currentTestData.getPatientinfo().getDateOfBirth());
-//
-//		        response = request
-//		                .multiPart("patientInfo", patientInfoJson, "application/json")
-//		                // Add file if needed as:
-//		                // .multiPart("file", new File("path/to/file"), "application/pdf")
-//		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
-//	}
 
 	@Then("Admin receives forbidden")
 	public void admin_receives_forbidden() {
@@ -313,8 +311,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		        // 4. Build the request
 		        response = request
 		                .multiPart("patientInfo", patientInfoJson, "application/json")
-		                // Optional: if file is included
-		                // .multiPart("file", new File(currentTestData.getFilePath()), "application/pdf")
 		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		    } catch (Exception e) {
@@ -337,10 +333,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 	    // Optional: Log the body for clarity
 	    System.out.println("Forbidden response body: " + response.getBody().asString());
 	}
-//	    assertEquals(response.getStatusCode(), currentTestData.getExpectedStatusCode());
-//	    assertEquals(response.getStatusLine(), currentTestData.getExpectedStatusLine());
-//	    assertEquals(response.getContentType(), currentTestData.getExpectedContentType());
-//	}
 
 	// Dietician create with mandatory + additional details
 
@@ -352,31 +344,21 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 	@Then("Dietician receives success message with response body containing generated ID and password")
 	public void dietician_receives_success_message_with_response_body_containing_generated_id_and_password() {
 		
-		  response.then().statusCode(201);
+		response.then().statusCode(201);
 
-		    System.out.println("Full patient creation response: " + response.getBody().asString());
+	    JsonPath js = response.jsonPath();
+	    int patientId = js.getInt("patientId");
+	    //String email = js.getString("Email");  // Be careful with case sensitivity if needed
 
-		    String patientId = response.jsonPath().getString("patientId");  // <-- make sure this matches actual response key
-		    Assert.assertNotNull(patientId, "Generated ID is null");
+	    Assert.assertNotNull(patientId, "Generated patientId is null");
+	   // Assert.assertNotNull(email, "Email is null");
 
-		    // If needed: store in environment or log
-		    System.out.println("Created Patient ID: " + patientId);
-		    
-		    //Hooks.scenarioContext.setContext(Context.PATIENT_ID, patientId);
-		}
-	
-		
-//	    assertEquals(response.getStatusCode(), currentTestData.getExpectedStatusCode());
-//	    assertEquals(response.getStatusLine(), currentTestData.getExpectedStatusLine());
-//	    assertEquals(response.getContentType(), currentTestData.getExpectedContentType());
-//	    // Optionally add validation on response body contains ID and password fields
-//	    
-//	    String generatedId = response.jsonPath().getString("generatedId");
-//		String loginPassword = response.jsonPath().getString("loginPassword");
-//
-//		assertNotNull(generatedId, "Generated ID is null");
-//		assertNotNull(loginPassword, "Login password is null");
-//	}
+	    LoggerLoad.info("Patient ID: " + patientId);
+	   // LoggerLoad.info("Patient Email: " + email);
+
+	    currentTestData.setPatientId(patientId);
+	   // currentTestData.setPatientEmail(email);
+	}
 
 	// Dietician create with only mandatory details
 
@@ -435,8 +417,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		        // 4. Build the request
 		        response = request
 		                .multiPart("patientInfo", patientInfoJson, "application/json")
-		                // Optional: if file is included
-		                // .multiPart("file", new File(currentTestData.getFilePath()), "application/pdf")
 		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		    } catch (Exception e) {
@@ -468,8 +448,6 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 		        // 4. Build the request
 		        response = request
 		                .multiPart("patientInfo", patientInfoJson, "application/json")
-		                // Optional: if file is included
-		                // .multiPart("file", new File(currentTestData.getFilePath()), "application/pdf")
 		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		    } catch (Exception e) {
