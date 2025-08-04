@@ -557,8 +557,123 @@
 
   },
 
+  {
+    "testCaseId": "TC_02_createDietician",
+    "scenarioName": "Check admin able to create dietician only with valid mandatory details",
+    "scenarioType": "Positive",
+    "endpoint": "/dietician",
+    "method": "POST",
+    "firstname": "Raju",
+    "lastname": "Raja",
+    "contactNumber": "4455222244",
+    "dateOfBirth": "1983-07-23",
+    "email": "raja_02raj@gmail.com",
+    "hospitalName": "vishnu Hospital",
+    "hospitalStreet": "one",
+    "hospitalCity": "Baroda usman",
+    "hospitalPincode": "258788",
+    "education": "PhD in Nutritional Sciences",
+    "expectedStatusCode": 201,
+    "expectedStatusLine": "HTTP/1.1 201 Created",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_03_GetAllDieticianAs Admin",
+    "scenarioName": "Check admin able to retrieve all dietician with invalid endpoint",
+    "scenarioType": "Negative",
+    "endpoint": "/dieticiansssd",
+    "method": "GET",
+    "expectedStatusCode": 404,
+    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_02_GetAllDieticianAs Admin",
+    "scenarioName": "Check admin able to retrieve all dietician with invalid method",
+    "scenarioType": "Negative",
+    "endpoint": "/dietician",
+    "method": "PUT",
+    "expectedStatusCode": 405,
+    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_01_GetAllDieticianAs Admin",
+    "scenarioName": "Check admin able to retrieve all dietician",
+    "scenarioType": "Positive",
+    "endpoint": "/dietician",
+    "method": "GET",
+    "expectedStatusCode": 200,
+    "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedContentType": "application/json"
+  },
+  {
+    "testCaseId": "TC_01_userLogoutPatient",
+    "scenarioName": "Check admin able to logout",
+    "scenarioType": "Positive",
+    "endpoint": "/logoutdietician",
+    "method": "GET",
+    "expectedStatusCode": 200,
+    "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
+  {
+    "testCaseId": "TC_02_userLogoutPatient",
+    "scenarioName": "Check dietician able to logout",
+    "scenarioType": "Positive",
+    "endpoint": "/logoutdietician",
+    "method": "GET",
+    "expectedStatusCode": 200,
+    "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
+  {
+    "testCaseId": "TC_03_userLogoutPatient",
+    "scenarioName": "Check patient able to logout",
+    "scenarioType": "Positive",
+    "endpoint": "/logoutdietician",
+    "method": "GET",
+    "expectedStatusCode": 200,
+    "expectedStatusLine": "HTTP/1.1 200 OK",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
+  {
+    "testCaseId": "TC_04_userLogoutPatient",
+    "scenarioName": "Check admin able to logout  with invalid method",
+    "scenarioType": "Negative",
+    "endpoint": "/logoutdietician",
+    "method": "POST",
+    "expectedStatusCode": 405,
+    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
+  {
+    "testCaseId": "TC_05_userLogoutPatient",
+    "scenarioName": "Check dietician able to logout  with invalid method",
+    "scenarioType": "Negative",
+    "endpoint": "/logoutdietician",
+    "method": "POST",
+    "expectedStatusCode": 405,
+    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
+  {
+    "testCaseId": "TC_06_userLogoutPatient",
+    "scenarioName": "Check patient able to logout  with invalid method",
+    "scenarioType": "Negative",
+    "endpoint": "/logoutdietician",
+    "method": "POST",
+    "expectedStatusCode": 405,
+    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+    "expectedStatusMessage": "Logout successful"
+    
+  },
 
-  
     {
       "testCaseId": "TC_01_createPatient_noAuth",
       "scenarioName": "Set no auth Check dietician able to create patient with valid data",
@@ -1064,6 +1179,7 @@
 			    "expectedStatusLine": "HTTP/1.1 200 OK"
 			  }
 		  	  
+
 
   ]
 
