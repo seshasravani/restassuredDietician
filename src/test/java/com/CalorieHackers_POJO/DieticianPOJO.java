@@ -1,5 +1,6 @@
 package com.CalorieHackers_POJO;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DieticianPOJO {
@@ -126,4 +127,3 @@ public class DieticianPOJO {
         this.education = education;
     }
 }
-
