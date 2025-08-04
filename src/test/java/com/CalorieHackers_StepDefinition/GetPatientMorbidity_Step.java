@@ -80,7 +80,7 @@ public class GetPatientMorbidity_Step {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine())
 		.contentType(currentTestData.getExpectedContentType())
-		.assertThat().body(matchesJsonSchemaInClasspath("TestData/GetPatientMorbiditySchema.json"));
+		.assertThat().body(matchesJsonSchemaInClasspath("schemas/GetPatientMorbiditySchema.json"));
 		LoggerLoad.info("Patients receives morbidity details " + response.asPrettyString());
 	}
 

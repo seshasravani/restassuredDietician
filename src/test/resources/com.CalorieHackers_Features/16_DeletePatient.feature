@@ -16,10 +16,10 @@ Scenario: Check patient is able to delete patients details by patient ID
     When Patient send GET http request to delete patient by ID with endpoint
     Then Patient recieves "403 Forbidden" to delete patient by ID
     
-#Scenario: Check dietician able to delete patient by ID
-    #Given Dietician create DELETE patient request to "Delete patient by ID"
-    #When Dietician send DELETE http request to delete patient by ID with endpoint
-    #Then Dietician recieves 200 ok to delete patient by ID
+Scenario: Check dietician able to delete patient by ID
+    Given Dietician create DELETE patient request to "Delete patient by ID"
+    When Dietician send DELETE http request to delete patient by ID with endpoint
+    Then Dietician recieves 200 ok to delete patient by ID
     
 Scenario: Check dietician able to delete patient by id with invalid method
     Given Dietician create POST patient request to "Delete patient by ID with invalid method"
