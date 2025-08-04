@@ -37,33 +37,46 @@ public class TestDataPOJO {
 	private String Allergy;
 	private String FoodPreference;
 	private String CuisineCategory;
+	private int dieticianID;
+	private String dieticianLoginPassword;
+	private String dieticianEmail;
+	private String expectedStatusMessage;
+
+	
 
 
 
-	    public String getAllergy() {
-	        return Allergy;
-	    }
+	public String getExpectedStatusMessage() {
+		return expectedStatusMessage;
+	}
 
-	    public void setAllergy(String allergy) {
-	        Allergy = allergy;
-	    }
+	public void setExpectedStatusMessage(String expectedStatusMessage) {
+		this.expectedStatusMessage = expectedStatusMessage;
+	}
 
-	    public String getFoodPreference() {
-	        return FoodPreference;
-	    }
+	public String getAllergy() {
+		return Allergy;
+	}
 
-	    public void setFoodPreference(String foodPreference) {
-	        FoodPreference = foodPreference;
-	    }
+	public void setAllergy(String allergy) {
+		Allergy = allergy;
+	}
 
-	    public String getCuisineCategory() {
-	        return CuisineCategory;
-	    }
+	public String getFoodPreference() {
+		return FoodPreference;
+	}
 
-	    public void setCuisineCategory(String cuisineCategory) {
-	        CuisineCategory = cuisineCategory;
-	    }
+	public void setFoodPreference(String foodPreference) {
+		FoodPreference = foodPreference;
+	}
 
+	public String getCuisineCategory() {
+		return CuisineCategory;
+	}
+
+	public void setCuisineCategory(String cuisineCategory) {
+		CuisineCategory = cuisineCategory;
+	}
 
 	public String getScenarioName() {
 		return scenarioName;
@@ -72,7 +85,6 @@ public class TestDataPOJO {
 	public void setScenarioName(String scenarioName) {
 		this.scenarioName = scenarioName;
 	}
-
 
 	public String getTestCaseId() {
 		return testCaseId;
@@ -306,4 +318,31 @@ public class TestDataPOJO {
 		this.Education = education;
 	}
 
+	public int getDieticianID() {
+		return dieticianID;
+	}
+
+	public void setDieticianID(int dieticianID) {
+		this.dieticianID = dieticianID;
+	}
+	public String getDieticianLoginPassword() {
+		return dieticianLoginPassword;
+	}
+
+	public void setDieticianLoginPassword(String dieticianLoginPassword) {
+		this.dieticianLoginPassword = dieticianLoginPassword;
+	}
+	
+	public String getDieticianEmail() {
+		return dieticianEmail;
+	}
+
+	public void setDieticianEmail(String dieticianEmail) {
+		this.dieticianEmail = dieticianEmail;
+	}
+	
+	
+	
+	
+	
 }
