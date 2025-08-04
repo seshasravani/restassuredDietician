@@ -2,8 +2,6 @@ package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
 
-import java.io.File;
-
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
@@ -12,9 +10,9 @@ import com.CalorieHackers_Utilities.LoggerLoad;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class GetPatientMorbidity_Step {
 	
@@ -23,9 +21,9 @@ public class GetPatientMorbidity_Step {
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = ConfigReader.getKeyValues("JSON_PATH");
 	private static final String adminToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDA3NzUwMCwiZXhwIjoxNzU0MTA2MzAwfQ.hNw3C6lfkRBtFpKhNvZSUl_DYQliR2bFXdFMJTKLOxWu443ouju1LhhfzbjJrDlweAqYnnA2HsRdVuajtmrfbw";
-	private static final String dieticianToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzU0MDcyNjU3LCJleHAiOjE3NTQxMDE0NTd9.mlBUoIGUWoxkrWV1nS4xlzCo8OccC7XMksf2CeaUCMeOvHXibYWMjQfykvdkWSFQNsZm-PnZQNXL15Kx4VfWSA";
-	private static final String patientToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWxpc3NhNEBnbWFpbC5jb20iLCJpYXQiOjE3NTQwNzI5MjUsImV4cCI6MTc1NDEwMTcyNX0.eMe8rcik3mwkv3G0hNX_BTeK9kwfNzqR9T-8TO7N_U1ixE1wLwUMirAx6VfJscYWj8HaGhEgFVRjKO94CBmO2Q";
-	private static final int patientID=84;
+	private static final String dieticianToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzU0Mjc4OTU1LCJleHAiOjE3NTQzMDc3NTV9.NBaPU9jQclMTzM96nzNU04Rw-24tqO_MM3COJT00q14jmA1jsV47Zn5ElwcyQFclGC1gbr6pg1JSkpFk_27nNA";
+	private static final String patientToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWxpc3NhNEBnbWFpbC5jb20iLCJpYXQiOjE3NTQyODM1OTAsImV4cCI6MTc1NDMxMjM5MH0.jTb7ITRoB2gCJGcqw-2xp2vD2y40i_IlTkjgYj90CP1yXTMw9uScJZwEcUbp35jRZK_txZVPFjrdNECVrSLS_g";
+	private static final int patientID=56;
 	
 	@Given("Dietician with {string} request to retrieve patients morbidity details")
 	public void dietician_with_request_to_retrieve_patients_morbidity_details(String scenarioName) {
@@ -81,7 +79,8 @@ public class GetPatientMorbidity_Step {
 	public void patient_recieves_ok_with_details_of_the_patient_id(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine())
-		.contentType(currentTestData.getExpectedContentType());
+		.contentType(currentTestData.getExpectedContentType())
+		.assertThat().body(matchesJsonSchemaInClasspath("TestData/GetPatientMorbiditySchema.json"));
 		LoggerLoad.info("Patients receives morbidity details " + response.asPrettyString());
 	}
 
@@ -96,7 +95,8 @@ public class GetPatientMorbidity_Step {
 	public void dietician_recieves_ok_with_details_of_the_patient_id(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine())
-		.contentType(currentTestData.getExpectedContentType());
+		.contentType(currentTestData.getExpectedContentType())
+		.assertThat().body(matchesJsonSchemaInClasspath("TestData/GetPatientMorbiditySchema.json"));;
 		LoggerLoad.info("Dietician receives morbidity details " + response.asPrettyString());
 	}
 

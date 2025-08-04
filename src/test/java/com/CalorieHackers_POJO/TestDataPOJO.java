@@ -24,7 +24,7 @@ public class TestDataPOJO {
 	private String reportFilePath;
 	private String expecterErrorMsg;
 	private Map<String, Object> vitals;
-	private Map<String, Object> patientinfo;
+	private Map<String, Object> patientUpdateInfo;
 	private int invaidpatientid;
 	private String invaidfileid;
 	private String adminToken;
@@ -60,50 +60,19 @@ public class TestDataPOJO {
 		this.expectedStatusMessage = expectedStatusMessage;
 	}
 
-	public String getAllergy() {
-		return Allergy;
-	}
-
-	public void setAllergy(String allergy) {
-		Allergy = allergy;
-	}
-
-	public String getFoodPreference() {
-		return FoodPreference;
-	}
-
-	public void setFoodPreference(String foodPreference) {
-		FoodPreference = foodPreference;
-	}
-
-	public String getCuisineCategory() {
-		return CuisineCategory;
-	}
-
-	public void setCuisineCategory(String cuisineCategory) {
-		CuisineCategory = cuisineCategory;
-	}
-
-
-    private String reportFilePath;
-    private String expecterErrorMsg;
-
 
     // Keep this as Map if you want, otherwise remove if unused
-    private java.util.Map<String, Object> vitals;
+//    private java.util.Map<String, Object> vitals;
 
     // Now typed patientinfo as PatientInfo POJO
     private PatientInfo patientinfo;
 
 
-    private Map<String, Object> vitals;
-    private Map<String, Object> patientinfo;
-
     private String firstname;
     private String lastname;
-    private String contactNumber;
-    private String dateOfBirth;
-    private String email;
+//    private String contactNumber;
+//    private String dateOfBirth;
+//    private String email;
 
 
     @JsonProperty("FirstName")
@@ -116,10 +85,6 @@ public class TestDataPOJO {
     @JsonProperty("ContactNumber")
     private String contactNumber;
 
-
-	public String getTestCaseId() {
-		return testCaseId;
-	}
 
     @JsonProperty("Email")
     private String email;
@@ -270,9 +235,6 @@ public class TestDataPOJO {
         }
     }
 
-
-
-
     public String getScenarioName() {
         return scenarioName;
     }
@@ -414,13 +376,13 @@ public class TestDataPOJO {
     }
 
 
-    public Map<String, Object> getPatientinfo() {
-        return patientinfo;
-    }
-
-    public void setPatientinfo(Map<String, Object> patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+//    public Map<String, Object> getPatientinfo() {
+//        return patientinfo;
+//    }
+//
+//    public void setPatientinfo(Map<String, Object> patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
 
     public int getInvaidpatientid() {
         return invaidpatientid;
@@ -519,11 +481,6 @@ public class TestDataPOJO {
 		this.dieticianEmail = dieticianEmail;
 	}
 	
-	
-	
-	
-	
-}
 
     public String getFoodPreference() {
         return foodPreference;
@@ -604,9 +561,15 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
-    
-    
-    
+
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}    
     
     public String getDHospitalName() {
         return hospitalname;
