@@ -35,7 +35,7 @@ public class PutByDiet {
 
         adminToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDE4NzU1OSwiZXhwIjoxNzU0MjE2MzU5fQ.kl5VjCa3L7Lh6Ta81TeBAmPdmTQa_HAUQkfYwseb3se4zXvegUPvZJSJ9eyWXNCKLKJ7r_pG1XJ-rUulpzZGNQ";
         LoggerLoad.info("Using hardcoded Admin Token: " + adminToken);
-        LoggerLoad.info("Password loaded from test data: " + testData.getloginPassword());
+        LoggerLoad.info("Password loaded from test data: " + testData.getLoginPassword());
 
     }
 
@@ -45,20 +45,20 @@ public class PutByDiet {
     public void admin_creates_put_request_with_valid_data() throws JsonProcessingException {
         dietician = new DieticianPOJO();
         dietician.setId(testData.getvalidDieticianId());
-        dietician.setLoginPassword(testData.getloginPassword());
-        dietician.setFirstname(testData.getFirstName());
-        dietician.setLastname(testData.getLastName());
+        dietician.setLoginPassword(testData.getLoginPassword());
+        dietician.setFirstname(testData.getFirstname());
+        dietician.setLastname(testData.getFirstname());
         dietician.setContactNumber(testData.getContactNumber());
         dietician.setDateOfBirth(testData.getDateOfBirth());
         dietician.setEmail(testData.getEmail());
 
-        dietician.setHospitalName(testData.getDHospitalName());
-        dietician.setHospitalStreet(testData.getDHospitalStreetName());
-        dietician.setHospitalCity(testData.getDHospitalCityName());
-        dietician.setHospitalPincode(testData.getDHospitalPinCode());
-        dietician.setEducation(testData.getDEducation());
+        dietician.setHospitalName(testData.getHospitalName());
+        dietician.setHospitalStreet(testData.getHospitalStreet());
+        dietician.setHospitalCity(testData.getHospitalCity());
+        dietician.setHospitalPincode(testData.getHospitalPincode());
+        dietician.setEducation(testData.getEducation());
 
-        LoggerLoad.info("Password loaded from test data: " + testData.getloginPassword());
+        LoggerLoad.info("Password loaded from test data: " + testData.getLoginPassword());
         
      // Log final JSON body
         ObjectMapper mapper = new ObjectMapper();

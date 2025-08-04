@@ -162,7 +162,7 @@
     "scenarioType": "Positive",
     "endpoint": "/login",
     "method": "POST",
-    "userLoginEmail": "Team401@gmail.com",
+    "userLoginEmail": "testingteam03@gmail.com",
     "password": "test",
     "expectedStatusCode": 200,
     "expectedStatusLine": "HTTP/1.1 200 OK",
