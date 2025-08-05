@@ -3,31 +3,73 @@ package com.CalorieHackers_POJO;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class TestDataPOJO {
 
-    private String scenarioName;
-    private String testCaseId;
-    private String scenarioType;
-    private String endpoint;
-    private String method;
-    private String contentType;
-    private String userLoginEmail;
-    private String password;
-    private String authType;
-    private int expectedStatusCode;
-    private String expectedStatusLine;
-    private String expectedContentType;
+	private String scenarioName;
+	private String testCaseId;
+	private String scenarioType;
+	private String endpoint;
+	private String method;
+	private String contentType;
+	private String userLoginEmail;
+	private String password;
+	private String authType;
+	private int expectedStatusCode;
+	private String expectedStatusLine;
+	private String expectedContentType;
+	private String reportFilePath;
+	private String expecterErrorMsg;
+	private Map<String, Object> vitals;
+	private Map<String, Object> patientUpdateInfo;
+	private int invaidpatientid;
+	private String invaidfileid;
+	private String adminToken;
+	private String dieticianToken;
+	private String patientToken;
+	private String Firstname;
+	private String Lastname;
+	private String ContactNumber;
+	private String DateOfBirth;
+	private String Email;
+	private String HospitalName;
+	private String HospitalStreet;
+	private String HospitalCity;
+	private String HospitalPincode;
+	private String Education;
+	private String Allergy;
+	private String FoodPreference;
+	private String CuisineCategory;
+	private int dieticianID;
+	private String dieticianLoginPassword;
+	private String dieticianEmail;
+	private String expectedStatusMessage;
 
-    private String reportFilePath;
-    private String expecterErrorMsg;
+	
+
+
+
+	public String getExpectedStatusMessage() {
+		return expectedStatusMessage;
+	}
+
+	public void setExpectedStatusMessage(String expectedStatusMessage) {
+		this.expectedStatusMessage = expectedStatusMessage;
+	}
+
 
 
 //    // Keep this as Map if you want, otherwise remove if unused
+
+
 //    private java.util.Map<String, Object> vitals;
 
     // Now typed patientinfo as PatientInfo POJO
     private PatientInfo patientinfo;
+
 
 
     private Map<String, Object> vitals;
@@ -38,6 +80,7 @@ public class TestDataPOJO {
     private String dieticianToken;
     private String patientToken;
 
+
     private String firstname;
     private String lastname;
 //    private String contactNumber;
@@ -47,19 +90,19 @@ public class TestDataPOJO {
 
     @JsonProperty("FirstName")
     private String firstName;
-
+    @JsonProperty("loginPassword")
+    private String loginPassword;
     @JsonProperty("LastName")
     private String lastName;
 
     @JsonProperty("ContactNumber")
     private String contactNumber;
 
+
     @JsonProperty("Email")
     private String email;
-
     @JsonProperty("Allergy")
     private String allergy;
-
     @JsonProperty("FoodPreference")
     private String foodPreference;
 
@@ -68,6 +111,25 @@ public class TestDataPOJO {
 
     @JsonProperty("DateOfBirth")
     private String dateOfBirth;
+    
+    
+    
+    @JsonProperty("HospitalName")
+    private String hospitalname;
+
+    @JsonProperty("HospitalStreet")
+    private String hospitalstreet;
+
+    @JsonProperty("HospitalCity")
+    private String hospitalcity;
+
+    @JsonProperty("HospitalPincode")
+    private String dHospitalPinCode;
+
+    @JsonProperty("Education")
+    private String deducation;
+    
+
 
     private int invalidDieticianId;
     private int validDieticianId;
@@ -80,7 +142,7 @@ public class TestDataPOJO {
     private String education;
 
 
-    // Getters and setters for all fields including patientinfo
+    // getters and setters for all fields including patientinfo
 
     public PatientInfo getPatientinfo() {
         return patientinfo;
@@ -196,6 +258,7 @@ public class TestDataPOJO {
     }
 
 
+
 	public String getScenarioName() {
 		return scenarioName;
 	}
@@ -274,6 +337,11 @@ public class TestDataPOJO {
 //        this.endpoint = endpoint;
 //    }
 
+    public String getScenarioName() {
+        return scenarioName;
+    }
+
+
 //    public String getMethod() {
 //        return method;
 //    }
@@ -305,6 +373,15 @@ public class TestDataPOJO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    
+    public String getloginPassword() {
+        return loginPassword;
+    }
+
+    public void setloginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
 
     public String getAuthType() {
@@ -359,9 +436,20 @@ public class TestDataPOJO {
         return vitals;
     }
 
+
+	public String getInvaidfileid() {
+		return invaidfileid;
+	}
+
+	public void setInvaidfileid(String invaidfileid) {
+		this.invaidfileid = invaidfileid;
+	}
+
+
     public void setVitals(Map<String, Object> vitals) {
         this.vitals = vitals;
     }
+
 
 //    public Map<String, Object> getPatientinfo() {
 //        return patientinfo;
@@ -377,10 +465,16 @@ public class TestDataPOJO {
 //	public Map<String, Object> getPatientinfo() {
 //		return patientinfo;
 //	}
+
+
+//    public Map<String, Object> getPatientinfo() {
+//        return patientinfo;
+//    }
+
 //
-//	public void setPatientinfo(Map<String, Object> patientinfo) {
-//		this.patientinfo = patientinfo;
-//	}
+//    public void setPatientinfo(Map<String, Object> patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
 
     public int getInvaidpatientid() {
         return invaidpatientid;
@@ -455,6 +549,31 @@ public class TestDataPOJO {
         this.allergy = allergy;
     }
 
+
+	public int getDieticianID() {
+		return dieticianID;
+	}
+
+	public void setDieticianID(int dieticianID) {
+		this.dieticianID = dieticianID;
+	}
+	public String getDieticianLoginPassword() {
+		return dieticianLoginPassword;
+	}
+
+	public void setDieticianLoginPassword(String dieticianLoginPassword) {
+		this.dieticianLoginPassword = dieticianLoginPassword;
+	}
+	
+	public String getDieticianEmail() {
+		return dieticianEmail;
+	}
+
+	public void setDieticianEmail(String dieticianEmail) {
+		this.dieticianEmail = dieticianEmail;
+	}
+	
+
     public String getFoodPreference() {
         return foodPreference;
     }
@@ -491,7 +610,7 @@ public class TestDataPOJO {
         return validDieticianId;
     }
     
-    public void setvalidDieticianId(int invalidDieticianId) {
+    public void setvalidDieticianId(int validDieticianId) {
         this.validDieticianId = validDieticianId;
     }
 
@@ -534,4 +653,55 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
+
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}    
+    
+    public String getDHospitalName() {
+        return hospitalname;
+    }
+
+    public void setDHospitalName(String dHospitalName) {
+        this.hospitalname = dHospitalName;
+    }
+
+    public String getDHospitalStreetName() {
+        return hospitalstreet;
+    }
+
+    public void setDHospitalStreetName(String dHospitalStreetName) {
+        this.hospitalstreet = dHospitalStreetName;
+    }
+
+    public String getDHospitalCityName() {
+        return hospitalcity;
+    }
+
+    public void setDHospitalCityName(String dHospitalcity) {
+        this.hospitalcity = dHospitalcity;
+    }
+
+    public String getDHospitalPinCode() {
+        return dHospitalPinCode;
+    }
+
+    public void setDHospitalPinCode(String dHospitalPinCode) {
+        this.dHospitalPinCode = dHospitalPinCode;
+    }
+
+    public String getDEducation() {
+        return deducation;
+    }
+
+    public void setDEducation(String dEducation) {
+        this.deducation = dEducation;
+    }
+
 }
+

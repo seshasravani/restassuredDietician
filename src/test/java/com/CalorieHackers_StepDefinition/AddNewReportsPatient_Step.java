@@ -8,6 +8,8 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,11 +27,10 @@ public class AddNewReportsPatient_Step {
 	Response response;
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = ConfigReader.getKeyValues("JSON_PATH");
-	//String adminToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDAyMTQ2MCwiZXhwIjoxNzU0MDUwMjYwfQ.r6P0fHg5ZwXq1DN1eH2XFkWJxsETL1CWFChHMXJ_EI-jeFhVVu3dcfenfzYHa6MwDxtyIPa_qfng43XHHTI4eg";
-	String adminToken = userLogin_POST_SD.adminToken;
-	String dieticianToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZWFtY2Fsb3JpZUBnbWFpbC5jb20iLCJpYXQiOjE3NTQwNzg3NDMsImV4cCI6MTc1NDEwNzU0M30.F90o6wL2IMUphaO59ylhQ_4IZlomKPxartCKYFozxtBSln9R3B-h-2r--wpRADKmkWZBEx_kK6g2vdGpobodvg";
-	String patientToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzUzOTg5ODMwLCJleHAiOjE3NTQwMTg2MzB9.MlEJEFnyIGaymOTZds4tCrMxYWd1PX8HPME6LbPXy-Gi8la08LQzSkuRr_A5FIBjH7oczKHNoMpv82mSsyi1Dg";
-	int patientID=56;
+	private static final String adminToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDAyMTQ2MCwiZXhwIjoxNzU0MDUwMjYwfQ.r6P0fHg5ZwXq1DN1eH2XFkWJxsETL1CWFChHMXJ_EI-jeFhVVu3dcfenfzYHa6MwDxtyIPa_qfng43XHHTI4eg";
+	private static final String dieticianToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzU0Mjg5MzU5LCJleHAiOjE3NTQzMTgxNTl9.jFNKzQ18QtwnkUd9rHN5lw8VMg2Ibq6kLjhD8DAdnhIHxFj6PIqHXrKwCaCwFAskHnaP1BxyzE42aOexNGxPaw";
+	private static final String patientToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzUzOTg5ODMwLCJleHAiOjE3NTQwMTg2MzB9.MlEJEFnyIGaymOTZds4tCrMxYWd1PX8HPME6LbPXy-Gi8la08LQzSkuRr_A5FIBjH7oczKHNoMpv82mSsyi1Dg";
+	private static final int patientID=188;
 
 	@Given("Dietician with no auth creates PUT request by {string}")
 	public void dietician_with_no_auth_creates_put_request_by(String scenarioName) {
@@ -45,8 +46,8 @@ public class AddNewReportsPatient_Step {
 		response = request.when().put(currentTestData.getEndpoint()+patientID);
 	}
 
-	@Then("Dietician recieves {int} unauthorized")
-	public void dietician_recieves_unauthorized(Integer int1) {
+	@Then("Dietician recieves {int} unauthorized to update reports")
+	public void dietician_recieves_unauthorized_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine())
 		.contentType(currentTestData.getExpectedContentType());
@@ -67,8 +68,8 @@ public class AddNewReportsPatient_Step {
 //		response = request.when().put(currentTestData.getEndpoint()+patientID);
 //	}
 
-	@Then("Admin recieves {int} forbidden")
-	public void admin_recieves_forbidden(Integer int1) {
+	@Then("Admin recieves {int} forbidden to update reports")
+	public void admin_recieves_forbidden_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Admin receives 403 forbidden when adding report to existing patient " + response.asPrettyString());
@@ -89,8 +90,8 @@ public class AddNewReportsPatient_Step {
 //		response = request.when().put(currentTestData.getEndpoint()+patientID);
 //	}
 
-	@Then("Patient recieves {int} forbidden")
-	public void patient_recieves_forbidden(Integer int1) {
+	@Then("Patient recieves {int} forbidden to update reports")
+	public void patient_recieves_forbidden_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Patient receives 403 forbidden when adding report to existing patient " + response.asPrettyString());
@@ -101,14 +102,15 @@ public class AddNewReportsPatient_Step {
 		currentTestData = JsonDataReader.getAllTestCase(jsondatapath, scenarioName);
 		LoggerLoad.info("Dietician add new report by entering " +scenarioName);
 		request = given().header("Authorization", "Bearer " + dieticianToken)
-//				.contentType(ContentType.MULTIPART)
-				.queryParam("patientInfo", currentTestData.getPatientinfo())
-				.queryParam("vitals", currentTestData.getVitals())
+				.contentType(ContentType.MULTIPART)
+				.multiPart("patientInfo", currentTestData.getPatientUpdateInfo(), "application/json")
+				.multiPart("vitals", currentTestData.getVitals(), "application/json")
 				.multiPart("file", new File(currentTestData.getReportFilePath()) ,"application/pdf");
 	}
 
-	@Then("Dietician recieves {int} ok and with updated response body")
-	public void dietician_recieves_ok_and_with_updated_response_body(Integer int1) {
+	@Then("Dietician recieves {int} ok and with updated response body to update reports")
+	public void dietician_recieves_ok_and_with_updated_response_body_to_update_reports(Integer int1) {
+		response.then().log().all();
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Dietician able to add patient report "+ response.asPrettyString());
@@ -120,7 +122,7 @@ public class AddNewReportsPatient_Step {
 		LoggerLoad.info("Dietician add new report by entering valid data into the form-data key and value fields " +scenarioName);
 		request = given().header("Authorization", "Bearer " + dieticianToken)
 //				.contentType(ContentType.MULTIPART)
-				.queryParam("patientInfo", currentTestData.getPatientinfo())
+//				.queryParam("patientInfo", currentTestData.getPatientinfo())
 				.multiPart("file", new File(currentTestData.getReportFilePath()) ,"application/pdf");
 	}
 
@@ -131,9 +133,10 @@ public class AddNewReportsPatient_Step {
 		ResponseValidationFailureListener logOnFailure = (request, respSpec, response) -> LoggerLoad.error("Dietician not able to update  " +response.prettyPrint());;
 		request = given().config(RestAssured.config().failureConfig(new FailureConfig().with().failureListeners(logOnFailure)))
 				.header("Authorization", "Bearer " + dieticianToken)
-				.contentType(ContentType.ANY)
-				.queryParam("patientInfo", currentTestData.getPatientinfo())
-				.queryParam("vitals", currentTestData.getVitals());
+//				.contentType(ContentType.ANY)
+//				.queryParam("patientInfo", currentTestData.getPatientinfo())
+//				.multiPart("patientInfo", vitalsJson, "application/json")
+				.multiPart("vitals", currentTestData.getVitals(), "application/json");
 
 	}
 
@@ -166,8 +169,8 @@ public class AddNewReportsPatient_Step {
 
 	}
 
-	@Then("Dietician recieves {int} Bad request")
-	public void dietician_recieves_bad_request(Integer int1) {
+	@Then("Dietician recieves {int} Bad request to update reports")
+	public void dietician_recieves_bad_request_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Dietician recieves 400 Bad request "+ response.asPrettyString());
@@ -188,8 +191,8 @@ public class AddNewReportsPatient_Step {
 		response = request.when().put(currentTestData.getEndpoint()+currentTestData.getInvaidpatientid());
 	}
 	
-	@Then("Dietician recieves {int} not found")
-	public void dietician_recieves_not_found(Integer int1) {
+	@Then("Dietician recieves {int} not found to update reports")
+	public void dietician_recieves_not_found_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Dietician recieves 404 not found "+ response.asPrettyString());
@@ -211,8 +214,8 @@ public class AddNewReportsPatient_Step {
 
 	}
 
-	@Then("Dietician recieves {int} method not allowed")
-	public void dietician_recieves_method_not_allowed(Integer int1) {
+	@Then("Dietician recieves {int} method not allowed to update reports")
+	public void dietician_recieves_method_not_allowed_to_update_reports(Integer int1) {
 		response.then().statusCode(currentTestData.getExpectedStatusCode())
 		.statusLine(currentTestData.getExpectedStatusLine());
 		LoggerLoad.info("Dietician recieves 405 "+ response.asPrettyString());
@@ -234,23 +237,31 @@ public class AddNewReportsPatient_Step {
 
 	}
 
-	@Given("Dietician creates PUT request by entering valid data into the form-data key and value fields and {string}")
-	public void dietician_creates_put_request_by_entering_valid_data_into_the_form_data_key_and_value_fields_and_valid_patient_id_with_invalid_content_type(String scenarioName) {
+//	@Given("Dietician creates PUT request by entering valid data into the form-data key and value fields and {string}")
+//	public void dietician_creates_put_request_by_entering_valid_data_into_the_form_data_key_and_value_fields_and_valid_patient_id_with_invalid_content_type(String scenarioName) {
+//		currentTestData = JsonDataReader.getAllTestCase(jsondatapath, scenarioName);
+//		LoggerLoad.info("Dietician add new report by entering invalid content type");
+//		request = given().header("Authorization", "Bearer " + dieticianToken)
+//				.contentType(ContentType.JSON)
+////				.header("Content-Type", "application/json")
+//				.queryParam("vitals", currentTestData.getVitals());
+////				.multiPart("file", new File(currentTestData.getReportFilePath()));
+//	}
+
+	@Then("Dietician recieves {int} unsupported media type to update reports")
+	public void dietician_recieves_unsupported_media_type_to_update_reports(Integer int1) {
+		response.then().statusCode(currentTestData.getExpectedStatusCode())
+		.statusLine(currentTestData.getExpectedStatusLine());
+		LoggerLoad.info("Dietician recieves "+ response.asPrettyString());
+
+	}
+	
+	@Given("Dietician creates PUT request by entering valid data into the query param key and value fields and {string}")
+	public void dietician_creates_put_request_by_entering_valid_data_into_the_query_param_key_and_value_fields_and_valid_patient_id_with_invalid_content_type(String scenarioName) {
 		currentTestData = JsonDataReader.getAllTestCase(jsondatapath, scenarioName);
 		LoggerLoad.info("Dietician add new report by entering invalid content type");
 		request = given().header("Authorization", "Bearer " + dieticianToken)
-				.contentType(ContentType.JSON)
-//				.header("Content-Type", "application/json")
-				.queryParam("vitals", currentTestData.getVitals());
-//				.multiPart("file", new File(currentTestData.getReportFilePath()));
-	}
-
-	@Then("Dietician recieves {int} unsupported media type")
-	public void dietician_recieves_unsupported_media_type(Integer int1) {
-		response.then().log().all();
-//		response.then().statusCode(currentTestData.getExpectedStatusCode())
-//		.statusLine(currentTestData.getExpectedStatusLine());
-//		LoggerLoad.info("Dietician recieves 404 not found "+ response.asPrettyString());
+				.queryParam("file", new File(currentTestData.getReportFilePath()) ,"application/pdf");
 
 	}
 }

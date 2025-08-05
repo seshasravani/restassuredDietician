@@ -155,7 +155,7 @@ import com.CalorieHackers_Utilities.ConfigReader;
 		    }
 	
 		    @Then("daitician recieved dietician token in the response creation is successful with valid response")
-		    public void dietician_recieved_token() {
+		    public void daitician_recieved_dietician_token_in_the_response_creation_is_successful_with_valid_response() {
 		    	response.then().statusCode(200);
 		        dieticianToken = response.jsonPath().getString("token");
 		        assertNotNull(dieticianToken, "Dietician token is null");

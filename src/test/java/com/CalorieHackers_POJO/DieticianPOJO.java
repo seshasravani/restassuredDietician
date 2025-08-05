@@ -24,22 +24,24 @@ public class DieticianPOJO {
     @JsonProperty("Email")
     private String email;
 
-    @JsonProperty("HospitalName")
+    // These are the exact keys your backend expects for hospital info:
+    @JsonProperty("dHospitalName")
     private String hospitalName;
 
-    @JsonProperty("HospitalStreet")
+    @JsonProperty("dHospitalStreetName")
     private String hospitalStreet;
 
     @JsonProperty("HospitalCity")
     private String hospitalCity;
 
-    @JsonProperty("HospitalPincode")
+    @JsonProperty("dHospitalPinCode")
     private String hospitalPincode;
 
     @JsonProperty("Education")
     private String education;
 
     // Getters & Setters
+
     public int getId() {
         return id;
     }
