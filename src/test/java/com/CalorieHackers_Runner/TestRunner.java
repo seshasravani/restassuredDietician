@@ -19,7 +19,12 @@ import io.cucumber.testng.CucumberOptions;
 				"src/test/resources/com.CalorieHackers_Features/03_DieticianLoginPost.feature"
 				,"src/test/resources/com.CalorieHackers_Features/04_GetAllDieticianByAdminToken.feature"
 				,"src/test/resources/com.CalorieHackers_Features/04_GetAllDieticianByDieticianToken.feature",
-				"src/test/resources/com.CalorieHackers_Features/07_CreatePatient_Post.feature"
+				"src/test/resources/com.CalorieHackers_Features/07_CreatePatient_Post.feature",
+				"src/test/resources/com.CalorieHackers_Features/07_CreatePatient_withpatientToken.feature",
+				"src/test/resources/com.CalorieHackers_Features/13_GetAllPatient.feature",
+				"src/test/resources/com.CalorieHackers_Features/14_GetAllMorbidity.feature",
+				"src/test/resources/com.CalorieHackers_Features/15_GetMorbiditybyTestName.feature"
+				
 				
 }, // location of feature
 																								// files
