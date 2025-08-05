@@ -106,14 +106,26 @@ public class CreatePatient_Post {
 	@When("Admin sends POST http request with endpoint")
 	public void admin_sends_post_http_request_with_endpoint() {
 		try {
+			// 1. Create ObjectMapper
 			ObjectMapper mapper = new ObjectMapper();
+
+			// 2. Convert PatientInfo object to JSON string
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
+
+			// 3. Optional: print payload to debug
 			System.out.println("Serialized patientInfo JSON:");
 			System.out.println(patientInfoJson);
+
+			// 4. Build the request
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
+					// Optional: if file is included
+					// .multiPart("file", new File(currentTestData.getFilePath()),
+					// "application/pdf")
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			Assert.fail("Failed to serialize patientInfo or send request: " + e.getMessage());
 		}
 	}
 
@@ -141,11 +153,21 @@ public class CreatePatient_Post {
 	public void patient_sends_post_http_request_with_endpoint() {
 
 		try {
-			
+			// 1. Create ObjectMapper
 			ObjectMapper mapper = new ObjectMapper();
+
+			// 2. Convert PatientInfo object to JSON string
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
-			LoggerLoad.info("patientInfo JSON:" +patientInfoJson);
+
+			// 3. Optional: print payload to debug
+			System.out.println("Serialized patientInfo JSON:");
+			System.out.println(patientInfoJson);
+
+			// 4. Build the request
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
+					// Optional: if file is included
+					// .multiPart("file", new File(currentTestData.getFilePath()),
+					// "application/pdf")
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		} catch (Exception e) {
@@ -162,7 +184,16 @@ public class CreatePatient_Post {
 		String contentType = response.getHeader("Content-Type");
 		Assert.assertTrue(contentType.contains("application/json") || contentType.contains("text/plain"),
 				"Unexpected content type: " + contentType);
+
+		// Optional: Log the body for clarity
+		System.out.println("Forbidden response body: " + response.getBody().asString());
 	}
+//	    assertEquals(response.getStatusCode(), currentTestData.getExpectedStatusCode());
+//	    assertEquals(response.getStatusLine(), currentTestData.getExpectedStatusLine());
+//	    assertEquals(response.getContentType(), currentTestData.getExpectedContentType());
+//	}
+
+	// Dietician create with mandatory + additional details
 
 	@Given("Dietician creates POST request by entering valid mandatory and additional data into the form-data fields")
 	public void dietician_creates_post_request_by_entering_valid_mandatory_and_additional_data_into_the_form_data_fields() {
@@ -227,16 +258,26 @@ public class CreatePatient_Post {
 	@When("Dietician sends PUT http request with endpoint")
 	public void dietician_sends_put_http_request_with_endpoint() {
 		try {
-			
+			// 1. Create ObjectMapper
 			ObjectMapper mapper = new ObjectMapper();
+
+			// 2. Convert PatientInfo object to JSON string
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
+
+			// 3. Optional: print payload to debug
 			System.out.println("Serialized patientInfo JSON:");
 			System.out.println(patientInfoJson);
+
+			// 4. Build the request
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
+					// Optional: if file is included
+					// .multiPart("file", new File(currentTestData.getFilePath()),
+					// "application/pdf")
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			Assert.fail("Failed to serialize patientInfo or send request: " + e.getMessage());
 		}
 	}
 
@@ -250,15 +291,26 @@ public class CreatePatient_Post {
 	@When("Dietician sends POST http request with invalid endpoint")
 	public void dietician_sends_post_http_request_with_invalid_endpoint() {
 		try {
-			ObjectMapper mapper = new ObjectMapper()
+			// 1. Create ObjectMapper
+			ObjectMapper mapper = new ObjectMapper();
+
+			// 2. Convert PatientInfo object to JSON string
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
+
+			// 3. Optional: print payload to debug
 			System.out.println("Serialized patientInfo JSON:");
 			System.out.println(patientInfoJson);
+
+			// 4. Build the request
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
+					// Optional: if file is included
+					// .multiPart("file", new File(currentTestData.getFilePath()),
+					// "application/pdf")
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			Assert.fail("Failed to serialize patientInfo or send request: " + e.getMessage());
 		}
 	}
 
@@ -277,9 +329,12 @@ public class CreatePatient_Post {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
+
 			prepareRequest(currentTestData.getScenarioName());
+
 			request = request.header("Content-Type", "text/plain") // intentionally wrong content type
 					.multiPart("patientInfo", patientInfoJson, "text/plain");
+
 		} catch (JsonProcessingException e) {
 			Assert.fail("Failed to serialize patientInfo JSON: " + e.getMessage());
 		}
