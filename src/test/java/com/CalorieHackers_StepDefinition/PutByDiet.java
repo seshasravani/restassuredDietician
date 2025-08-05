@@ -44,7 +44,7 @@ public class PutByDiet {
     @Given("Admin creates PUT request with valid data")
     public void admin_creates_put_request_with_valid_data() throws JsonProcessingException {
         dietician = new DieticianPOJO();
-        dietician.setId(testData.getvalidDieticianId());
+        dietician.setId(testData.getValidDieticianId());
         dietician.setLoginPassword(testData.getLoginPassword());
         dietician.setFirstname(testData.getFirstname());
         dietician.setLastname(testData.getFirstname());

@@ -170,14 +170,6 @@ public class TestDataPOJO {
 		Email = email;
 	}
 
-	public int getValidDieticianId() {
-		return validDieticianId;
-	}
-
-	public void setValidDieticianId(int validDieticianId) {
-		this.validDieticianId = validDieticianId;
-	}
-
 	public String getLoginPassword() {
 		return loginPassword;
 	}
@@ -194,7 +186,13 @@ public class TestDataPOJO {
 		this.scenarioName = scenarioName;
 	}
 
-	
+	public int getValidDieticianId() {
+		return validDieticianId;
+	}
+
+	public void setValidDieticianId(int validDieticianId) {
+		this.validDieticianId = validDieticianId;
+	}
 
 	// Other existing getters and setters...
 
@@ -300,17 +298,17 @@ public class TestDataPOJO {
 //    private java.util.Map<String, Object> vitals;
 
 	// Now typed patientinfo as PatientInfo POJO
-	private PatientInfo patientinfo;
-
-	// getters and setters for all fields including patientinfo
-
-	public PatientInfo getPatientinfo() {
-		return patientinfo;
-	}
-
-	public void setPatientinfo(PatientInfo patientinfo) {
-		this.patientinfo = patientinfo;
-	}
+//	private PatientInfo patientinfo;
+//
+//	// getters and setters for all fields including patientinfo
+//
+//	public PatientInfo getPatientinfo() {
+//		return patientinfo;
+//	}
+//
+//	public void setPatientinfo(PatientInfo patientinfo) {
+//		this.patientinfo = patientinfo;
+//	}
 
 	public void setExpecterErrorMsg(String expecterErrorMsg) {
 		this.expecterErrorMsg = expecterErrorMsg;
@@ -394,14 +392,6 @@ public class TestDataPOJO {
 
 	public void setInvalidDieticianId(int invalidDieticianId) {
 		this.invalidDieticianId = invalidDieticianId;
-	}
-
-	public int getvalidDieticianId() {
-		return validDieticianId;
-	}
-
-	public void setvalidDieticianId(int validDieticianId) {
-		this.validDieticianId = validDieticianId;
 	}
 
 	public String getFirstname() {

@@ -76,7 +76,8 @@ public class createDietician_SD {
 		currentTestData.setDieticianEmail(dieticianEmail);
 		LoggerLoad.info("Dietician ID: " + dieticianID);
 		LoggerLoad.info("Dietician Login password: " + dieticianLoginPassword);
-		LoggerLoad.info("Dietician Email: " + dieticianID);
+		LoggerLoad.info("Dietician Email: " + dieticianEmail);
+		System.out.println("current email "+currentTestData.getDieticianEmail());
 		
 		LoggerLoad.info("Expected Status Code " + statusCode + " Actual Status code " + response.getStatusCode());
 		
