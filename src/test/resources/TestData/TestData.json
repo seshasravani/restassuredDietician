@@ -1245,6 +1245,314 @@
       "CuisineCategory": "Bengali",
       "DateOfBirth": "1996-06-06"
     },
+<<<<<<< HEAD
+
+	{
+	    "testCaseId": "TC_01_getAllPatients_noAuth",
+	    "scenarioName": "Set no auth Check dietician able to retrieve all patients",
+	    "method": "GET",
+	    "endpoint": "/patient",
+	    "authType": "No Auth",
+	    "expectedStatusCode": 401,
+	    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	    "testCaseId": "TC_02_getPatients_admintoken",
+	    "scenarioName": "Set admin token Check admin able to retrieve all patients",
+	    "method": "GET",
+	    "endpoint": "/patient",
+	    "authType": "Admin Token",
+	    "expectedStatusCode": 403,
+	    "expectedStatusLine": "HTTP/1.1 403 Forbidden",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	    "testCaseId": "TC_03_getPatients_patienttoken",
+	    "scenarioName": "Set patient token Check patient able to retrieve all patients",
+	    "method": "GET",
+	    "endpoint": "/patient",
+	    "authType": "Admin Token",
+	    "expectedStatusCode": 403,
+	    "expectedStatusLine": "HTTP/1.1 403 Forbidden",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	    "testCaseId": "TC_04_getAllPatients_dieticianTokenSuccess",
+	    "scenarioName": "Set dietician token Check dietician able to retrieve all patients",
+	    "method": "GET",
+	    "endpoint": "/patient",
+	    "authType": "Dietician Token",
+	    "expectedStatusCode": 200,
+	    "expectedStatusLine": "HTTP/1.1 200 OK",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	    "testCaseId": "TC_05_getAllPatients_invalidMethod",
+	    "scenarioName": "Check dietician able to retrieve all patient with invalid method PUT",
+	    "method": "PUT",
+	    "endpoint": "/patient",
+	    "authType": "Dietician Token",
+	    "expectedStatusCode": 405,
+	    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	    "testCaseId": "TC_06_getAllPatients_invalidEndpoint",
+	    "scenarioName": "Check dietician able to retrieve all patient with invalid endpoint",
+	    "method": "GET",
+	    "endpoint": "/patientss",  
+	    "authType": "Dietician Token",
+	    "expectedStatusCode": 404,
+	    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+	    "expectedContentType": "application/json"
+	  },
+	  {
+	      "testCaseId": "TC_01_getAllMorbidities_noAuth",
+	      "scenarioName": "Set No Auth Check dietician able to retrieve all morbidities details",
+	      "method": "GET",
+	      "endpoint": "/morbidity",
+	      "authType": "No Auth",
+	      "expectedStatusCode": 401,
+	      "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_02_getAllMorbidities_patientToken",
+	      "scenarioName": "Set PAtient Token Check pateint is able to retrieve all morbidities details",
+	      "method": "GET",
+	      "endpoint": "/morbidity",
+	      "authType": "Patient Token",
+	      "expectedStatusCode": 403,
+	      "expectedStatusLine": "HTTP/1.1 403 Forbidden",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_03_getAllMorbidities_adminToken",
+	      "scenarioName": "Set Admin Token Check admin able to retrieve all morbidities details",
+	      "method": "GET",
+	      "endpoint": "/morbidity",
+	      "authType": "Admin Token",
+	      "expectedStatusCode": 200,
+	      "expectedStatusLine": "HTTP/1.1 200 OK",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_04_postMorbidities_adminToken_invalidMethod",
+	      "scenarioName": "Set Admin Token Check admin able to retrieve all morbidities details with invalid method",
+	      "method": "POST",
+	      "endpoint": "/morbidity",
+	      "authType": "Admin Token",
+	      "expectedStatusCode": 415,
+	      "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_05_getMorbidities_adminToken_invalidEndpoint",
+	      "scenarioName": "Set Admin Token Check admin able to retrieve all morbidities details with invalid endpoint",
+	      "method": "GET",
+	      "endpoint": "/morbidity/invalid",
+	      "authType": "Admin Token",
+	      "expectedStatusCode": 404,
+	      "expectedStatusLine": "HTTP/1.1 404 Not Found",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_06_getAllMorbidities_dieticianToken",
+	      "scenarioName": "Set Dietician Token Check dietician able to retrieve all morbidities details",
+	      "method": "GET",
+	      "endpoint": "/morbidity",
+	      "authType": "Dietician Token",
+	      "expectedStatusCode": 200,
+	      "expectedStatusLine": "HTTP/1.1 200 OK",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_07_postMorbidities_dieticianToken_invalidMethod",
+	      "scenarioName": "Set Dietician Token Check dietician able to retrieve all morbidities details with invalid method",
+	      "method": "POST",
+	      "endpoint": "/morbidity",
+	      "authType": "Dietician Token",
+	      "expectedStatusCode": 415,
+	      "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type",
+	      "expectedContentType": "application/json"
+	    },
+	    {
+	      "testCaseId": "TC_08_getMorbidities_dieticianToken_invalidEndpoint",
+	      "scenarioName": "Set Dietician Token Check dietician able to retrieve all morbidities details with invalid endpoint",
+	      "method": "GET",
+	      "endpoint": "/morbidity/invalid",
+	      "authType": "Dietician Token",
+	      "expectedStatusCode": 404,
+	      "expectedStatusLine": "HTTP/1.1 404 Not Found",
+	      "expectedContentType": "application/json"
+	    },
+		{
+		    "testCaseId": "TC_01_getMorbidity_dietician_noAuth",
+		    "scenarioName": "Set No Auth Check dietician able to retrieve morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "No Auth",
+		    "expectedStatusCode": 401,
+		    "expectedStatusLine": "HTTP/1.1 401 Unauthorized",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_02_getMorbidity_patient_forbidden",
+		    "scenarioName": "Set Patient Token Check patient is able to retrieve morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "Patient Token",
+		    "expectedStatusCode": 403,
+		    "expectedStatusLine": "HTTP/1.1 403 Forbidden",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_03_getMorbidity_admin_valid",
+		    "scenarioName": "Set Admin Token Check admin able to retrieve morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "Admin Token",
+		    "expectedStatusCode": 200,
+		    "expectedStatusLine": "HTTP/1.1 200 OK",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_04_getMorbidity_admin_invalidMethod",
+		    "scenarioName": "Set Admin Token Check admin able to retrieve morbidity by name with invalid method",
+		    "method": "POST",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "Admin Token",
+		    "expectedStatusCode": 405,
+		    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_05_getMorbidity_admin_notFound",
+		    "scenarioName": "Set Admin Token Check admin able to retrieve non-existing morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/Thyroid",
+		    "authType": "Admin Token",
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_06_getMorbidity_admin_invalidEndpoint",
+		    "scenarioName": "Set Admin Token Check admin able to retrieve morbidity by name with invalid endpoint",
+		    "method": "GET",
+		    "endpoint": "/morbidity/TSH1",
+		    "authType": "Admin Token",
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_07_getMorbidity_dietician_valid",
+		    "scenarioName": "Set Dietician Token Check dietician able to retrieve morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "Dietician Token",
+		    "expectedStatusCode": 200,
+		    "expectedStatusLine": "HTTP/1.1 200 OK",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_08_getMorbidity_dietician_invalidMethod",
+		    "scenarioName": "Set Dietician Token Check dietician able to retrieve morbidity by name with invalid method",
+		    "method": "POST",
+		    "endpoint": "/morbidity/TSH",
+		    "authType": "Dietician Token",
+		    "expectedStatusCode": 405,
+		    "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_09_getMorbidity_dietician_notFound",
+		    "scenarioName": "Set Dietician Token Check dietician able to retrieve non-existing morbidity by name",
+		    "method": "GET",
+		    "endpoint": "/morbidity/Thyroid",
+		    "authType": "Dietician Token",
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+		    "expectedContentType": "application/json"
+		  },
+		  {
+		    "testCaseId": "TC_10_getMorbidity_dietician_invalidEndpoint",
+		    "scenarioName": "Set Dietician Token Check dietician able to retrieve morbidity by name with invalid endpoint",
+		    "method": "GET",
+		    "endpoint": "/morbiditybyname/TSH1",
+		    "authType": "Dietician Token",
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found",
+		    "expectedContentType": "application/json"
+		  },
+		 
+		  
+		  {
+		  	    "scenarioName": "Check admin able to retrieve dietician by id with invalid endpoint",
+		  	    "endpoint": "/dieticians",
+				"validDieticianId": 123,
+		  	    "expectedStatusCode": 404,
+		  	    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+
+		  	  },
+			  
+			  
+			  
+			  {
+			    "scenarioName": "Check admin able to update dietician with valid data , dietician id and token",
+			    "endpoint": "/dietician",
+			    "validDieticianId": 564, 
+				
+			    "FirstName": "ulMeera",
+			    "LastName": "uRajput",
+			    "ContactNumber": "5848022338",
+			    "DateOfBirth": "1972-08-25",
+			    "Email": "umeera.rajp@gmail.com",
+			    "loginPassword": "Teach00",
+			    "HospitalName": "ApolloHospitals",
+			    "HospitalStreet": "Street21",
+			    "HospitalCity": "Hmyderabad",
+			    "HospitalPincode": "500001",
+			    "Education": "MDNutrition",
+			    "expectedStatusCode": 200,
+			    "expectedStatusLine": "HTTP/1.1 200 OK"
+			  },
+			  
+			  {
+			      "scenarioName": "Check admin able to delete dietician by ID",
+			      "endpoint": "/dietician",
+			      "validDieticianId": 12,
+			      "expectedStatusCode": 200,
+			      "expectedStatusLine": "HTTP/1.1 200 OK",
+			      "expectedResponseMessage": "Deleted dietician with id-123"
+			  },
+			  
+			  {
+			    "scenarioName": "Check admin able to delete dietician by invalid id",
+			    "endpoint": "/dietician",
+			    "invalidDieticianId": 9999999,
+			    "expectedStatusCode": 404,
+			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+			   
+			  },
+			  
+			  {
+			  			    "scenarioName": "Check admin able to delete dietician by invalid endpoint",
+			  			    "invalidUrl": "/dieticians",
+			  			    "validDieticianId": 15,
+			  			    "expectedStatusCode": 404,
+			  			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+			  			   
+			  			  }
+	  
+
+
+  ]
+
+=======
     "expectedStatusCode": 415,
     "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type",
     "expectedContentType": "application/json"
@@ -1522,3 +1830,4 @@
     "expectedStatusLine": "HTTP/1.1 200 OK"
   }
 ]
+>>>>>>> a2203e4c3db4737a3a6d18a2e1b13b728b9792f3
