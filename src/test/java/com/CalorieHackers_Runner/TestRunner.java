@@ -20,6 +20,7 @@ import io.cucumber.testng.CucumberOptions;
 				,"src/test/resources/com.CalorieHackers_Features/16_DeletePatient.feature"
 				}, // location of feature files
 //		 tags = "@GetPatientFileByFileID", // tags from feature file
+
 		glue = { "com.CalorieHackers_StepDefinition" }) // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

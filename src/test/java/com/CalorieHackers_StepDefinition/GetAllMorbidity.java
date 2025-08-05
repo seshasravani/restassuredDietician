@@ -2,28 +2,14 @@ package com.CalorieHackers_StepDefinition;
 
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-import org.testng.Assert;
 
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
 import io.cucumber.java.en.*;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -39,14 +25,14 @@ public class GetAllMorbidity {
 	String patientToken = userLogin_POST_SD.patientToken ;
 	
 	    private void prepareRequest(String scenarioName) {
-	        System.out.println("Loading scenario: '" + scenarioName + "'");
+	    	LoggerLoad.info("Loading scenario: '" + scenarioName + "'");
 	        try {
 	            currentTestData = JsonDataReader.getAllTestCase(JSON_DATA_PATH, scenarioName);
 	            if (currentTestData == null) {
 	                throw new RuntimeException("No test data found for scenario: " + scenarioName);
 	            }
 	        } catch (Exception e) {
-	            System.err.println("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
+				System.err.println("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
 	            throw e;
 	        }
 	        LoggerLoad.info("Preparing request for scenario: " + scenarioName);
@@ -66,16 +52,16 @@ public class GetAllMorbidity {
 	                    request.header("Authorization", "Bearer " + patientToken);
 	                    break;
 	                case "No Auth":
-	                    // no Authorization header
+	                
 	                    break;
 	                default:
 	                    throw new RuntimeException("Unsupported auth type: " + authType);
 	            }
 	        }
-	        LoggerLoad.info("✅ Request prepared for: " + scenarioName);
+	        LoggerLoad.info(" Request prepared for: " + scenarioName);
 	    }
  
-	 // SCENARIO 1: No Auth    
+	   
 
 @Given("Dietician creates GET request to retrieve Morbidity without Authorization header")
 public void dietician_creates_get_request_to_retrieve_morbidity_without_authorization_header() {
@@ -95,7 +81,7 @@ public void dietician_receives_unauthorized_message() {
 	    assertEquals(currentTestData.getExpectedContentType(), response.getContentType());
 	}
 
-//SCENARIO 2: Patient Token Forbidden
+
 
 @Given("Patient creates GET request to retrieve Morbidity without Authorization header")
 public void patient_creates_get_request_to_retrieve_morbidity_without_authorization_header() {
@@ -114,7 +100,7 @@ public void patient_receives_forbidden_message() {
     assertEquals(currentTestData.getExpectedContentType(), response.getContentType());
 }
 
-//SCENARIO 3: Admin GET Success
+
 
 @Given("Admin creates GET request to retrieve Morbidity without Authorization header")
 public void admin_creates_get_request_to_retrieve_morbidity_without_authorization_header() {
@@ -134,7 +120,7 @@ public void dietician_receives_ok_message_with_response_body() {
 	    response.then().log().body(); // Optional logging
 	}
 
-//SCENARIO 4: Admin POST → 405
+
 
 @Given("Admin creates POST request with Authorization token to retieve Morbididty")
 public void admin_creates_post_request_with_authorization_token_to_retieve_morbididty() {
@@ -153,7 +139,7 @@ public void admin_receives_method_not_allowed_message() {
 	    assertEquals(currentTestData.getExpectedContentType(), response.getContentType());
 	}
 
-//SCENARIO 5: Admin Invalid Endpoint → 404
+
 
 @Given("Admin creates GET request with Authorization token to retieve Morbididty")
 public void admin_creates_get_request_with_authorization_token_to_retieve_morbididty() {
@@ -173,7 +159,7 @@ public void dietician_receives_not_found_message() {
 	}
 
 
-//SCENARIO 6: Dietician GET → 200
+
 
 @Given("Dietician creates GET request with Authorization token to retieve Morbididty")
 public void dietician_creates_get_request_with_authorization_token_to_retieve_morbididty() {
@@ -193,7 +179,7 @@ public void dietician_receives_ok_with_response_body_message() {
     response.then().log().body();
 }
 
-//SCENARIO 7: Dietician POST → 405
+
 
 @Given("Dietician creates POST request with Authorization token to retieve Morbididty")
 public void dietician_creates_post_request_with_authorization_token_to_retieve_morbididty() {
