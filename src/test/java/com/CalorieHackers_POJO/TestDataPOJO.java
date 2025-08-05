@@ -72,13 +72,13 @@ public class TestDataPOJO {
 
 
 
-    private Map<String, Object> vitals;
-//    private Map<String, Object> patientinfo;
-
-    private int invaidpatientid;
-    private String adminToken;
-    private String dieticianToken;
-    private String patientToken;
+//    private Map<String, Object> vitals;
+////    private Map<String, Object> patientinfo;
+//
+//    private int invaidpatientid;
+//    private String adminToken;
+//    private String dieticianToken;
+//    private String patientToken;
 
 
     private String firstname;
@@ -147,10 +147,7 @@ public class TestDataPOJO {
     public PatientInfo getPatientinfo() {
         return patientinfo;
     }
-
-    public void setPatientinfo(PatientInfo patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+    
     private int patientId;
     
     public int getPatientId() {
@@ -160,6 +157,11 @@ public class TestDataPOJO {
     public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
+    
+    public void setPatientinfo(PatientInfo patientinfo) {
+        this.patientinfo = patientinfo;
+    }
+
     // Other existing getters and setters...
 
     // Inner static class for PatientInfo
@@ -258,10 +260,10 @@ public class TestDataPOJO {
     }
 
 
-
-	public String getScenarioName() {
-		return scenarioName;
-	}
+//
+//	public String getScenarioName() {
+//		return scenarioName;
+//	}
 
 	public void setScenarioName(String scenarioName) {
 		this.scenarioName = scenarioName;

@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 		dryRun = false, monochrome = true, // console output color
 
 			 //tags = "@userLoginPostAdmin", // tags from feature file
-		features = { "src/test/resources/com.CalorieHackers_Features/" }, // location of feature files
+		features = { "src/test/resources/com.CalorieHackers_Features/CreatePatient_Post.feature" }, // location of feature files
 //			 tags = "", // tags from feature file
 
 		glue = { "com.CalorieHackers_StepDefinition" }) // location of step definition files

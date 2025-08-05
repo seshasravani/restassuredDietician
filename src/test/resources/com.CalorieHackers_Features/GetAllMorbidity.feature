@@ -9,7 +9,6 @@ Background: admin and dietician authentication flow
     When Dietician send Post request with email and password 
     Then daitician recieved dietician token in the response creation is successful with valid response
 
-
   Scenario: Set No Auth Check dietician able to retrieve all morbidities details
     Given Dietician creates GET request to retrieve Morbidity without Authorization header
     When Dietician sends GET HTTP request with valid endpoint to retrieve Morbidity
