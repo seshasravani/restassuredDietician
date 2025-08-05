@@ -2,7 +2,6 @@ package com.CalorieHackers_POJO;
 
 import java.util.Map;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -376,17 +375,17 @@ public class TestDataPOJO {
 //    private java.util.Map<String, Object> vitals;
 
 	// Now typed patientinfo as PatientInfo POJO
-	private PatientInfo patientinfo;
+//	private PatientInfo patientinfo;
 //
 //	// getters and setters for all fields including patientinfo
 //
-	public PatientInfo getPatientinfo() {
-		return patientinfo;
-	}
-
-	public void setPatientinfo(PatientInfo patientinfo) {
-		this.patientinfo = patientinfo;
-	}
+//	public PatientInfo getPatientinfo() {
+//		return patientinfo;
+//	}
+//
+//	public void setPatientinfo(PatientInfo patientinfo) {
+//		this.patientinfo = patientinfo;
+//	}
 
 	public void setExpecterErrorMsg(String expecterErrorMsg) {
 		this.expecterErrorMsg = expecterErrorMsg;
