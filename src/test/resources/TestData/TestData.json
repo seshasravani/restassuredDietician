@@ -273,7 +273,7 @@
     "scenarioType": "Negative",
     "endpoint": "/patient/newReports/",
     "method": "PUT",
-    "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+    "reportFilePath": "src/test/resources/TestData/Report1.pdf",
     "patientinfo": {
       "FirstName": "Melissa",
       "LastName": "HackerTest",
@@ -288,8 +288,8 @@
       "Weight": 66.2,
       "Height": 60.5,
       "Temperature": 95,
-      "SP": 77,
-      "DP": 80
+      "SP": 77.77,
+      "DP": "dp"
     },
     "expectedStatusCode": 400,
     "expectedStatusLine": "HTTP/1.1 400 BAD REQUEST"
@@ -299,7 +299,7 @@
     "scenarioType": "Negative",
     "endpoint": "/patient/newReports/",
     "method": "PUT",
-    "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+    "reportFilePath": "src/test/resources/TestData/Report1.pdf",
     "invaidpatientid": 9874563,
     "vitals": {
       "Weight": 66.2,
@@ -566,71 +566,7 @@
    "expectedStatusCode": 200,
    "expectedStatusLine": "HTTP/1.1 200 OK",
 	"expectedContentType": "application/json"
-	},
-{
-   "scenarioName": "Data into the form-data key and value fields except file and valid patient ID",
-   "scenarioType": "Positive",
-   "endpoint": "/patient/newReports/",
-   "method": "PUT",
-   "patientinfo" : 	   { "FirstName": "Melissa",
-   "LastName": "HackerTest",
-   "ContactNumber": "2543610258",
-   "Email": "melissa@gmail.com",
-	"Allergy": "Egg",
-	"FoodPreference": "Vegan",
-	"CuisineCategory":"Indian",
-	"DateOfBirth": "1977-02-14"
-	},
-	"vitals" : {"Weight" : 80,
-	"Height" : 80,
-	"Temperature" : 80,
-	"SP" : 77,
-	"DP" : 80
-	},
-	 "expectedStatusCode": 200,
-	 "expectedStatusLine": "HTTP/1.1 200 OK",
-	"expectedContentType": "application/json"
-},	
-{
-   "scenarioName": "Invalid Additional details data into the form-data key and value fields",
-   "scenarioType": "Negative",
-   "endpoint": "/patient/newReports/",
-   "method": "PUT",
-   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
-   "patientinfo" : 	   { "FirstName": "Melissa",
-   "LastName": "HackerTest",
-   "ContactNumber": "2543610258",
-   "Email": "melissa@gmail.com",
-	"Allergy": "Egg",
-	"FoodPreference": "Vegan",
-	"CuisineCategory":"Indian",
-	"DateOfBirth": "1977-02-14"
-	},
-	"vitals" : 	   {"Weight" : 66.2,
-	"Height" : 60.5,
-	"Temperature" : 95,
-	"SP" : 77,
-	"DP" : 80
-	},
-	 "expectedStatusCode": 400,
-	 "expectedStatusLine": "HTTP/1.1 400 BAD REQUEST"
-},
-{
-   "scenarioName": "Invalid Additional details data into the form-data key and value fields and invalid patient ID",
-   "scenarioType": "Negative",
-   "endpoint": "/patient/newReports/",
-   "method": "PUT",
-   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
-   "invaidpatientid" : 9874563,
-	"vitals" : 	   {"Weight" : 66.2,
-	"Height" : 60.5,
-	"Temperature" : 95,
-	"SP" : 77,
-	"DP" : 80
-	},
-	 "expectedStatusCode": 404,
-	 "expectedStatusLine": "HTTP/1.1 404 Not Found"
-},
+	},	
 {
    "scenarioName": "Entering valid data into the form-data key and value fields and valid patient ID",
    "scenarioType": "Negative",
@@ -866,9 +802,9 @@
     "method": "POST",
     "firstname": "Vishnu",
     "lastname": "Raj",
-    "contactNumber": "4455221133",
-    "dateOfBirth": "1990-08-25",
-    "email": "vishnu_02raj@gmail.com",
+    "contactNumber": "4415220133",
+    "dateOfBirth": "1991-03-27",
+    "email": "vishnu_0193raaj@gmail.com",
     "hospitalName": "Kooper Hospital",
     "hospitalStreet": "Streetone",
     "hospitalCity": "Baroda",
@@ -886,9 +822,9 @@
     "method": "POST",
     "firstname": "Raju",
     "lastname": "Raja",
-    "contactNumber": "4451222244",
-    "dateOfBirth": "1972-08-23",
-    "email": "calorieHackers12@yahoo.com",
+    "contactNumber": "4431221244",
+    "dateOfBirth": "1975-08-27",
+    "email": "calorieHackers726@ahoo.com",
     "hospitalName": "vishnu Hospital",
     "hospitalStreet": "one",
     "hospitalCity": "Baroda usman",
@@ -1066,7 +1002,7 @@
     "scenarioType": "Negative",
     "endpoint": "/patient",
     "method": "POST",
-    "authType": "Admin Token",
+    "authType": "Patient Token",
     "patientinfo": {
       "FirstName": "Bob",
       "LastName": "Patient",
@@ -1089,14 +1025,14 @@
     "method": "POST",
     "authType": "Dietician Token",
     "patientinfo": {
-      "FirstName": "Charrlie",
+      "FirstName": "Chrrlieb",
       "LastName": "Healthy",
-      "ContactNumber": "1794678901",
-      "Email": "charliy.aoet@example.com",
+      "ContactNumber": "1231071901",
+      "Email": "charliy.aoeb@exa.com",
       "Allergy": "NONE",
       "FoodPreference": "Vegetarian",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1996-12-11"
+      "DateOfBirth": "1989-02-03"
 	  },
       "expectedStatusCode": 201,
       "expectedStatusLine": "HTTP/1.1 201 Created",
@@ -1112,12 +1048,12 @@
     "patientinfo": {
       "FirstName": "Diana",
       "LastName": "Meds",
-      "ContactNumber": "1021345111",
-      "Email": "dianqi.madatory@example.com",
+      "ContactNumber": "1091345311",
+      "Email": "dianqi.madoatry@example.com",
       "Allergy": "NONE",
       "FoodPreference": "",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1995-10-10"
+      "DateOfBirth": "1995-11-12"
 	  },
       "expectedStatusCode": 201,
       "expectedStatusLine": "HTTP/1.1 201 Created",
@@ -1270,7 +1206,7 @@
 	    "scenarioName": "Set patient token Check patient able to retrieve all patients",
 	    "method": "GET",
 	    "endpoint": "/patient",
-	    "authType": "Admin Token",
+	    "authType": "Patient Token",
 	    "expectedStatusCode": 403,
 	    "expectedStatusLine": "HTTP/1.1 403 Forbidden",
 	    "expectedContentType": "application/json"
