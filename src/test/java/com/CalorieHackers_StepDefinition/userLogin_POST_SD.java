@@ -219,7 +219,7 @@ public class userLogin_POST_SD {
 		Map<String, Object> requestBody = new HashMap<>();
 		requestBody.put("userLoginEmail", dieticianEmail );
 		requestBody.put("password", dieticianLoginPassword);
-		System.out.println("request body for Dietician" +requestBody);
+		LoggerLoad.info("request body for Dietician" +requestBody);
 		request = request.contentType(ContentType.JSON).body(requestBody);
 		response = request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 		LoggerLoad.info("User send POST HTTP request with endpoint as Dietician" + response.getStatusLine());
