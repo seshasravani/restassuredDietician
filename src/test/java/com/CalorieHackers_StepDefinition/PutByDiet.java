@@ -35,7 +35,7 @@ public class PutByDiet {
 
         adminToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDE4NzU1OSwiZXhwIjoxNzU0MjE2MzU5fQ.kl5VjCa3L7Lh6Ta81TeBAmPdmTQa_HAUQkfYwseb3se4zXvegUPvZJSJ9eyWXNCKLKJ7r_pG1XJ-rUulpzZGNQ";
         LoggerLoad.info("Using hardcoded Admin Token: " + adminToken);
-        LoggerLoad.info("Password loaded from test data: " + testData.getLoginPassword());
+       // LoggerLoad.info("Password loaded from test data: " + testData.getLoginPassword());
 
     }
 
@@ -44,10 +44,10 @@ public class PutByDiet {
     @Given("Admin creates PUT request with valid data")
     public void admin_creates_put_request_with_valid_data() throws JsonProcessingException {
         dietician = new DieticianPOJO();
-        dietician.setId(testData.getValidDieticianId());
-        dietician.setLoginPassword(testData.getLoginPassword());
-        dietician.setFirstname(testData.getFirstname());
-        dietician.setLastname(testData.getFirstname());
+        dietician.setId(testData.getvalidDieticianId());
+        dietician.setLoginPassword(testData.getloginPassword());
+        dietician.setFirstname(testData.getFirstName());
+        dietician.setLastname(testData.getFirstName());
         dietician.setContactNumber(testData.getContactNumber());
         dietician.setDateOfBirth(testData.getDateOfBirth());
         dietician.setEmail(testData.getEmail());
@@ -58,7 +58,7 @@ public class PutByDiet {
         dietician.setHospitalPincode(testData.getHospitalPincode());
         dietician.setEducation(testData.getEducation());
 
-        LoggerLoad.info("Password loaded from test data: " + testData.getLoginPassword());
+        LoggerLoad.info("Password loaded from test data: " + testData.getloginPassword());
         
      // Log final JSON body
         ObjectMapper mapper = new ObjectMapper();
@@ -95,8 +95,7 @@ public class PutByDiet {
     @When("Admin send PUT http request with endpoint")
     public void admin_send_put_http_request_with_endpoint() {
         String url = "/dietician/" + dietician.getId();
-       // System.out.println(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(requestBody));
-
+      
         response = request.put(url);
         LoggerLoad.info("Response Body: " + response.getBody().asString());
     }
