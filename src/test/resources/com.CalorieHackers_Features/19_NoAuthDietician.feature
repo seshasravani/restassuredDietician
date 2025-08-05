@@ -10,7 +10,7 @@ Given Admin create GET request
 
 When Admin sends GET http request without auth
 
-Then Admin recieves 401 unauthorized
+Then Admin receives 401 unauthorized for noauth
 
 
 
