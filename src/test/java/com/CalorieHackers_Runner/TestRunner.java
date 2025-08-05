@@ -10,6 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 		features = { "src/test/resources/com.CalorieHackers_Features/" }, // location of feature files
 
 //		 tags = "@GetPatientFileByFileID", // tags from feature file
+
 		glue = { "com.CalorieHackers_StepDefinition" }) // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {
