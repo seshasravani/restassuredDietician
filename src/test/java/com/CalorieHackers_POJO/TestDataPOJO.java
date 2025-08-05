@@ -1,6 +1,7 @@
 package com.CalorieHackers_POJO;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.CalorieHackers_POJO.TestDataPOJO.PatientInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TestDataPOJO {
@@ -160,6 +161,7 @@ public class TestDataPOJO {
 	public PatientInfo getPatientinfo() {
 		return patientinfo;
 	}
+
 	public void setPatientinfo(PatientInfo patientinfo) {
 		this.patientinfo = patientinfo;
 	}
@@ -367,7 +369,9 @@ public class TestDataPOJO {
 	public String getinvalidUrl() {
         return invalidUrl;
     }
+    
     public void setvalidDieticianUrl(String validDieticianId) {
         this.invalidUrl = invalidUrl;
     }
 }
+

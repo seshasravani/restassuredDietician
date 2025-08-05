@@ -25,7 +25,6 @@ public class createDietician_SD {
 	public static String dieticianLoginPassword;
 	public static String dieticianEmail;
 	String adminToken = userLogin_POST_SD.adminToken;
-	// String adminToken = currentTestData.getAdminToken();
 	private static final String jsondatapath = ConfigReader.getKeyValues("JSON_PATH");
 
 	private void commonRequest(String scenarioName) {
