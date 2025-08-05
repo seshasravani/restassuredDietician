@@ -98,19 +98,6 @@ public class DeleteDietician {
     @When("Admin send DELETE http request with invalid endpoint for delete dietician")
     public void admin_send_delete_http_request_with_invalid_endpoint_for_delete_dietician() {
     	
-//    	testData = JsonDataReader.getAllTestCase(
-//                "src/test/resources/TestData/TestData.json", 
-//                "Check admin able to delete dietician by ID"
-//            );
-//      	dieticianId = testData.getvalidDieticianId(); 
-//          String url = testData.getinvalidUrl();
-//          
-//          String url = "/dietician/" + dieticianId;
-//
-//          LoggerLoad.info("Sending DELETE Request to URL: " + url);
-//          response = request.delete(url);
-//          LoggerLoad.info("Response Body: " + response.getBody().asString());
-    	
     	
     	testData = JsonDataReader.getAllTestCase(
     		    "src/test/resources/TestData/TestData.json", 
