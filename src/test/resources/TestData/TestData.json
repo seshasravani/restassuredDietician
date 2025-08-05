@@ -886,9 +886,9 @@
     "method": "POST",
     "firstname": "Raju",
     "lastname": "Raja",
-    "contactNumber": "4455222244",
-    "dateOfBirth": "1973-08-23",
-    "email": "calorieHackers1@yahoo.com",
+    "contactNumber": "4451222244",
+    "dateOfBirth": "1972-08-23",
+    "email": "calorieHackers12@yahoo.com",
     "hospitalName": "vishnu Hospital",
     "hospitalStreet": "one",
     "hospitalCity": "Baroda usman",
@@ -1089,18 +1089,18 @@
     "method": "POST",
     "authType": "Dietician Token",
     "patientinfo": {
-      "FirstName": "Charlie",
+      "FirstName": "Charrlie",
       "LastName": "Healthy",
-      "ContactNumber": "9314678901",
-      "Email": "charliey.aiet@example.com",
+      "ContactNumber": "1794678901",
+      "Email": "charliy.aoet@example.com",
       "Allergy": "NONE",
       "FoodPreference": "Vegetarian",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1989-12-11"
-    },
-    "expectedStatusCode": 201,
-    "expectedStatusLine": "HTTP/1.1 201 Created",
-    "expectedContentType": "application/json"
+      "DateOfBirth": "1996-12-11"
+	  },
+      "expectedStatusCode": 201,
+      "expectedStatusLine": "HTTP/1.1 201 Created",
+      "expectedContentType": "application/json"
   },
   {
     "testCaseId": "TC_05_createPatient_validMandatoryOnly",
@@ -1112,16 +1112,16 @@
     "patientinfo": {
       "FirstName": "Diana",
       "LastName": "Meds",
-      "ContactNumber": "9011345111",
-      "Email": "dianay.mandatory@example.com",
+      "ContactNumber": "1021345111",
+      "Email": "dianqi.madatory@example.com",
       "Allergy": "NONE",
       "FoodPreference": "",
       "CuisineCategory": "Indian",
-      "DateOfBirth": "1995-12-10"
-    },
-    "expectedStatusCode": 201,
-    "expectedStatusLine": "HTTP/1.1 201 Created",
-    "expectedContentType": "application/json"
+      "DateOfBirth": "1995-10-10"
+	  },
+      "expectedStatusCode": 201,
+      "expectedStatusLine": "HTTP/1.1 201 Created",
+      "expectedContentType": "application/json"
   },
   {
     "testCaseId": "TC_06_createPatient_validAdditionalOnly",
@@ -1243,10 +1243,8 @@
       "Allergy": "Gluten",
       "FoodPreference": "Vegan",
       "CuisineCategory": "Bengali",
-      "DateOfBirth": "1996-06-06"
+      "DateOfBirth": "1996-06-06"}
     },
-<<<<<<< HEAD
-
 	{
 	    "testCaseId": "TC_01_getAllPatients_noAuth",
 	    "scenarioName": "Set no auth Check dietician able to retrieve all patients",
@@ -1488,6 +1486,16 @@
 		    "expectedContentType": "application/json"
 		  },
 		 
+
+	
+	{
+		    "scenarioName": "Check admin able to retrieve dietician by invalid id",
+		    "endpoint": "/dietician",
+		    "invalidDieticianId": 99999999,
+		    "expectedStatusCode": 404,
+		    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+
+		  },
 		  
 		  {
 		  	    "scenarioName": "Check admin able to retrieve dietician by id with invalid endpoint",
@@ -1519,40 +1527,10 @@
 			    "Education": "MDNutrition",
 			    "expectedStatusCode": 200,
 			    "expectedStatusLine": "HTTP/1.1 200 OK"
-			  },
-			  
-			  {
-			      "scenarioName": "Check admin able to delete dietician by ID",
-			      "endpoint": "/dietician",
-			      "validDieticianId": 12,
-			      "expectedStatusCode": 200,
-			      "expectedStatusLine": "HTTP/1.1 200 OK",
-			      "expectedResponseMessage": "Deleted dietician with id-123"
-			  },
-			  
-			  {
-			    "scenarioName": "Check admin able to delete dietician by invalid id",
-			    "endpoint": "/dietician",
-			    "invalidDieticianId": 9999999,
-			    "expectedStatusCode": 404,
-			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
-			   
-			  },
-			  
-			  {
-			  			    "scenarioName": "Check admin able to delete dietician by invalid endpoint",
-			  			    "invalidUrl": "/dieticians",
-			  			    "validDieticianId": 15,
-			  			    "expectedStatusCode": 404,
-			  			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
-			  			   
-			  			  }
-	  
-
-
+			  }
+		  	  
   ]
 
-=======
     "expectedStatusCode": 415,
     "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type",
     "expectedContentType": "application/json"
@@ -1830,4 +1808,4 @@
     "expectedStatusLine": "HTTP/1.1 200 OK"
   }
 ]
->>>>>>> a2203e4c3db4737a3a6d18a2e1b13b728b9792f3
+

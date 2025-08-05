@@ -1,15 +1,6 @@
 Feature: Get All Patient
 
 
-Background: admin and dietician authentication flow
-    Given Admin logs in with valid credentials
-    When Admin creates a new dietician with valid details
-    Then Admin receives dietician credentials in the response
-    
-    Given Dietician has email and password from previous step
-    When Dietician send Post request with email and password 
-    Then daitician recieved dietician token in the response creation is successful with valid response
-
 
   Scenario: Set no auth Check dietician able to retrieve all patients
     Given Dietician creates GET request without Authorization header

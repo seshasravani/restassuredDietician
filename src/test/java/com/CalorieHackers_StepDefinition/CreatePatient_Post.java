@@ -1,36 +1,42 @@
 package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+
 import org.testng.Assert;
+
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class CreatePatient_Post {
 
 	private TestDataPOJO currentTestData;
-	private static final String JSON_DATA_PATH = "src/test/resources/TestData/TestData.json";
+	private static final String JSON_DATA_PATH = ConfigReader.getKeyValues("JSON_PATH");
 	private RequestSpecification request;
 	private Response response;
-	private String adminToken;
-	private String dieticianEmail;
-	private String dieticianPassword;
-	private String dieticianToken;
-	private String patientToken;
+	String adminToken = userLogin_POST_SD.adminToken;
+	String dieticianToken = userLogin_POST_SD.dieticianToken;
+	String patientToken = userLogin_POST_SD.patientToken ;
+	public static int patientId;
+	public static String patientEmail;
 
 	private void prepareRequest(String scenarioName) {
 		System.out.println("Loading scenario: " + scenarioName);
@@ -52,7 +58,6 @@ public class CreatePatient_Post {
 				request.header("Authorization", "Bearer " + patientToken);
 				break;
 			case "No Auth":
-				// no Authorization header
 				break;
 			default:
 				throw new RuntimeException("Unsupported auth type: " + authType);
@@ -60,83 +65,6 @@ public class CreatePatient_Post {
 		}
 	}
 
-	@Given("Admin logs in with valid credentials")
-	public void admin_logs_in() {
-		// Build request directly with login details
-		response = given().baseUri(ConfigReader.getKeyValues("BASE_URL")).contentType(ContentType.JSON)
-				.body("{ \"userLoginEmail\": \"Team401@gmail.com\", \"password\": \"test\" }").post("/login");
-
-		// Verify login success (200 OK)
-		response.then().statusCode(200);
-
-		// Save to class variable
-		adminToken = response.jsonPath().getString("token");
-
-		System.out.println("Admin token: " + adminToken);
-	}
-
-	@When("Admin creates a new dietician with valid details")
-	public void admin_creates_dietician() {
-		// Generate unique values
-		String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		String uniqueEmail = "dietician_" + timestamp + "@example.com";
-		String uniqueContact = "9" + (100000000 + new Random().nextInt(899999999));
-		String uniqueDob = "1990-01-05T00:00:00.000Z"; // Or generate random if needed
-
-		String dieticianJson = "{\n" + "  \"ContactNumber\": \"" + uniqueContact + "\",\n" + "  \"DateOfBirth\": \""
-				+ uniqueDob + "\",\n" + "  \"Education\": \"MD\",\n" + "  \"Email\": \"" + uniqueEmail + "\",\n"
-				+ "  \"Firstname\": \"AmyE\",\n" + "  \"HospitalCity\": \"AnotherCity\",\n"
-				+ "  \"HospitalName\": \"Wellness Hospital\",\n" + "  \"HospitalPincode\": \"654321\",\n"
-				+ "  \"HospitalStreet\": \"Second Street\",\n" + "  \"Lastname\": \"ShunE\"\n" + "}";
-
-		response = given().baseUri(ConfigReader.getKeyValues("BASE_URL"))
-				.header("Authorization", "Bearer " + adminToken).contentType(ContentType.JSON).body(dieticianJson)
-				.when().post("/dietician"); // ✅ Dietician endpoint
-
-		System.out.println("Response: " + response.asPrettyString());
-
-		dieticianEmail = response.jsonPath().getString("Email");
-		dieticianPassword = response.jsonPath().getString("loginPassword"); // Adjust keys if needed
-	}
-
-	@Then("Admin receives dietician credentials in the response")
-	public void verify_dietician_credentials() {
-		int statusCode = response.getStatusCode();
-		if (statusCode == 200 || statusCode == 201) {
-			String email = response.jsonPath().getString("Email");
-			Assert.assertNotNull(email, "Dietician email is null");
-			// other assertions...
-		} else {
-			// For error responses, no need to check email
-			LoggerLoad.warn("Response status " + statusCode + ", no dietician email expected.");
-		}
-	}
-
-	@Given("Dietician has email and password from previous step")
-	public void dietician_has_email_and_password_from_previous_step() {
-		assertNotNull(dieticianEmail, "Dietician email is null from previous step");
-		assertNotNull(dieticianPassword, "Dietician password is null from previous step");
-	}
-
-	@When("Dietician send Post request with email and password")
-	public void dietician_send_post_request_with_email_and_password() {
-		response = given().baseUri(ConfigReader.getKeyValues("BASE_URL")).contentType(ContentType.JSON)
-				.body("{ \"userLoginEmail\": \"" + dieticianEmail + "\", \"password\": \"" + dieticianPassword + "\" }")
-				.when().post("/login");
-
-		System.out.println("Dietician login response: " + response.asPrettyString());
-	}
-
-	@Then("daitician recieved dietician token in the response creation is successful with valid response")
-	public void dietician_recieved_token() {
-		response.then().statusCode(200);
-		dieticianToken = response.jsonPath().getString("token");
-		assertNotNull(dieticianToken, "Dietician token is null");
-		System.out.println("Dietician token: " + dieticianToken);
-
-	}
-
-	// No Auth
 
 	@Given("Dietician creates POST request by entering valid data into the form-data key and value fields")
 	public void dietician_creates_post_request_by_entering_valid_data_into_the_form_data_key_and_value_fields() {
@@ -146,21 +74,19 @@ public class CreatePatient_Post {
 	@When("Dietician sends POST http request with endpoint")
 	public void dietician_sends_post_http_request_with_endpoint() {
 		try {
-			// 1. Create ObjectMapper
+		
 			ObjectMapper mapper = new ObjectMapper();
 
-			// 2. Convert PatientInfo object to JSON string
+	
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
 
-			// 3. Optional: print payload to debug
+			
 			System.out.println("Serialized patientInfo JSON:");
 			System.out.println(patientInfoJson);
 
-			// 4. Build the request
+		
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
-					// Optional: if file is included
-					// .multiPart("file", new File(currentTestData.getFilePath()),
-					// "application/pdf")
+					
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		} catch (Exception e) {
@@ -218,33 +144,7 @@ public class CreatePatient_Post {
 		}
 	}
 
-//		 String patientInfoJson = String.format("""
-//		            {
-//		              "FirstName": "%s",
-//		              "LastName": "%s",
-//		              "ContactNumber": "%s",
-//		              "Email": "%s",
-//		              "Allergy": "%s",
-//		              "FoodPreference": "%s",
-//		              "CuisineCategory": "%s",
-//		              "DateOfBirth": "%s"
-//		            }
-//		            """,
-//		           currentTestData.getPatientinfo().getFirstName(),
-//		            currentTestData.getPatientinfo().getLastName(),
-//		            currentTestData.getPatientinfo().getContactNumber(),
-//		            currentTestData.getPatientinfo().getEmail(),
-//		            currentTestData.getPatientinfo().getAllergy(),
-//		            currentTestData.getPatientinfo().getFoodPreference(),
-//		            currentTestData.getPatientinfo().getCuisineCategory(),
-//		            currentTestData.getPatientinfo().getDateOfBirth());
-//
-//		        response = request
-//		                .multiPart("patientInfo", patientInfoJson, "application/json")
-//		                // Add file if needed as:
-//		                // .multiPart("file", new File("path/to/file"), "application/pdf")
-//		                .request(currentTestData.getMethod(), currentTestData.getEndpoint());
-//	}
+
 
 	@Then("Admin receives forbidden")
 	public void admin_receives_forbidden() {
@@ -322,28 +222,18 @@ public class CreatePatient_Post {
 
 		response.then().statusCode(201);
 
-		System.out.println("Full patient creation response: " + response.getBody().asString());
+	    JsonPath js = response.jsonPath();
+	     patientId = js.getInt("patientId");
+	     patientEmail = js.getString("Email");  // Be careful with case sensitivity if needed
 
-		String patientId = response.jsonPath().getString("patientId"); // <-- make sure this matches actual response key
-		Assert.assertNotNull(patientId, "Generated ID is null");
+	    Assert.assertNotNull(patientId, "Generated patientId is null");
+	   // Assert.assertNotNull(email, "Email is null");
 
-		// If needed: store in environment or log
-		System.out.println("Created Patient ID: " + patientId);
+	    LoggerLoad.info("Patient ID: " + patientId);
+	    LoggerLoad.info("Patient Email: " + patientEmail);
 
-		// Hooks.scenarioContext.setContext(Context.PATIENT_ID, patientId);
 	}
 
-//	    assertEquals(response.getStatusCode(), currentTestData.getExpectedStatusCode());
-//	    assertEquals(response.getStatusLine(), currentTestData.getExpectedStatusLine());
-//	    assertEquals(response.getContentType(), currentTestData.getExpectedContentType());
-//	    // Optionally add validation on response body contains ID and password fields
-//	    
-//	    String generatedId = response.jsonPath().getString("generatedId");
-//		String loginPassword = response.jsonPath().getString("loginPassword");
-//
-//		assertNotNull(generatedId, "Generated ID is null");
-//		assertNotNull(loginPassword, "Login password is null");
-//	}
 
 	// Dietician create with only mandatory details
 
@@ -480,12 +370,12 @@ public class CreatePatient_Post {
 		assertEquals(response.getContentType(), currentTestData.getExpectedContentType());
 	}
 
-	@Then("Dietician receives Method Not Allowed")
+	@Then("Dietician receives method not allowed")
 	public void dietician_receives_method_not_allowed_error() {
 		response.then().statusCode(405);
 		System.out.println("Received 405 Method Not Allowed as expected");
 
-		// Optional: assert error message in body
+
 		String message = response.jsonPath().getString("message");
 		System.out.println("Error message: " + message);
 	}
