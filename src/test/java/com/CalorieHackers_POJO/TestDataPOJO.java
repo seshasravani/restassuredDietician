@@ -32,26 +32,27 @@ public class TestDataPOJO {
 	private String adminToken;
 	private String dieticianToken;
 	private String patientToken;
+	private String invalidUrl;
 
-    private String reportFilePath;
-    private String expecterErrorMsg;
+//    private String reportFilePath;
+//    private String expecterErrorMsg;
 
 
     // Keep this as Map if you want, otherwise remove if unused
-    private java.util.Map<String, Object> vitals;
+   // private java.util.Map<String, Object> vitals;
 
     // Now typed patientinfo as PatientInfo POJO
-    private PatientInfo patientinfo;
+    //private PatientInfo patientinfo;
 
 
-    private Map<String, Object> vitals;
-    private Map<String, Object> patientinfo;
+   // private Map<String, Object> vitals;
+  //  private Map<String, Object> patientinfo;
 
     private String firstname;
     private String lastname;
-    private String contactNumber;
-    private String dateOfBirth;
-    private String email;
+//    private String contactNumber;
+//    private String dateOfBirth;
+//    private String email;
 
 
     @JsonProperty("FirstName")
@@ -112,13 +113,13 @@ public class TestDataPOJO {
 
     // Getters and setters for all fields including patientinfo
 
-    public PatientInfo getPatientinfo() {
-        return patientinfo;
-    }
-
-    public void setPatientinfo(PatientInfo patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+//    public PatientInfo getPatientinfo() {
+//        return patientinfo;
+//    }
+//
+//    public void setPatientinfo(PatientInfo patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
 
     // Other existing getters and setters...
 
@@ -560,9 +561,14 @@ public class TestDataPOJO {
         this.validDieticianId = validDieticianId;
     }
 
-//    public void setValidDieticianId(int validDieticianId) {
-//        this.validDieticianId = validDieticianId;
-//    }
+    
+    public String getinvalidUrl() {
+        return invalidUrl;
+    }
+    
+    public void setvalidDieticianId(String validDieticianId) {
+        this.invalidUrl = invalidUrl;
+    }
 
     public String getHospitalName() {
         return hospitalName;

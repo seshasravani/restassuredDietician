@@ -1021,16 +1021,6 @@
 		    "expectedContentType": "application/json"
 		  },
 		 
-
-	
-	{
-		    "scenarioName": "Check admin able to retrieve dietician by invalid id",
-		    "endpoint": "/dietician",
-		    "invalidDieticianId": 99999999,
-		    "expectedStatusCode": 404,
-		    "expectedStatusLine": "HTTP/1.1 404 Not Found"
-
-		  },
 		  
 		  {
 		  	    "scenarioName": "Check admin able to retrieve dietician by id with invalid endpoint",
@@ -1062,8 +1052,35 @@
 			    "Education": "MDNutrition",
 			    "expectedStatusCode": 200,
 			    "expectedStatusLine": "HTTP/1.1 200 OK"
-			  }
-		  	  
+			  },
+			  
+			  {
+			      "scenarioName": "Check admin able to delete dietician by ID",
+			      "endpoint": "/dietician",
+			      "validDieticianId": 12,
+			      "expectedStatusCode": 200,
+			      "expectedStatusLine": "HTTP/1.1 200 OK",
+			      "expectedResponseMessage": "Deleted dietician with id-123"
+			  },
+			  
+			  {
+			    "scenarioName": "Check admin able to delete dietician by invalid id",
+			    "endpoint": "/dietician",
+			    "invalidDieticianId": 9999999,
+			    "expectedStatusCode": 404,
+			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+			   
+			  },
+			  
+			  {
+			  			    "scenarioName": "Check admin able to delete dietician by invalid endpoint",
+			  			    "invalidUrl": "/dieticians",
+			  			    "validDieticianId": 15,
+			  			    "expectedStatusCode": 404,
+			  			    "expectedStatusLine": "HTTP/1.1 404 Not Found"
+			  			   
+			  			  }
+	  
 
   ]
 
