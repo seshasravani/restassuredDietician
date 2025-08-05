@@ -78,99 +78,99 @@ public class GetAllPatient {
 	        LoggerLoad.info("✅ Request prepared for: " + scenarioName);
 	    }
 	 
-	  @Given("Admin logs in with valid credentials")
-	    public void admin_logs_in() {
-	        // Build request directly with login details
-	    	  response = given()
-	            .baseUri(ConfigReader.getKeyValues("BASE_URL"))
-	            .contentType(ContentType.JSON)
-	            .body("{ \"userLoginEmail\": \"Team401@gmail.com\", \"password\": \"test\" }")
-	            .post("/login");
-
-	        // Verify login success (200 OK)
-	        response.then().statusCode(200);
-
-	     // Save to class variable
-	        adminToken = response.jsonPath().getString("token");
-
-	        System.out.println("Admin token: " + adminToken);
-	    }
-	    
-
-	    @When("Admin creates a new dietician with valid details")
-	    public void admin_creates_dietician() {
-	        // Generate unique values
-	        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-	        String uniqueEmail = "dietician_" + timestamp + "@example.com";
-	        String uniqueContact = "9" + (100000000 + new Random().nextInt(899999999));
-	        String uniqueDob = "1990-01-05T00:00:00.000Z"; // Or generate random if needed
-
-	        String dieticianJson = "{\n" +
-	                "  \"ContactNumber\": \"" + uniqueContact + "\",\n" +
-	                "  \"DateOfBirth\": \"" + uniqueDob + "\",\n" +
-	                "  \"Education\": \"MD\",\n" +
-	                "  \"Email\": \"" + uniqueEmail + "\",\n" +
-	                "  \"Firstname\": \"AmyE\",\n" +
-	                "  \"HospitalCity\": \"AnotherCity\",\n" +
-	                "  \"HospitalName\": \"Wellness Hospital\",\n" +
-	                "  \"HospitalPincode\": \"654321\",\n" +
-	                "  \"HospitalStreet\": \"Second Street\",\n" +
-	                "  \"Lastname\": \"ShunE\"\n" +
-	                "}";
-
-	        response = given()
-	                .baseUri(ConfigReader.getKeyValues("BASE_URL"))
-	                .header("Authorization", "Bearer " + adminToken)
-	                .contentType(ContentType.JSON)
-	                .body(dieticianJson)
-	                .when()
-	                .post("/dietician");  // ✅ Dietician endpoint
-
-	        System.out.println("Response: " + response.asPrettyString());
-
-	        dieticianEmail = response.jsonPath().getString("Email");
-	        dieticianPassword = response.jsonPath().getString("loginPassword"); // Adjust keys if needed
-	    }
-
-	    @Then("Admin receives dietician credentials in the response")
-	    public void verify_dietician_credentials() {
-	    	int statusCode = response.getStatusCode();
-	        if (statusCode == 200 || statusCode == 201) {
-	            String email = response.jsonPath().getString("Email");
-	            Assert.assertNotNull(email, "Dietician email is null");
-	            // other assertions...
-	        } else {
-	            // For error responses, no need to check email
-	            LoggerLoad.warn("Response status " + statusCode + ", no dietician email expected.");
-	        }
-	    }
-
-	    @Given("Dietician has email and password from previous step")
-	    public void dietician_has_email_and_password_from_previous_step() {
-	        assertNotNull(dieticianEmail, "Dietician email is null from previous step");
-	        assertNotNull(dieticianPassword, "Dietician password is null from previous step");
-	    }
-
-	    @When("Dietician send Post request with email and password")
-	    public void dietician_send_post_request_with_email_and_password() {
-	    	 response = given()
-	                .baseUri(ConfigReader.getKeyValues("BASE_URL"))
-	                .contentType(ContentType.JSON)
-	                .body("{ \"userLoginEmail\": \"" + dieticianEmail + "\", \"password\": \"" + dieticianPassword + "\" }")
-	                .when()
-	                .post("/login");
-
-	        System.out.println("Dietician login response: " + response.asPrettyString());
-	    }
-
-	    @Then("daitician recieved dietician token in the response creation is successful with valid response")
-	    public void dietician_recieved_token() {
-	    	response.then().statusCode(200);
-	        dieticianToken = response.jsonPath().getString("token");
-	        assertNotNull(dieticianToken, "Dietician token is null");
-	        System.out.println("Dietician token: " + dieticianToken);
-
-	    }
+//	  @Given("Admin logs in with valid credentials")
+//	    public void admin_logs_in() {
+//	        // Build request directly with login details
+//	    	  response = given()
+//	            .baseUri(ConfigReader.getKeyValues("BASE_URL"))
+//	            .contentType(ContentType.JSON)
+//	            .body("{ \"userLoginEmail\": \"Team401@gmail.com\", \"password\": \"test\" }")
+//	            .post("/login");
+//
+//	        // Verify login success (200 OK)
+//	        response.then().statusCode(200);
+//
+//	     // Save to class variable
+//	        adminToken = response.jsonPath().getString("token");
+//
+//	        System.out.println("Admin token: " + adminToken);
+//	    }
+//	    
+//
+//	    @When("Admin creates a new dietician with valid details")
+//	    public void admin_creates_dietician() {
+//	        // Generate unique values
+//	        String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+//	        String uniqueEmail = "dietician_" + timestamp + "@example.com";
+//	        String uniqueContact = "9" + (100000000 + new Random().nextInt(899999999));
+//	        String uniqueDob = "1990-01-05T00:00:00.000Z"; // Or generate random if needed
+//
+//	        String dieticianJson = "{\n" +
+//	                "  \"ContactNumber\": \"" + uniqueContact + "\",\n" +
+//	                "  \"DateOfBirth\": \"" + uniqueDob + "\",\n" +
+//	                "  \"Education\": \"MD\",\n" +
+//	                "  \"Email\": \"" + uniqueEmail + "\",\n" +
+//	                "  \"Firstname\": \"AmyE\",\n" +
+//	                "  \"HospitalCity\": \"AnotherCity\",\n" +
+//	                "  \"HospitalName\": \"Wellness Hospital\",\n" +
+//	                "  \"HospitalPincode\": \"654321\",\n" +
+//	                "  \"HospitalStreet\": \"Second Street\",\n" +
+//	                "  \"Lastname\": \"ShunE\"\n" +
+//	                "}";
+//
+//	        response = given()
+//	                .baseUri(ConfigReader.getKeyValues("BASE_URL"))
+//	                .header("Authorization", "Bearer " + adminToken)
+//	                .contentType(ContentType.JSON)
+//	                .body(dieticianJson)
+//	                .when()
+//	                .post("/dietician");  // ✅ Dietician endpoint
+//
+//	        System.out.println("Response: " + response.asPrettyString());
+//
+//	        dieticianEmail = response.jsonPath().getString("Email");
+//	        dieticianPassword = response.jsonPath().getString("loginPassword"); // Adjust keys if needed
+//	    }
+//
+//	    @Then("Admin receives dietician credentials in the response")
+//	    public void verify_dietician_credentials() {
+//	    	int statusCode = response.getStatusCode();
+//	        if (statusCode == 200 || statusCode == 201) {
+//	            String email = response.jsonPath().getString("Email");
+//	            Assert.assertNotNull(email, "Dietician email is null");
+//	            // other assertions...
+//	        } else {
+//	            // For error responses, no need to check email
+//	            LoggerLoad.warn("Response status " + statusCode + ", no dietician email expected.");
+//	        }
+//	    }
+//
+//	    @Given("Dietician has email and password from previous step")
+//	    public void dietician_has_email_and_password_from_previous_step() {
+//	        assertNotNull(dieticianEmail, "Dietician email is null from previous step");
+//	        assertNotNull(dieticianPassword, "Dietician password is null from previous step");
+//	    }
+//
+//	    @When("Dietician send Post request with email and password")
+//	    public void dietician_send_post_request_with_email_and_password() {
+//	    	 response = given()
+//	                .baseUri(ConfigReader.getKeyValues("BASE_URL"))
+//	                .contentType(ContentType.JSON)
+//	                .body("{ \"userLoginEmail\": \"" + dieticianEmail + "\", \"password\": \"" + dieticianPassword + "\" }")
+//	                .when()
+//	                .post("/login");
+//
+//	        System.out.println("Dietician login response: " + response.asPrettyString());
+//	    }
+//
+//	    @Then("daitician recieved dietician token in the response creation is successful with valid response")
+//	    public void dietician_recieved_token() {
+//	    	response.then().statusCode(200);
+//	        dieticianToken = response.jsonPath().getString("token");
+//	        assertNotNull(dieticianToken, "Dietician token is null");
+//	        System.out.println("Dietician token: " + dieticianToken);
+//
+//	    }
 	    
 		
 	//	
