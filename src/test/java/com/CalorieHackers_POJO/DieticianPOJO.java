@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DieticianPOJO {
 
-
 	private int id;
 
 	@JsonProperty("loginPassword")
@@ -139,4 +138,3 @@ public class DieticianPOJO {
 		this.education = education;
 	}
 }
-    

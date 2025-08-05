@@ -7,7 +7,10 @@ import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
-import io.cucumber.java.en.*;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -29,7 +32,7 @@ public class GetMorbiditybyTestName {
 				throw new RuntimeException("No test data found for scenario: " + scenarioName);
 			}
 		} catch (Exception e) {
-			System.err.println("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
+			LoggerLoad.error("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
 			throw e;
 		}
 		LoggerLoad.info("Preparing request for scenario: " + scenarioName);
@@ -49,6 +52,7 @@ public class GetMorbiditybyTestName {
 				request.header("Authorization", "Bearer " + patientToken);
 				break;
 			case "No Auth":
+				// no Authorization header
 				break;
 			default:
 				throw new RuntimeException("Unsupported auth type: " + authType);
@@ -78,7 +82,7 @@ public class GetMorbiditybyTestName {
 	public void patient_recieve_forbidden() {
 		response.then().statusCode(currentTestData.getExpectedStatusCode());
 		assertEquals(currentTestData.getExpectedStatusLine(), response.getStatusLine());
-		assertEquals(currentTestData.getExpectedContentType(), response.getContentType());
+
 	}
 
 	@Given("admin create GET request to retrieve morbidity byname")

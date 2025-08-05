@@ -7,8 +7,6 @@ import io.cucumber.java.BeforeAll;
 import static io.restassured.RestAssured.*;
 
 public class Hooks {
-	
-	String scenarioName;
 
 	@BeforeAll
 	public static void setup() {

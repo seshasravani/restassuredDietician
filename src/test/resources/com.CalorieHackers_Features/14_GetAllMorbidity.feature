@@ -1,6 +1,9 @@
 Feature: Get All Patient
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a248d4 (added all files)
   Scenario: Set No Auth Check dietician able to retrieve all morbidities details
     Given Dietician creates GET request to retrieve Morbidity without Authorization header
     When Dietician sends GET HTTP request with valid endpoint to retrieve Morbidity

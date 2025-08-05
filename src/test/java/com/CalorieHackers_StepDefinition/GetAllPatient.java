@@ -3,12 +3,14 @@ package com.CalorieHackers_StepDefinition;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
-import io.cucumber.java.en.*;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -30,7 +32,7 @@ public class GetAllPatient {
 				throw new RuntimeException("No test data found for scenario: " + scenarioName);
 			}
 		} catch (Exception e) {
-			System.err.println("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
+			LoggerLoad.error("Error loading test data for scenario '" + scenarioName + "': " + e.getMessage());
 			throw e;
 		}
 		LoggerLoad.info("Preparing request for scenario: " + scenarioName);
@@ -58,6 +60,7 @@ public class GetAllPatient {
 		}
 		LoggerLoad.info(" Request prepared for: " + scenarioName);
 	}
+
 
 	@Given("Dietician creates GET request without Authorization header")
 	public void dietician_creates_get_request_without_authorization_header() {
