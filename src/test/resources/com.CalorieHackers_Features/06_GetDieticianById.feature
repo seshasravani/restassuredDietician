@@ -12,8 +12,7 @@ Background: Set admin token
    
     Then Admin receives 200 ok with details of the dietician id
 
-    
-    
+        
     Scenario: Check admin able to retrieve dietician by id with invalid method
      
 

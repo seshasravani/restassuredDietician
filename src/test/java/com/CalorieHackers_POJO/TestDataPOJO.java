@@ -1,15 +1,10 @@
 package com.CalorieHackers_POJO;
-
 import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.CalorieHackers_POJO.TestDataPOJO.PatientInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class TestDataPOJO {
-
 	private String scenarioName;
 	private String testCaseId;
 	private String scenarioType;
@@ -51,6 +46,7 @@ public class TestDataPOJO {
 	private int invalidDieticianId;
 	private int validDieticianId;
 	private String loginPassword;
+	private String invalidUrl;
 	public String getTestCaseId() {
 		return testCaseId;
 	}
@@ -369,4 +365,13 @@ public class TestDataPOJO {
 	public void setExpectedStatusMessage(String expectedStatusMessage) {
 		this.expectedStatusMessage = expectedStatusMessage;
 	}
+	
+	public String getinvalidUrl() {
+        return invalidUrl;
+    }
+    
+    public void setvalidDieticianUrl(String validDieticianId) {
+        this.invalidUrl = invalidUrl;
+    }
 }
+
