@@ -58,6 +58,7 @@ public class TestDataPOJO {
 		this.testCaseId = testCaseId;
 	}
 
+
 	public String getScenarioType() {
 		return scenarioType;
 	}
@@ -89,6 +90,77 @@ public class TestDataPOJO {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
+
+    // Keep this as Map if you want, otherwise remove if unused
+//    private java.util.Map<String, Object> vitals;
+
+    // Now typed patientinfo as PatientInfo POJO
+    private PatientInfo patientinfo;
+
+
+    private String firstname;
+    private String lastname;
+//    private String contactNumber;
+//    private String dateOfBirth;
+//    private String email;
+
+
+    @JsonProperty("FirstName")
+    private String firstName;
+    @JsonProperty("loginPassword")
+    private String loginPassword;
+    @JsonProperty("LastName")
+    private String lastName;
+
+    @JsonProperty("ContactNumber")
+    private String contactNumber;
+
+
+    @JsonProperty("Email")
+    private String email;
+    @JsonProperty("Allergy")
+    private String allergy;
+    @JsonProperty("FoodPreference")
+    private String foodPreference;
+
+    @JsonProperty("CuisineCategory")
+    private String cuisineCategory;
+
+    @JsonProperty("DateOfBirth")
+    private String dateOfBirth;
+    
+    
+    
+    @JsonProperty("HospitalName")
+    private String hospitalname;
+
+    @JsonProperty("HospitalStreet")
+    private String hospitalstreet;
+
+    @JsonProperty("HospitalCity")
+    private String hospitalcity;
+
+    @JsonProperty("HospitalPincode")
+    private String dHospitalPinCode;
+
+    @JsonProperty("Education")
+    private String deducation;
+    
+
+
+    private int invalidDieticianId;
+    private int validDieticianId;
+
+
+    private String hospitalName;
+    private String hospitalStreet;
+    private String hospitalCity;
+    private String hospitalPincode;
+    private String education;
+
+
+    // getters and setters for all fields including patientinfo
+
 
 	public String getUserLoginEmail() {
 		return userLoginEmail;
@@ -202,6 +274,7 @@ public class TestDataPOJO {
 		@JsonProperty("FirstName")
 		private String firstName;
 
+
 		@JsonProperty("LastName")
 		private String lastName;
 
@@ -213,6 +286,10 @@ public class TestDataPOJO {
 
 		@JsonProperty("Allergy")
 		private String allergy;
+
+    public String getScenarioName() {
+        return scenarioName;
+    }
 
 		@JsonProperty("FoodPreference")
 		private String foodPreference;
@@ -378,6 +455,15 @@ public class TestDataPOJO {
 		this.dieticianLoginPassword = dieticianLoginPassword;
 	}
 
+//    public Map<String, Object> getPatientinfo() {
+//        return patientinfo;
+//    }
+//
+//    public void setPatientinfo(Map<String, Object> patientinfo) {
+//        this.patientinfo = patientinfo;
+//    }
+
+
 	public String getDieticianEmail() {
 		return dieticianEmail;
 	}
@@ -471,5 +557,137 @@ public class TestDataPOJO {
 	public void setExpectedStatusMessage(String expectedStatusMessage) {
 		this.expectedStatusMessage = expectedStatusMessage;
 	}
+
+	
+
+    public String getFoodPreference() {
+        return foodPreference;
+    }
+
+    public void setFoodPreference(String foodPreference) {
+        this.foodPreference = foodPreference;
+    }
+
+    public String getCuisineCategory() {
+        return cuisineCategory;
+    }
+
+    public void setCuisineCategory(String cuisineCategory) {
+        this.cuisineCategory = cuisineCategory;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getInvalidDieticianId() {
+        return invalidDieticianId;
+    }
+
+    public void setInvalidDieticianId(int invalidDieticianId) {
+        this.invalidDieticianId = invalidDieticianId;
+    }
+
+    public int getvalidDieticianId() {
+        return validDieticianId;
+    }
+    
+    public void setvalidDieticianId(int validDieticianId) {
+        this.validDieticianId = validDieticianId;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getHospitalStreet() {
+        return hospitalStreet;
+    }
+
+    public void setHospitalStreet(String hospitalStreet) {
+        this.hospitalStreet = hospitalStreet;
+    }
+
+    public String getHospitalCity() {
+        return hospitalCity;
+    }
+
+    public void setHospitalCity(String hospitalCity) {
+        this.hospitalCity = hospitalCity;
+    }
+
+    public String getHospitalPincode() {
+        return hospitalPincode;
+    }
+
+    public void setHospitalPincode(String hospitalPincode) {
+        this.hospitalPincode = hospitalPincode;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}    
+    
+    public String getDHospitalName() {
+        return hospitalname;
+    }
+
+    public void setDHospitalName(String dHospitalName) {
+        this.hospitalname = dHospitalName;
+    }
+
+    public String getDHospitalStreetName() {
+        return hospitalstreet;
+    }
+
+    public void setDHospitalStreetName(String dHospitalStreetName) {
+        this.hospitalstreet = dHospitalStreetName;
+    }
+
+    public String getDHospitalCityName() {
+        return hospitalcity;
+    }
+
+    public void setDHospitalCityName(String dHospitalcity) {
+        this.hospitalcity = dHospitalcity;
+    }
+
+    public String getDHospitalPinCode() {
+        return dHospitalPinCode;
+    }
+
+    public void setDHospitalPinCode(String dHospitalPinCode) {
+        this.dHospitalPinCode = dHospitalPinCode;
+    }
+
+    public String getDEducation() {
+        return deducation;
+    }
+
+    public void setDEducation(String dEducation) {
+        this.deducation = dEducation;
+    }
+
 
 }

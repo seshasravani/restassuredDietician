@@ -85,8 +85,8 @@ public class createDietician_SD {
 				.statusLine(currentTestData.getExpectedStatusLine())
 				.contentType(currentTestData.getExpectedContentType())
 				.body(matchesJsonSchemaInClasspath("schemas/createDietician.json"))//schema validation
-				.body("Firstname", equalTo(currentTestData.getFirstname()))
-				.body("Lastname", equalTo(currentTestData.getLastname()))
+				.body("Firstname", equalTo(currentTestData.getFirstName()))
+				.body("Lastname", equalTo(currentTestData.getLastName()))
 				.body("ContactNumber", equalTo(currentTestData.getContactNumber()))
 				.body("DateOfBirth", equalTo(currentTestData.getDateOfBirth()))
 				.body("Email", equalTo(currentTestData.getEmail()))

@@ -517,6 +517,325 @@
     "expectedStatusCode": 404,
     "expectedStatusLine": "HTTP/1.1 404 Not Found"
   },
+	{
+   "scenarioName": "Valid data Mandatory and additional details into the form-data key and value fields and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+   "patientUpdateInfo" : {"FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+   "Allergy": "Egg",
+   "FoodPreference": "Vegan",
+   "CuisineCategory":"Indian",
+   "DateOfBirth": "1977-02-14"
+   },
+   "vitals" : 	   {"Weight" : 100,
+   "Height" : 60,
+   "Temperature" : 100,
+   "SP" : 100,
+   "DP" : 80
+   },
+   "expectedStatusCode": 200,
+   "expectedStatusLine": "HTTP/1.1 200 OK",	
+   "expectedContentType": "application/json"
+},
+{
+   "scenarioName": "Except valid vitals data and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+   "Allergy": "Egg",
+   "FoodPreference": "Vegan",
+   "CuisineCategory":"Indian",
+   "DateOfBirth": "1977-02-14"
+   },
+   "vitals" : 	   {"Weight" : 6.2,
+   "Height" : 60.5,
+   "Temperature" : 95,
+   "SP" : 100,
+   "DP" : 80
+   },
+   "expectedStatusCode": 200,
+   "expectedStatusLine": "HTTP/1.1 200 OK",
+	"expectedContentType": "application/json"
+	},
+{
+   "scenarioName": "Data into the form-data key and value fields except file and valid patient ID",
+   "scenarioType": "Positive",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+	"Allergy": "Egg",
+	"FoodPreference": "Vegan",
+	"CuisineCategory":"Indian",
+	"DateOfBirth": "1977-02-14"
+	},
+	"vitals" : {"Weight" : 80,
+	"Height" : 80,
+	"Temperature" : 80,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 200,
+	 "expectedStatusLine": "HTTP/1.1 200 OK",
+	"expectedContentType": "application/json"
+},	
+{
+   "scenarioName": "Invalid Additional details data into the form-data key and value fields",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+   "patientinfo" : 	   { "FirstName": "Melissa",
+   "LastName": "HackerTest",
+   "ContactNumber": "2543610258",
+   "Email": "melissa@gmail.com",
+	"Allergy": "Egg",
+	"FoodPreference": "Vegan",
+	"CuisineCategory":"Indian",
+	"DateOfBirth": "1977-02-14"
+	},
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 400,
+	 "expectedStatusLine": "HTTP/1.1 400 BAD REQUEST"
+},
+{
+   "scenarioName": "Invalid Additional details data into the form-data key and value fields and invalid patient ID",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/HyperThyroid_Report_final.docx",
+   "invaidpatientid" : 9874563,
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 404,
+	 "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+   "scenarioName": "Entering valid data into the form-data key and value fields and valid patient ID",
+   "scenarioType": "Negative",
+   "endpoint": "/patient/newReports/",
+   "method": "POST",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 405,
+	 "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+   "scenarioName": "Valid data and with invalid reports endpoint",
+   "scenarioType": "Negative",
+   "endpoint": "/dietician",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 404,
+	 "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+   "scenarioName": "Valid patient ID with invalid content type",
+   "scenarioType": "Negative",
+   "endpoint": "patient/newReports/",
+   "method": "PUT",
+   "reportFilePath": "src/test/resources/TestData/Report1.pdf",
+	"vitals" : 	   {"Weight" : 66.2,
+	"Height" : 60.5,
+	"Temperature" : 95,
+	"SP" : 77,
+	"DP" : 80
+	},
+	 "expectedStatusCode": 415,
+	 "expectedStatusLine": "HTTP/1.1 415 Unsupported Media Type"
+},
+
+{
+  "scenarioName": "GET morbidity request to retrieve patients",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/json"
+},
+{
+  "scenarioName": "no auth create GET morbidity",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "GET morbidity request with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "POST morbidity request",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "invalid patient id to retrieve patients morbidity",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/",
+  "method": "GET",
+  "invaidpatientid" : 9874563,
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "GET morbidity request with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "GET",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Retrieve patients by file id",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/pdf"
+},
+{
+  "scenarioName": "Retrieve patients by file id with no auth",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "Retrieve patients by file id with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Retrieve patients by file id with invalid method",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "Retrieve patients by invalid file id",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/testReports/viewFile/",
+  "method": "GET",
+  "invaidfileid" : "invalidfileid",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Retrieve patients by file id with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "GET",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Delete patient by ID",
+  "scenarioType": "Positive",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 200,
+  "expectedStatusLine": "HTTP/1.1 200 OK",
+  "expectedContentType": "application/pdf"
+},
+{
+  "scenarioName": "Delete patient by ID with no auth",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 401,
+  "expectedStatusLine": "HTTP/1.1 401 Unauthorized"
+},
+{
+  "scenarioName": "Delete patient by ID with admin token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Delete patient by ID with patient token",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "expectedStatusCode": 403,
+  "expectedStatusLine": "HTTP/1.1 403 Forbidden"
+},
+{
+  "scenarioName": "Delete patient by ID with invalid method",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "POST",
+  "expectedStatusCode": 405,
+  "expectedStatusLine": "HTTP/1.1 405 Method Not Allowed"
+},
+{
+  "scenarioName": "Delete patient by invalid ID",
+  "scenarioType": "Negative",
+  "endpoint": "/patient/",
+  "method": "DELETE",
+  "invaidpatientid" : 985632,
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+{
+  "scenarioName": "Delete patient by ID with invalid endpoint",
+  "scenarioType": "Negative",
+  "endpoint": "/login/",
+  "method": "DELETE",
+  "expectedStatusCode": 404,
+  "expectedStatusLine": "HTTP/1.1 404 Not Found"
+},
+ 
   {
     "testCaseId": "TC_15_userLogin",
     "scenarioName": "Check user able to login as dietician with valid credential",
