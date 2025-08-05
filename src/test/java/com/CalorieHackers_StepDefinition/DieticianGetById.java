@@ -156,7 +156,7 @@ public class DieticianGetById {
     	
     	
     	 // Build invalid endpoint
-        String endpointInvalid = currentTestData.getEndpoint() + "/" + currentTestData.getValidDieticianId();
+        String endpointInvalid = currentTestData.getEndpoint() + "/" + currentTestData.getvalidDieticianId();
         
         // Print final URL (including base URI if set)
         System.out.println("Calling URL: " + RestAssured.baseURI + endpointInvalid);
@@ -208,6 +208,14 @@ public class DieticianGetById {
         assertEquals(statusCode, response.getStatusCode());
         assertTrue(response.getStatusLine().contains("Unauthorized"));
     }
+    
+    @Then("Admin receives 401 unauthorized for noauth")
+    public void admin_receives_401_unauthorized() {
+        int expectedStatusCode = 401;
+        int actualStatusCode = response.getStatusCode(); 
+        assertEquals(expectedStatusCode, actualStatusCode);
+    }
+
 
     }
 

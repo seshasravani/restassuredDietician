@@ -13,13 +13,6 @@ When Admin send PUT http request with endpoint
 Then Admin recieves 200 ok and with updated response body
 
 
-#Scenario: Check admin able to update dietician only with valid mandatory details and dietician id
-
-#Given Admin creates PUT request only with valid mandatory details
-#When Admin send PUT http request with endpoint for mandatory fields only
-#Then Admin recieves 200 ok and with updated response body
-
-
 
 
 
