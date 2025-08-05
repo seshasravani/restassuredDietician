@@ -156,7 +156,7 @@ public class DieticianGetById {
     	
     	
     	 // Build invalid endpoint
-        String endpointInvalid = currentTestData.getEndpoint() + "/" + currentTestData.getvalidDieticianId();
+        String endpointInvalid = currentTestData.getEndpoint() + "/" + currentTestData.getValidDieticianId();
         
         // Print final URL (including base URI if set)
         System.out.println("Calling URL: " + RestAssured.baseURI + endpointInvalid);

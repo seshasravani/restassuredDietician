@@ -32,8 +32,8 @@ public class createDietician_SD {
 		LoggerLoad.info(scenarioName);
 		LoggerLoad.info(adminToken);
 		Map<String, Object> requestBody = new HashMap<>();
-		requestBody.put("Firstname", currentTestData.getFirstName());
-		requestBody.put("Lastname", currentTestData.getLastName());
+		requestBody.put("Firstname", currentTestData.getFirstname());
+		requestBody.put("Lastname", currentTestData.getLastname());
 		requestBody.put("ContactNumber", currentTestData.getContactNumber());
 		requestBody.put("DateOfBirth", currentTestData.getDateOfBirth());
 		requestBody.put("Email", currentTestData.getEmail());
@@ -76,7 +76,8 @@ public class createDietician_SD {
 		currentTestData.setDieticianEmail(dieticianEmail);
 		LoggerLoad.info("Dietician ID: " + dieticianID);
 		LoggerLoad.info("Dietician Login password: " + dieticianLoginPassword);
-		LoggerLoad.info("Dietician Email: " + dieticianID);
+		LoggerLoad.info("Dietician Email: " + dieticianEmail);
+		System.out.println("current email "+currentTestData.getDieticianEmail());
 		
 		LoggerLoad.info("Expected Status Code " + statusCode + " Actual Status code " + response.getStatusCode());
 		
