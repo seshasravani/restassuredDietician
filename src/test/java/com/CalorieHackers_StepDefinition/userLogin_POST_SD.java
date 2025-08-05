@@ -276,7 +276,7 @@ public class userLogin_POST_SD {
 		LoggerLoad.info("Response body:" + responseBody);
 
 		JsonPath js = response.jsonPath();
-		String patientToken = js.getString("token");
+		patientToken = js.getString("token");
 		currentTestData.setPatientToken(patientToken);
 		LoggerLoad.info("Patient Token:" + patientToken);
 	}

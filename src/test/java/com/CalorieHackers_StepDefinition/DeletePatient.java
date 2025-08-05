@@ -19,10 +19,10 @@ public class DeletePatient {
 	Response response;
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = ConfigReader.getKeyValues("JSON_PATH");
-	private static final String adminToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtNDAxQGdtYWlsLmNvbSIsImlhdCI6MTc1NDA3NzUwMCwiZXhwIjoxNzU0MTA2MzAwfQ.hNw3C6lfkRBtFpKhNvZSUl_DYQliR2bFXdFMJTKLOxWu443ouju1LhhfzbjJrDlweAqYnnA2HsRdVuajtmrfbw";
-	private static final String dieticianToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYWxvcmllRGlldGljaWFuMDFAZ21haWwuY29tIiwiaWF0IjoxNzU0Mjc4OTU1LCJleHAiOjE3NTQzMDc3NTV9.NBaPU9jQclMTzM96nzNU04Rw-24tqO_MM3COJT00q14jmA1jsV47Zn5ElwcyQFclGC1gbr6pg1JSkpFk_27nNA";
-	private static final String patientToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtZWxpc3NhNEBnbWFpbC5jb20iLCJpYXQiOjE3NTQyODM1OTAsImV4cCI6MTc1NDMxMjM5MH0.jTb7ITRoB2gCJGcqw-2xp2vD2y40i_IlTkjgYj90CP1yXTMw9uScJZwEcUbp35jRZK_txZVPFjrdNECVrSLS_g";
-	private static final int patientID=73;
+	String adminToken = userLogin_POST_SD.adminToken;
+	String dieticianToken = userLogin_POST_SD.dieticianToken;
+	String patientToken = userLogin_POST_SD.patientToken ;
+	int patientID = CreatePatient_Post.patientId;
 	
 	
 	@Given("Dietician with no auth create DELETE patient request to {string}")

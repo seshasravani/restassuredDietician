@@ -1,23 +1,26 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
     "properties": {
-		"fileId" : { "type": "string" },
-		"fileName": { "type": "string" },
-		"uploadDate" : { "type": "string" },
-		"morbidConditions" : {
-			"type": "object",
-			"properties":{
-            "T3": { "type": "string" },
-            "T4": { "type": "string" },
-            "TSH": { "type": "string" },
-			"HbA1c": { "type": "string" },
-			"Average Glucose": { "type": "string" },
-			"Plasma Glucose": { "type": "string" },
-			"Fasting Glucose": { "type": "string" },
-			}
-        },
-		"morbidConditionStr": { "type": "string" }
-   	},
-	"required": ["fileId", "fileName", "uploadDate","morbidConditions","morbidConditaionStr"]
+      "fileId": { "type": "string" },
+      "fileName": { "type": "string" },
+      "uploadDate": { "type": "string" },
+      "morbidConditions": {
+        "type": "object",
+        "properties": {
+          "T3": { "type": "string" },
+          "T4": { "type": "string" },
+          "TSH": { "type": "string" },
+          "HbA1c": { "type": "string" },
+          "Average Glucose": { "type": "string" },
+          "Plasma Glucose": { "type": "string" },
+          "Fasting Glucose": { "type": "string" }
+        }
+      },
+      "morbidConditionStr": { "type": "string" }
+    },
+    "required": ["fileId", "fileName", "uploadDate", "morbidConditions", "morbidConditionStr"]
+  }
 }
