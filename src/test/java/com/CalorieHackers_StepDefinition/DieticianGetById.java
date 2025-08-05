@@ -212,7 +212,7 @@ public class DieticianGetById {
     @Then("Admin receives 401 unauthorized for noauth")
     public void admin_receives_401_unauthorized() {
         int expectedStatusCode = 401;
-        int actualStatusCode = response.getStatusCode(); // assuming 'response' is your RestAssured response object
+        int actualStatusCode = response.getStatusCode(); 
         assertEquals(expectedStatusCode, actualStatusCode);
     }
 
