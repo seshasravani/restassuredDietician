@@ -40,26 +40,56 @@ public class TestDataPOJO {
 	private String HospitalCity;
 	private String HospitalPincode;
 	private String Education;
-	private String Allergy;
-	private String FoodPreference;
-	private String CuisineCategory;
+	// private String Allergy;
+	// private String FoodPreference;
+	// private String CuisineCategory;
 	private int dieticianID;
 	private String dieticianLoginPassword;
 	private String dieticianEmail;
 	private String expectedStatusMessage;
-
-	
-
-
-
-	public String getExpectedStatusMessage() {
-		return expectedStatusMessage;
+	private int invalidDieticianId;
+	private int validDieticianId;
+	private String loginPassword;
+	public String getTestCaseId() {
+		return testCaseId;
 	}
 
-	public void setExpectedStatusMessage(String expectedStatusMessage) {
-		this.expectedStatusMessage = expectedStatusMessage;
+	public void setTestCaseId(String testCaseId) {
+		this.testCaseId = testCaseId;
 	}
 
+
+	public String getScenarioType() {
+		return scenarioType;
+	}
+
+	public void setScenarioType(String scenarioType) {
+		this.scenarioType = scenarioType;
+	}
+
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
 
     // Keep this as Map if you want, otherwise remove if unused
 //    private java.util.Map<String, Object> vitals;
@@ -131,236 +161,239 @@ public class TestDataPOJO {
 
     // getters and setters for all fields including patientinfo
 
-    public PatientInfo getPatientinfo() {
-        return patientinfo;
-    }
 
-    public void setPatientinfo(PatientInfo patientinfo) {
-        this.patientinfo = patientinfo;
-    }
+	public String getUserLoginEmail() {
+		return userLoginEmail;
+	}
 
-    // Other existing getters and setters...
+	public void setUserLoginEmail(String userLoginEmail) {
+		this.userLoginEmail = userLoginEmail;
+	}
 
-    // Inner static class for PatientInfo
-    public static class PatientInfo {
+	public String getPassword() {
+		return password;
+	}
 
-        @JsonProperty("FirstName")
-        private String firstName;
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-        @JsonProperty("LastName")
-        private String lastName;
+	public String getAuthType() {
+		return authType;
+	}
 
-        @JsonProperty("ContactNumber")
-        private String contactNumber;
+	public void setAuthType(String authType) {
+		this.authType = authType;
+	}
 
-        @JsonProperty("Email")
-        private String email;
+	public int getExpectedStatusCode() {
+		return expectedStatusCode;
+	}
 
-        @JsonProperty("Allergy")
-        private String allergy;
+	public void setExpectedStatusCode(int expectedStatusCode) {
+		this.expectedStatusCode = expectedStatusCode;
+	}
 
-        @JsonProperty("FoodPreference")
-        private String foodPreference;
+	public String getExpectedStatusLine() {
+		return expectedStatusLine;
+	}
 
-        @JsonProperty("CuisineCategory")
-        private String cuisineCategory;
+	public void setExpectedStatusLine(String expectedStatusLine) {
+		this.expectedStatusLine = expectedStatusLine;
+	}
 
-        @JsonProperty("DateOfBirth")
-        private String dateOfBirth;
+	public String getExpectedContentType() {
+		return expectedContentType;
+	}
 
-        // Getters and Setters
+	public void setExpectedContentType(String expectedContentType) {
+		this.expectedContentType = expectedContentType;
+	}
 
-        public String getFirstName() {
-            return firstName;
-        }
+	public String getReportFilePath() {
+		return reportFilePath;
+	}
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
+	public void setReportFilePath(String reportFilePath) {
+		this.reportFilePath = reportFilePath;
+	}
 
-        public String getLastName() {
-            return lastName;
-        }
+	public String getContactNumber() {
+		return ContactNumber;
+	}
 
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
+	public void setContactNumber(String contactNumber) {
+		ContactNumber = contactNumber;
+	}
 
-        public String getContactNumber() {
-            return contactNumber;
-        }
+	public String getDateOfBirth() {
+		return DateOfBirth;
+	}
 
-        public void setContactNumber(String contactNumber) {
-            this.contactNumber = contactNumber;
-        }
+	public void setDateOfBirth(String dateOfBirth) {
+		DateOfBirth = dateOfBirth;
+	}
 
-        public String getEmail() {
-            return email;
-        }
+	public String getEmail() {
+		return Email;
+	}
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
+	public void setEmail(String email) {
+		Email = email;
+	}
 
-        public String getAllergy() {
-            return allergy;
-        }
+	public String getLoginPassword() {
+		return loginPassword;
+	}
 
-        public void setAllergy(String allergy) {
-            this.allergy = allergy;
-        }
+	public void setLoginPassword(String loginPassword) {
+		this.loginPassword = loginPassword;
+	}
 
-        public String getFoodPreference() {
-            return foodPreference;
-        }
+	public String getExpecterErrorMsg() {
+		return expecterErrorMsg;
+	}
 
-        public void setFoodPreference(String foodPreference) {
-            this.foodPreference = foodPreference;
-        }
+	public void setScenarioName(String scenarioName) {
+		this.scenarioName = scenarioName;
+	}
 
-        public String getCuisineCategory() {
-            return cuisineCategory;
-        }
+	public int getValidDieticianId() {
+		return validDieticianId;
+	}
 
-        public void setCuisineCategory(String cuisineCategory) {
-            this.cuisineCategory = cuisineCategory;
-        }
+	public void setValidDieticianId(int validDieticianId) {
+		this.validDieticianId = validDieticianId;
+	}
 
-        public String getDateOfBirth() {
-            return dateOfBirth;
-        }
+	// Other existing getters and setters...
 
-        public void setDateOfBirth(String dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-        }
-    }
+	// Inner static class for PatientInfo
+	public static class PatientInfo {
+
+		@JsonProperty("FirstName")
+		private String firstName;
+
+
+		@JsonProperty("LastName")
+		private String lastName;
+
+		@JsonProperty("ContactNumber")
+		private String contactNumber;
+
+		@JsonProperty("Email")
+		private String email;
+
+		@JsonProperty("Allergy")
+		private String allergy;
 
     public String getScenarioName() {
         return scenarioName;
     }
 
-    public void setScenarioName(String scenarioName) {
-        this.scenarioName = scenarioName;
-    }
+		@JsonProperty("FoodPreference")
+		private String foodPreference;
 
-    public String getTestCaseId() {
-        return testCaseId;
-    }
+		@JsonProperty("CuisineCategory")
+		private String cuisineCategory;
 
-    public void setTestCaseId(String testCaseId) {
-        this.testCaseId = testCaseId;
-    }
+		@JsonProperty("DateOfBirth")
+		private String dateOfBirth;
 
-    public String getScenarioType() {
-        return scenarioType;
-    }
+		// Getters and Setters
 
-    public void setScenarioType(String scenarioType) {
-        this.scenarioType = scenarioType;
-    }
+		public String getFirstName() {
+			return firstName;
+		}
 
-    public String getEndpoint() {
-        return endpoint;
-    }
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
 
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
+		public String getLastName() {
+			return lastName;
+		}
 
-    public String getMethod() {
-        return method;
-    }
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+		public String getContactNumber() {
+			return contactNumber;
+		}
 
-    public String getContentType() {
-        return contentType;
-    }
+		public void setContactNumber(String contactNumber) {
+			this.contactNumber = contactNumber;
+		}
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
+		public String getEmail() {
+			return email;
+		}
 
+		public void setEmail(String email) {
+			this.email = email;
+		}
 
-    public String getUserLoginEmail() {
-        return userLoginEmail;
-    }
+		public String getAllergy() {
+			return allergy;
+		}
 
-    public void setUserLoginEmail(String userLoginEmail) {
-        this.userLoginEmail = userLoginEmail;
-    }
+		public void setAllergy(String allergy) {
+			this.allergy = allergy;
+		}
 
-    public String getPassword() {
-        return password;
-    }
+		public String getFoodPreference() {
+			return foodPreference;
+		}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    
-    public String getloginPassword() {
-        return loginPassword;
-    }
+		public void setFoodPreference(String foodPreference) {
+			this.foodPreference = foodPreference;
+		}
 
-    public void setloginPassword(String loginPassword) {
-        this.loginPassword = loginPassword;
-    }
+		public String getCuisineCategory() {
+			return cuisineCategory;
+		}
 
-    public String getAuthType() {
-        return authType;
-    }
+		public void setCuisineCategory(String cuisineCategory) {
+			this.cuisineCategory = cuisineCategory;
+		}
 
-    public void setAuthType(String authType) {
-        this.authType = authType;
-    }
+		public String getDateOfBirth() {
+			return dateOfBirth;
+		}
 
-    public int getExpectedStatusCode() {
-        return expectedStatusCode;
-    }
+		public void setDateOfBirth(String dateOfBirth) {
+			this.dateOfBirth = dateOfBirth;
+		}
+	}
 
-    public void setExpectedStatusCode(int expectedStatusCode) {
-        this.expectedStatusCode = expectedStatusCode;
-    }
+	public String getScenarioName() {
+		return scenarioName;
+	}
 
-    public String getExpectedStatusLine() {
-        return expectedStatusLine;
-    }
+	// Keep this as Map if you want, otherwise remove if unused
+//    private java.util.Map<String, Object> vitals;
 
-    public void setExpectedStatusLine(String expectedStatusLine) {
-        this.expectedStatusLine = expectedStatusLine;
-    }
+	// Now typed patientinfo as PatientInfo POJO
+//	private PatientInfo patientinfo;
+//
+//	// getters and setters for all fields including patientinfo
+//
+//	public PatientInfo getPatientinfo() {
+//		return patientinfo;
+//	}
+//
+//	public void setPatientinfo(PatientInfo patientinfo) {
+//		this.patientinfo = patientinfo;
+//	}
 
-    public String getExpectedContentType() {
-        return expectedContentType;
-    }
+	public void setExpecterErrorMsg(String expecterErrorMsg) {
+		this.expecterErrorMsg = expecterErrorMsg;
+	}
 
-    public void setExpectedContentType(String expectedContentType) {
-        this.expectedContentType = expectedContentType;
-    }
-
-    public String getReportFilePath() {
-        return reportFilePath;
-    }
-
-    public void setReportFilePath(String reportFilePath) {
-        this.reportFilePath = reportFilePath;
-    }
-
-    public String getExpecterErrorMsg() {
-        return expecterErrorMsg;
-    }
-
-    public void setExpecterErrorMsg(String expecterErrorMsg) {
-        this.expecterErrorMsg = expecterErrorMsg;
-    }
-
-    public Map<String, Object> getVitals() {
-        return vitals;
-    }
-
+	public Map<String, Object> getVitals() {
+		return vitals;
+	}
 
 	public String getInvaidfileid() {
 		return invaidfileid;
@@ -370,11 +403,57 @@ public class TestDataPOJO {
 		this.invaidfileid = invaidfileid;
 	}
 
+	public void setVitals(Map<String, Object> vitals) {
+		this.vitals = vitals;
+	}
 
-    public void setVitals(Map<String, Object> vitals) {
-        this.vitals = vitals;
-    }
+	public int getInvaidpatientid() {
+		return invaidpatientid;
+	}
 
+	public void setInvaidpatientid(int invaidpatientid) {
+		this.invaidpatientid = invaidpatientid;
+	}
+
+	public String getAdminToken() {
+		return adminToken;
+	}
+
+	public void setAdminToken(String adminToken) {
+		this.adminToken = adminToken;
+	}
+
+	public String getDieticianToken() {
+		return dieticianToken;
+	}
+
+	public void setDieticianToken(String dieticianToken) {
+		this.dieticianToken = dieticianToken;
+	}
+
+	public String getPatientToken() {
+		return patientToken;
+	}
+
+	public void setPatientToken(String patientToken) {
+		this.patientToken = patientToken;
+	}
+
+	public int getDieticianID() {
+		return dieticianID;
+	}
+
+	public void setDieticianID(int dieticianID) {
+		this.dieticianID = dieticianID;
+	}
+
+	public String getDieticianLoginPassword() {
+		return dieticianLoginPassword;
+	}
+
+	public void setDieticianLoginPassword(String dieticianLoginPassword) {
+		this.dieticianLoginPassword = dieticianLoginPassword;
+	}
 
 //    public Map<String, Object> getPatientinfo() {
 //        return patientinfo;
@@ -384,95 +463,7 @@ public class TestDataPOJO {
 //        this.patientinfo = patientinfo;
 //    }
 
-    public int getInvaidpatientid() {
-        return invaidpatientid;
-    }
 
-    public void setInvaidpatientid(int invaidpatientid) {
-        this.invaidpatientid = invaidpatientid;
-    }
-
-
-    public String getAdminToken() {
-        return adminToken;
-    }
-
-    public void setAdminToken(String adminToken) {
-        this.adminToken = adminToken;
-    }
-
-    public String getDieticianToken() {
-        return dieticianToken;
-    }
-
-    public void setDieticianToken(String dieticianToken) {
-        this.dieticianToken = dieticianToken;
-    }
-
-    public String getPatientToken() {
-        return patientToken;
-    }
-
-    public void setPatientToken(String patientToken) {
-        this.patientToken = patientToken;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAllergy() {
-        return allergy;
-    }
-
-    public void setAllergy(String allergy) {
-        this.allergy = allergy;
-    }
-
-
-	public int getDieticianID() {
-		return dieticianID;
-	}
-
-	public void setDieticianID(int dieticianID) {
-		this.dieticianID = dieticianID;
-	}
-	public String getDieticianLoginPassword() {
-		return dieticianLoginPassword;
-	}
-
-	public void setDieticianLoginPassword(String dieticianLoginPassword) {
-		this.dieticianLoginPassword = dieticianLoginPassword;
-	}
-	
 	public String getDieticianEmail() {
 		return dieticianEmail;
 	}
@@ -480,6 +471,93 @@ public class TestDataPOJO {
 	public void setDieticianEmail(String dieticianEmail) {
 		this.dieticianEmail = dieticianEmail;
 	}
+
+	public int getInvalidDieticianId() {
+		return invalidDieticianId;
+	}
+
+	public void setInvalidDieticianId(int invalidDieticianId) {
+		this.invalidDieticianId = invalidDieticianId;
+	}
+
+	public String getFirstname() {
+		return Firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		Firstname = firstname;
+	}
+
+	public String getLastname() {
+		return Lastname;
+	}
+
+	public void setLastname(String lastname) {
+		Lastname = lastname;
+	}
+
+	public String getHospitalName() {
+		return HospitalName;
+	}
+
+	public void setHospitalName(String hospitalName) {
+		HospitalName = hospitalName;
+	}
+
+	public String getHospitalStreet() {
+		return HospitalStreet;
+	}
+
+	public void setHospitalStreet(String hospitalStreet) {
+		HospitalStreet = hospitalStreet;
+	}
+
+	public String getHospitalCity() {
+		return HospitalCity;
+	}
+
+	public void setHospitalCity(String hospitalCity) {
+		HospitalCity = hospitalCity;
+	}
+
+	public String getHospitalPincode() {
+		return HospitalPincode;
+	}
+
+	public void setHospitalPincode(String hospitalPincode) {
+		HospitalPincode = hospitalPincode;
+	}
+
+	public String getEducation() {
+		return Education;
+	}
+
+	public void setEducation(String education) {
+		Education = education;
+	}
+
+	// Keep this as Map if you want, otherwise remove if unused
+//    private java.util.Map<String, Object> vitals;
+
+	// Now typed patientinfo as PatientInfo POJO
+	// private PatientInfo patientinfo;
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}
+
+	public String getExpectedStatusMessage() {
+		return expectedStatusMessage;
+	}
+
+	public void setExpectedStatusMessage(String expectedStatusMessage) {
+		this.expectedStatusMessage = expectedStatusMessage;
+	}
+
 	
 
     public String getFoodPreference() {
@@ -611,5 +689,5 @@ public class TestDataPOJO {
         this.deducation = dEducation;
     }
 
-}
 
+}

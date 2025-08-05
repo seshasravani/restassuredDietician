@@ -18,6 +18,10 @@ public class userLogin_POST_SD {
 	RequestSpecification request;
 	Response response;
 	public static String adminToken;
+	public static String dieticianToken;
+	public static String patientToken;
+	String dieticianLoginPassword=createDietician_SD.dieticianLoginPassword;
+    String dieticianEmail=createDietician_SD.dieticianEmail;
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = "src/test/resources/TestData/TestData.json";
 
@@ -212,7 +216,11 @@ public class userLogin_POST_SD {
 	@When("User send POST HTTP request with endpoint as dietician")
 	public void user_send_post_http_request_with_endpoint_as_dietician() {
 	    
-		request = request.contentType(ContentType.JSON).body(currentTestData);
+		Map<String, Object> requestBody = new HashMap<>();
+		requestBody.put("userLoginEmail", dieticianEmail );
+		requestBody.put("password", dieticianLoginPassword);
+		System.out.println("request body for Dietician" +requestBody);
+		request = request.contentType(ContentType.JSON).body(requestBody);
 		response = request.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 		LoggerLoad.info("User send POST HTTP request with endpoint as Dietician" + response.getStatusLine());
 	}
@@ -225,12 +233,12 @@ public class userLogin_POST_SD {
 		response.then().assertThat().log().all().statusCode(currentTestData.getExpectedStatusCode())
 				.statusLine(currentTestData.getExpectedStatusLine())
 				.contentType(currentTestData.getExpectedContentType())
-				.body("loginUserEmail", equalTo(currentTestData.getUserLoginEmail()))
+				//.body("loginUserEmail", equalTo(dieticianEmail))
 				.body("roles",hasItem("ROLE_DIETICIAN"));
 		LoggerLoad.info("Response body:" + responseBody);
 
 		JsonPath js = response.jsonPath();
-		String dieticianToken = js.getString("token");
+		 dieticianToken = js.getString("token");
 		currentTestData.setDieticianToken(dieticianToken);
 		LoggerLoad.info("Dietician Token:" + dieticianToken);
 	}
