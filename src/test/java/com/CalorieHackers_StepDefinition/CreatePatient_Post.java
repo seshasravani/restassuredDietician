@@ -1,27 +1,17 @@
 package com.CalorieHackers_StepDefinition;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
 import org.testng.Assert;
-
 import com.CalorieHackers_POJO.TestDataPOJO;
 import com.CalorieHackers_Utilities.ConfigReader;
 import com.CalorieHackers_Utilities.JsonDataReader;
 import com.CalorieHackers_Utilities.LoggerLoad;
-import io.cucumber.java.en.*;
-import io.restassured.http.ContentType;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -34,7 +24,7 @@ public class CreatePatient_Post {
 	private Response response;
 	String adminToken = userLogin_POST_SD.adminToken;
 	String dieticianToken = userLogin_POST_SD.dieticianToken;
-	String patientToken = userLogin_POST_SD.patientToken ;
+	String patientToken = userLogin_POST_SD.patientToken;
 	public static int patientId;
 	public static String patientEmail;
 
@@ -65,7 +55,6 @@ public class CreatePatient_Post {
 		}
 	}
 
-
 	@Given("Dietician creates POST request by entering valid data into the form-data key and value fields")
 	public void dietician_creates_post_request_by_entering_valid_data_into_the_form_data_key_and_value_fields() {
 		prepareRequest("Set no auth Check dietician able to create patient with valid data");
@@ -74,19 +63,15 @@ public class CreatePatient_Post {
 	@When("Dietician sends POST http request with endpoint")
 	public void dietician_sends_post_http_request_with_endpoint() {
 		try {
-		
 			ObjectMapper mapper = new ObjectMapper();
 
-	
 			String patientInfoJson = mapper.writeValueAsString(currentTestData.getPatientinfo());
 
-			
 			System.out.println("Serialized patientInfo JSON:");
 			System.out.println(patientInfoJson);
 
-		
 			response = request.multiPart("patientInfo", patientInfoJson, "application/json")
-					
+
 					.request(currentTestData.getMethod(), currentTestData.getEndpoint());
 
 		} catch (Exception e) {
@@ -143,8 +128,6 @@ public class CreatePatient_Post {
 			Assert.fail("Failed to serialize patientInfo or send request: " + e.getMessage());
 		}
 	}
-
-
 
 	@Then("Admin receives forbidden")
 	public void admin_receives_forbidden() {
@@ -222,19 +205,14 @@ public class CreatePatient_Post {
 
 		response.then().statusCode(201);
 
-	    JsonPath js = response.jsonPath();
-	     patientId = js.getInt("patientId");
-	     patientEmail = js.getString("Email");  // Be careful with case sensitivity if needed
-
-	    Assert.assertNotNull(patientId, "Generated patientId is null");
-	   // Assert.assertNotNull(email, "Email is null");
-
-	    LoggerLoad.info("Patient ID: " + patientId);
-	    LoggerLoad.info("Patient Email: " + patientEmail);
+		JsonPath js = response.jsonPath();
+		patientId = js.getInt("patientId");
+		patientEmail = js.getString("Email");
+		Assert.assertNotNull(patientId, "Generated patientId is null");
+		LoggerLoad.info("Patient ID: " + patientId);
+		LoggerLoad.info("Patient Email: " + patientEmail);
 
 	}
-
-
 	// Dietician create with only mandatory details
 
 	@Given("Dietician creates POST request with only valid mandatory details in form-data")
@@ -374,8 +352,6 @@ public class CreatePatient_Post {
 	public void dietician_receives_method_not_allowed_error() {
 		response.then().statusCode(405);
 		System.out.println("Received 405 Method Not Allowed as expected");
-
-
 		String message = response.jsonPath().getString("message");
 		System.out.println("Error message: " + message);
 	}

@@ -2,7 +2,7 @@
 Feature: POST (/LOGIN)
 
   Background: No auth
-  
+
   Scenario: Check user able to login as patient with invalid email
     Given User creates Post request with invalid email as patient
     When User send POST HTTP request with endpoint
@@ -17,8 +17,7 @@ Feature: POST (/LOGIN)
     Given User creates Post request with invalid Password as patient
     When User send POST HTTP request with endpoint
     Then User receives 401 unauthorized
-    
-    
+
   @patientLogin
   Scenario: Check user able to login as patient with valid credential
     Given User creates Post request with request body as patient

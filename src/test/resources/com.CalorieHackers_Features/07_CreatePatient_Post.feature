@@ -49,4 +49,3 @@ Feature: POST Operation - Create Patient
     Given Dietician creates POST request with valid data and invalid content type in form-data
     When Dietician sends POST http request with endpoint
     Then Dietician receives unsupported media type
-

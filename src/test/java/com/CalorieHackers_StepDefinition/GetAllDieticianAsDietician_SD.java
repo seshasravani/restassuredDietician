@@ -15,7 +15,6 @@ public class GetAllDieticianAsDietician_SD {
 
 	RequestSpecification request;
 	Response response;
-	// String adminToken = userLogin_POST_SD.adminToken;
 	String dieticianToken = userLogin_POST_SD.dieticianToken;
 	private TestDataPOJO currentTestData;
 	private static final String jsondatapath = "src/test/resources/TestData/TestData.json";
@@ -25,8 +24,7 @@ public class GetAllDieticianAsDietician_SD {
 		LoggerLoad.info(scenarioName);
 		LoggerLoad.info(dieticianToken);
 
-		request = given().log().all().header("Authorization", "Bearer " + dieticianToken)
-				.contentType(ContentType.JSON);
+		request = given().log().all().header("Authorization", "Bearer " + dieticianToken).contentType(ContentType.JSON);
 
 	}
 
