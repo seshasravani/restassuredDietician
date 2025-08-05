@@ -21,43 +21,53 @@ public class TestDataPOJO {
 	private int expectedStatusCode;
 	private String expectedStatusLine;
 	private String expectedContentType;
-	
 	private String reportFilePath;
 	private String expecterErrorMsg;
 	private Map<String, Object> vitals;
-	private Map<String, Object> patientinfo;
+	private Map<String, Object> patientUpdateInfo;
 	private int invaidpatientid;
 	private String invaidfileid;
-	
 	private String adminToken;
 	private String dieticianToken;
 	private String patientToken;
+
 	private String invalidUrl;
+	private String Firstname;
+	private String Lastname;
+	private String ContactNumber;
+	private String DateOfBirth;
+	private String Email;
+	private String HospitalName;
+	private String HospitalStreet;
+	private String HospitalCity;
+	private String HospitalPincode;
+	private String Education;
+	private String Allergy;
+	private String FoodPreference;
+	private String CuisineCategory;
+	private int dieticianID;
+	private String dieticianLoginPassword;
+	private String dieticianEmail;
+	private String expectedStatusMessage;
 
-//    private String reportFilePath;
-//    private String expecterErrorMsg;
+	
 
 
-    // Keep this as Map if you want, otherwise remove if unused
-   // private java.util.Map<String, Object> vitals;
 
-    // Now typed patientinfo as PatientInfo POJO
-    //private PatientInfo patientinfo;
+	public String getExpectedStatusMessage() {
+		return expectedStatusMessage;
+	}
 
+	public void setExpectedStatusMessage(String expectedStatusMessage) {
+		this.expectedStatusMessage = expectedStatusMessage;
+	}
 
-   // private Map<String, Object> vitals;
-  //  private Map<String, Object> patientinfo;
 
     private String firstname;
     private String lastname;
-//    private String contactNumber;
-//    private String dateOfBirth;
-//    private String email;
-
 
     @JsonProperty("FirstName")
     private String firstName;
-
     @JsonProperty("loginPassword")
     private String loginPassword;
     @JsonProperty("LastName")
@@ -66,12 +76,11 @@ public class TestDataPOJO {
     @JsonProperty("ContactNumber")
     private String contactNumber;
 
+
     @JsonProperty("Email")
     private String email;
-
     @JsonProperty("Allergy")
     private String allergy;
-
     @JsonProperty("FoodPreference")
     private String foodPreference;
 
@@ -109,19 +118,6 @@ public class TestDataPOJO {
     private String hospitalCity;
     private String hospitalPincode;
     private String education;
-
-
-    // Getters and setters for all fields including patientinfo
-
-//    public PatientInfo getPatientinfo() {
-//        return patientinfo;
-//    }
-//
-//    public void setPatientinfo(PatientInfo patientinfo) {
-//        this.patientinfo = patientinfo;
-//    }
-
-    // Other existing getters and setters...
 
     // Inner static class for PatientInfo
     public static class PatientInfo {
@@ -216,77 +212,6 @@ public class TestDataPOJO {
             this.dateOfBirth = dateOfBirth;
         }
     }
-
-//	    // Getters and Setters
-//
-//	    public String getClientFirstName() {
-//	        return clientFirstName;
-//	    }
-//
-//	    public void setClientFirstName(String clientFirstName) {
-//	        this.clientFirstName = clientFirstName;
-//	    }
-//
-//	    public String getClientLastName() {
-//	        return clientLastName;
-//	    }
-//
-//	    public void setClientLastName(String clientLastName) {
-//	        this.clientLastName = clientLastName;
-//	    }
-//
-//	    public String getClientContactNumber() {
-//	        return clientContactNumber;
-//	    }
-//
-//	    public void setClientContactNumber(String clientContactNumber) {
-//	        this.clientContactNumber = clientContactNumber;
-//	    }
-//
-//	    public String getClientEmail() {
-//	        return clientEmail;
-//	    }
-//
-//	    public void setClientEmail(String clientEmail) {
-//	        this.clientEmail = clientEmail;
-//	    }
-//
-//	    public String getClientAllergy() {
-//	        return clientAllergy;
-//	    }
-//
-//	    public void setClientAllergy(String clientAllergy) {
-//	        this.clientAllergy = clientAllergy;
-//	    }
-//
-//	    public String getClientFoodPreference() {
-//	        return clientFoodPreference;
-//	    }
-//
-//	    public void setClientFoodPreference(String clientFoodPreference) {
-//	        this.clientFoodPreference = clientFoodPreference;
-//	    }
-//
-//	    public String getClientCuisineCategory() {
-//	        return clientCuisineCategory;
-//	    }
-//
-//	    public void setClientCuisineCategory(String clientCuisineCategory) {
-//	        this.clientCuisineCategory = clientCuisineCategory;
-//	    }
-//
-//	    public String getClientDateOfBirth() {
-//	        return clientDateOfBirth;
-//	    }
-//
-//	    public void setClientDateOfBirth(String clientDateOfBirth) {
-//	    	this.clientDateOfBirth = clientDateOfBirth;
-//	    }
-//
-//	   
-
-
-    // Getters and Setters
 
     public String getScenarioName() {
         return scenarioName;
@@ -429,25 +354,6 @@ public class TestDataPOJO {
     }
 
 
-    public Map<String, Object> getPatientinfo() {
-        return patientinfo;
-    }
-
-    public void setPatientinfo(Map<String, Object> patientinfo) {
-        this.patientinfo = patientinfo;
-    }
-
-
-	
-
-//	public Map<String, Object> getPatientinfo() {
-//		return patientinfo;
-//	}
-//
-//	public void setPatientinfo(Map<String, Object> patientinfo) {
-//		this.patientinfo = patientinfo;
-//	}
-
     public int getInvaidpatientid() {
         return invaidpatientid;
     }
@@ -521,6 +427,31 @@ public class TestDataPOJO {
         this.allergy = allergy;
     }
 
+
+	public int getDieticianID() {
+		return dieticianID;
+	}
+
+	public void setDieticianID(int dieticianID) {
+		this.dieticianID = dieticianID;
+	}
+	public String getDieticianLoginPassword() {
+		return dieticianLoginPassword;
+	}
+
+	public void setDieticianLoginPassword(String dieticianLoginPassword) {
+		this.dieticianLoginPassword = dieticianLoginPassword;
+	}
+	
+	public String getDieticianEmail() {
+		return dieticianEmail;
+	}
+
+	public void setDieticianEmail(String dieticianEmail) {
+		this.dieticianEmail = dieticianEmail;
+	}
+	
+
     public String getFoodPreference() {
         return foodPreference;
     }
@@ -561,14 +492,16 @@ public class TestDataPOJO {
         this.validDieticianId = validDieticianId;
     }
 
+
     
     public String getinvalidUrl() {
         return invalidUrl;
     }
     
-    public void setvalidDieticianId(String validDieticianId) {
+    public void setvalidDieticianUrl(String validDieticianId) {
         this.invalidUrl = invalidUrl;
     }
+
 
     public String getHospitalName() {
         return hospitalName;
@@ -609,9 +542,15 @@ public class TestDataPOJO {
     public void setEducation(String education) {
         this.education = education;
     }
-    
-    
-    
+
+
+	public Map<String, Object> getPatientUpdateInfo() {
+		return patientUpdateInfo;
+	}
+
+	public void setPatientUpdateInfo(Map<String, Object> patientUpdateInfo) {
+		this.patientUpdateInfo = patientUpdateInfo;
+	}    
     
     public String getDHospitalName() {
         return hospitalname;
@@ -654,3 +593,4 @@ public class TestDataPOJO {
     }
 
 }
+
