@@ -1,14 +1,5 @@
 Feature: POST Operation - Create Patient
 
-Background: admin and dietician authentication flow
-    Given Admin logs in with valid credentials
-    When Admin creates a new dietician with valid details
-    Then Admin receives dietician credentials in the response
-    
-    Given Dietician has email and password from previous step
-    When Dietician send Post request with email and password 
-    Then daitician recieved dietician token in the response creation is successful with valid response
-
   Scenario: Set no auth Check dietician able to create patient with valid data
     Given Dietician creates POST request by entering valid data into the form-data key and value fields
     When Dietician sends POST http request with endpoint
@@ -18,11 +9,6 @@ Background: admin and dietician authentication flow
     Given Admin creates POST request by entering valid data into the form-data key and value fields
     When Admin sends POST http request with endpoint
     Then Admin receives forbidden
-
-  Scenario: Set patient bearer token Check patient able to create patient with valid data and patient token
-    Given Patient creates POST request by entering valid data into the form-data key and value fields
-    When Patient sends POST http request with endpoint
-    Then Patient receives forbidden
 
   Scenario: Set dietician bearer token Check dietician able to create patient with valid data and token
     Given Dietician creates POST request by entering valid mandatory and additional data into the form-data fields

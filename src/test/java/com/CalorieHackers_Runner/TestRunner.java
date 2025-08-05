@@ -18,7 +18,9 @@ import io.cucumber.testng.CucumberOptions;
 				"src/test/resources/com.CalorieHackers_Features/02_createDietician.feature",
 				"src/test/resources/com.CalorieHackers_Features/03_DieticianLoginPost.feature"
 				,"src/test/resources/com.CalorieHackers_Features/04_GetAllDieticianByAdminToken.feature"
-				,"src/test/resources/com.CalorieHackers_Features/04_GetAllDieticianByDieticianToken.feature"
+				,"src/test/resources/com.CalorieHackers_Features/04_GetAllDieticianByDieticianToken.feature",
+				"src/test/resources/com.CalorieHackers_Features/07_CreatePatient_Post.feature"
+				
 }, // location of feature
 																								// files
 		// tags = "@userLoginPostAdmin", // tags from feature file
